@@ -1,0 +1,76 @@
+@import '../variables.scss';
+
+footer{
+    height: auto;
+    background-color: white;
+    // top: 100%;
+    // margin-top: 150px;
+    .container{
+        padding: 50px 0px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        // justify-content: center;
+        ul{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            li{
+                width: 40%;
+                line-height: 1.5;
+                .logo{
+                    margin-bottom: 20px;
+                    margin-top: 10px;
+                }
+                span{
+                    display: inline-block;
+                    vertical-align: top;
+                    padding-left: 10px;
+                    width: 260px;
+                    cursor: pointer;
+                    flex-wrap: wrap;
+                    transition: all 0.4s;
+                    &:hover{
+                        color: $hover-cursor;
+                    }
+                }
+                
+                p{
+                    padding: 35px 0;
+                    cursor: pointer;
+                    &:hover{
+                        color: $hover-cursor;
+                    }
+                }
+
+                &.subscribe{
+                    padding: 100px 0px;
+                    h2{
+                        text-align: center;
+                    }
+                    .input-group{
+                        display: flex;
+                        padding-top: 20px;
+                        input{
+                            background-color: white;
+                            padding: 10px;
+                            flex-grow: 1;
+                            position: relative;
+                            border-bottom: 1px solid black;
+                        }
+                        .icon{
+                            cursor: pointer;
+                            font-size: 30px;
+                            padding-top: 7px;
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+    .background-black{
+        height: 30px;
+        background-color: black;
+    }
+}

@@ -1,0 +1,118 @@
+@import '../variables.scss';
+
+.main-smart-watch{
+        .banner{
+            width: 100%;
+            height: 159px;
+            img{
+                width: 100%;
+            }
+        }
+
+        .menu-top-fixed{
+            z-index: 20;
+            width: 100%;
+            // position: fixed;
+            height: 150px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: black;
+            height: 150px;
+            // top: 0;
+            .menu-cate{
+                // padding-top: 10px;
+                // position: relative;
+                // transform: translateX(-50%);
+                // left: 50%;
+
+                ul{
+                    display: flex;
+                    justify-content: center;
+                    // align-items: center;
+                li{
+                    margin: 5px  30px 0px 30px;
+                    .cate-link{
+                        .box-icon{
+                            text-align: center;
+                            background: white;
+                            width: 40px;
+                            height: 40px;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            border-radius: 50%;  
+                            margin-bottom: 10px;
+                            transform: translateX(10px);
+                            &:hover{
+                                background-color: $primary-color;
+                            }
+                            &.i-fashion{
+                                transform: translateX(15px);
+                            }
+                            &.i-utility{
+                                transform: translateX(7px);
+                            }
+                            &.i-children{
+                                transform: translateX(3px);
+                            }
+                            &.i-sport{
+                                transform: translateX(11px);
+                            }
+                            &.i-accessory{
+                                transform: translateX(9px);
+                            }
+                            .icon{
+                                background-image: url('https://cdn.tgdd.vn/mwgcart/mwg-site/ContentMwg/images/smartwatch/icon_donghothongminh@2x.png');
+                                background-repeat: no-repeat;
+                                background-size: 200px 100px;
+                            }
+                            .icon-deal{
+                                background-position: 0px 0px;
+                                height: 30px;
+                                width: 24px;
+                                margin-top: -1px;
+                            }
+                            .icon-fashion{
+                                background-position: -35px 0;
+                                height: 30px;
+                                width: 18px;
+                            }
+                            .icon-utility{
+                                background-position: -60px 0;
+                                height: 25px;
+                                margin-top: 3px;
+                                width: 28px;
+                            }
+                            .icon-sport{
+                                background-position: -95px 0;
+                                height: 26px;
+                                width: 27px;
+                            }
+                            .icon-children{
+                                background-position: -130px 0;
+                                height: 24px;
+                                width: 24px;
+                            }
+                            .icon-accessory{
+                                background-position: -160px 0;
+                                height: 25px;
+                                width: 25px;
+                            }
+                        }
+                        .title{
+                            // position: absolute;
+                            color: white;
+                            text-align: center;
+                            font-size: 16px;
+                            // transform: translateX(-5px);
+                            
+                        }
+                    }
+                }
+            }
+        }
+        }
+    
+}

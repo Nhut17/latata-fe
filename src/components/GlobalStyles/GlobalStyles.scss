@@ -1,0 +1,360 @@
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+// :root {
+//   --primary--color: #ffd400;
+//   --white--color: #fff;
+//   --black--color: #000;
+//   --text--color: #333;
+//   --border--color: #dbdbdb;
+//   --blue--color: #288ad6;
+//   --red--color: #ea4335;
+//   overflow-x: hidden;
+// }
+
+*{
+  margin:0;
+  padding:0;
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
+ 
+}//loai bo padding margin mac dinh, bat buoc co
+
+button,input, select,textarea{
+  text-decoration: none;
+  border: none;
+  outline: none;
+  background: none;
+
+}
+i{
+  list-style: none;
+}
+
+ol,ul,li,a{
+  text-decoration: none;
+  list-style: none;
+  color: black;
+}
+button{
+  cursor: pointer;
+  
+}
+
+.container{
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.flex{
+  display: flex;
+}
+.j-center{
+  justify-content: center;
+}
+
+.j-between{
+  justify-content: space-between;
+}
+
+.a-center{
+  align-items: center;
+}
+
+.p-10{
+  padding:10px;
+}
+
+.pointer{
+  cursor: pointer;
+}
+
+.item-product{
+  width: 220px;
+  height: 400px;
+  background-color: #f3f3f3;
+  padding: 20px 15px 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  &:hover{
+    .image{
+      img{
+        transform:translateY(-5px);
+      }
+    }
+  }
+  .image{
+    height: 200px;
+    img{
+      transition: all 0.4s;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .name-product{
+    padding: 15px 0px;
+  
+    p{
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  }
+  .price-old {
+
+    // padding-top: 5px;
+      .initialPrice {
+      position: relative;
+      text-decoration: line-through;
+      font-size: 15px;
+      .currency {
+        position: absolute;
+        font-size: 10px;
+        top: 1px;
+        right: -3px;
+        text-decoration-line: underline;
+      }
+    }
+    .discount {
+      padding-left: 8px;
+      font-size: 14px;
+    }
+  }
+  .priceDeal {
+    position: relative;
+    padding-top: 10px;
+    font-weight: 700;
+    font-size: 18px;
+    .currency {
+      position: absolute;
+      font-size: 10px;
+      text-decoration-line: underline;
+    }
+  }
+
+}
+
+.star-outer {
+  position: relative;
+  // padding-left: 15px;
+  padding-top: 10px;
+  display: inline-block;
+  &::before {
+    content: "\f005 \f005 \f005 \f005 \f005";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: #ccc;
+  }
+  .star-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+    // padding-left: 15px;
+    padding-top: 10px;
+    &::before {
+      content: "\f005 \f005 \f005 \f005 \f005";
+      font-family: "Font Awesome 5 Free";
+      font-weight: 900;
+      color: #f8ce0b;
+    }
+  }
+}
+
+
+.slider-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px auto;
+
+  .slider {
+    cursor: pointer;
+    width: 67%;
+    position: relative;
+      img{
+          width: 100%;
+      }
+    .slick-slider {
+      position: relative;
+
+      .slick-next {
+        position: absolute;
+        right: 10px;
+        //  background-color: transparent;
+      }
+
+      .slick-prev {
+        z-index: 2;
+        position: absolute;
+        left: 10px;
+        //background-color: red;
+      }
+
+      .slick-dots {
+        position: absolute;
+        bottom: 10px;
+      }
+    }
+  }
+  .banner{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 100%;
+      margin-left: 10px;
+      .banner-item{
+          
+          img{
+              width: 100%;
+             
+          }
+      }
+  }
+}
+
+
+.box-filter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .box-sort {
+    display: flex;
+    align-items: center;
+    .title-quantity {
+      font-size: 17px;
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+    }
+    .flash {
+      background: #def;
+      margin-right: 25px;
+      padding: 4px 8px 5px 5px;
+      border-radius: 4px;
+      margin-left: 20px;
+      a {
+        display: flex;
+      }
+      img {
+        display: inline-block;
+        width: 10px;
+        height: auto;
+        margin: 0 3px;
+      }
+      p {
+        font-style: italic;
+        color: #243A73;
+      }
+    }
+
+    input {
+      display: inline-block;
+      border: 1px solid #a6a6a6;
+      border-radius: 3px;
+      margin-right: 3px;
+      height: 16px;
+      width: 16px;
+    }
+
+    .discount-accessories {
+      display: flex;
+      vertical-align: middle;
+    }
+  }
+
+  .select-sort {
+    // border: 1px solid #e0e0e0;
+    // border-radius: 4px;
+    // padding: 3px;
+  }
+}
+
+.breadcrumb {
+  padding: 15px 0 10px 0;
+  ul {
+    display: flex;
+
+    li {
+      // padding: 0px 10px;
+      &.childCate{
+        padding-left: 15px;
+      }
+      a {
+        color: #288ad6;
+      }
+      .parentCate {
+        position: relative;
+
+        &::before {
+          content: "";
+          position: absolute;
+          width: 5px;
+          height: 5px;
+          border: 1px solid black;
+          right: -10px;
+          // margin: 0px 10px;
+          border-color: black black transparent transparent;
+          transform: translateY(50%) rotate(45deg);
+          bottom: 50%;
+        }
+      }
+
+      // .childCate {
+      //   position: relative;
+      //   &::before {
+      //     content: "";
+      //     position: absolute;
+      //     width: 5px;
+      //     height: 5px;
+      //     border: 1px solid black;
+      //     right: -10px;
+      //     // margin: 0px 10px;
+      //     border-color: black black transparent transparent;
+      //     transform: translateY(50%) rotate(45deg);
+      //     bottom: 50%;
+      //   }
+      // }
+      // .quantity {
+      // }
+    }
+  }
+}
+
+
+.bd-bottom{
+    border-bottom: 1px solid rgba(#333,0.1);
+    padding-bottom: 30px;
+}
+
+.bg-wrap{
+  position: absolute;
+  background: white;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+
+.table-responsive{
+  table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+    
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+}

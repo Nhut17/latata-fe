@@ -1,0 +1,128 @@
+
+@import '../variables.scss';
+.bg-profile{
+    background: whitesmoke;
+    padding: 30px 0;
+    .container-profile{
+        width: 1300px;
+        margin: 0 auto;
+        background: white;
+        // height: 500px;
+        display: flex;
+        padding: 40px;
+        border: 1px solid rgba(#333, 0.1);
+        border-radius: 20px;
+        .reset-pass{
+            width: auto;
+            h3{
+                color:$primary-color;
+                margin: 20px auto;
+                font-size: 22px;
+            }
+            .input-group{
+                margin-bottom: 20px;
+                span{
+                    display: block;
+                }
+                input{
+                    border: 1px solid #ced4da;
+                    border-radius: 4px;
+                    padding: 10px 15px;
+                    width: 500px;
+                    display: block;
+                    margin: 10px 0;
+                    font-size: 16px;
+                }
+                .err-msg{
+                    transform: translateY(-10px)
+                }
+            }
+            button{
+                background: $primary-color;
+                color: white;
+                padding: 10px 25px;
+                font-size: 17px;
+                border-radius: 3px;
+                margin-top: 10px;
+                transition: all .3s;
+                &:hover{
+                    background: rgba($primary-color, 0.8);
+                }
+            }
+        }
+        .change-pass{
+            color: orangered;
+            margin: 20px auto;
+        }
+
+        .profile-avatar{
+            .upload-avatar{
+                text-align: center;
+                margin: 20px auto 10px 37%;
+                input[type='file'] {
+                    color: rgba(0, 0, 0, 0);   
+                  }
+            }
+            .avatar{
+                width: 100px;
+                margin-left: 20px;
+                img{
+                    width: 150px;
+                    height: 150px;
+                    border-radius: 50%;
+                    margin-left: 10px;
+                }
+            }
+            
+            span{
+                display: inline-block;
+                margin-top: 15px;
+                font-size: 22px;
+            }
+            width: 30%;
+            text-align: center;
+            margin-top: 7%;
+        }
+        .profile-content{
+            width: 70%;
+            .profile-title{
+                padding-bottom: 10px;
+                border-bottom: 1px solid #e4e4e4;
+                h3{
+                    font-size:22px;
+                }
+                span{
+                    color: #555;
+                    font-size: 14px;
+                }
+            }
+
+            .profile-detail{
+                margin-top: 20px;
+                input{
+                    border: 1px solid #ced4da;
+                    border-radius: 4px;
+                    padding: 10px 15px;
+                    width: 500px;
+                    display: block;
+                    margin: 10px 0;
+                    font-size: 16px;
+                }
+
+                button{
+                    background: $primary-color;
+                    color: white;
+                    padding: 10px 25px;
+                    font-size: 17px;
+                    border-radius: 3px;
+                    margin-top: 10px;
+                    transition: all .3s;
+                    &:hover{
+                        background: rgba($primary-color, 0.8);
+                    }
+                }
+
+            }
+        }
+    }
+}
