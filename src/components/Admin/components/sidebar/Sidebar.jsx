@@ -26,7 +26,7 @@ function Sidebar(props) {
     const handleLogout = () => {
         dispatch(logoutUser())
         localStorage.clear()
-       navigate('/')
+      //  navigate('/')
         navigate(0)
     }
 
