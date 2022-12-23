@@ -37,8 +37,7 @@ const Header = () => {
       setSearch(e.target.value)
     }
 
-    
-
+  
       // Search Product
   const searchProducts = (data) => {
 

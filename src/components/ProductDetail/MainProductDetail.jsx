@@ -8,13 +8,13 @@ const MainProductDetail = ({data}) => {
     <div className='product-detail'>
       <div className="product-category">
             <span className="product-category-title ">
-                {data.category}
+                Phụ kiện
             </span>
             <span className="product-category-title">
             <i className="fa-solid fa-angle-right"></i>
             </span>
             <span className="product-category-title">
-           {data.name}
+           {data.category}
             </span>
       </div>
       <div className="product-title flex a-center bd-bottom">

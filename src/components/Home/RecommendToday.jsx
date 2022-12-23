@@ -8,7 +8,9 @@ const RecommendToday = () => {
 
   const {listProduct} = useSelector(state => state.product)
   
-  const [topDeal,setTopDeal] = useState(listProduct.slice().sort((a,b) =>  b.promotion - a.promotion))
+  // const [topDeal,setTopDeal] = useState(listProduct.slice().sort((a,b) =>  b.promotion - a.promotion))
+
+  const topDeal = listProduct.slice().sort((a,b) =>  b.promotion - a.promotion)
 
   // console.log(topDeal)
 
