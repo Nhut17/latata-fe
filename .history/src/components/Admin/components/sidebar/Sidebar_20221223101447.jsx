@@ -27,6 +27,7 @@ function Sidebar(props) {
         dispatch(logoutUser())
         localStorage.clear()
        navigate('/')
+
         navigate(0)
     }
 
