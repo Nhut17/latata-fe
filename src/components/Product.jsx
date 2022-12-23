@@ -52,7 +52,13 @@ const Product = ({data}) =>{
             </p>
 
         <StarRating rating={data?.ratings} />
-            
+            {
+              data?.sold >=1 && 
+              <span style={{
+                paddingLeft: 5,
+                fontSize: '14px'
+              }}>{`(${data.sold})`}</span>
+            }
           {
             data.stock === 0 && 
             <p style={{

@@ -42,7 +42,7 @@ const Home = () => {
 
   useEffect(() => {
    
-    dispatch(resetActionUser())
+    
     dispatch(resetActionOrder())
     
 },[])
@@ -60,6 +60,14 @@ const Home = () => {
           progress: undefined,
           theme: "light",
           });
+
+          const timer = setTimeout(() => {
+            dispatch(resetActionUser())
+          },1500)
+
+          return () => {
+            clearTimeout(timer)
+          }
     }
   },[])
 
