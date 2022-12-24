@@ -9,7 +9,7 @@ const BoxFilter = ({totalQuantity,childCate, functions}) => {
       <div className="box-sort">
 
 
-                <p className='title-quantity'>{totalQuantity} {childCate}</p>
+                <p className='title-quantity' style={{paddingTop: 10}}>{totalQuantity} {childCate}</p>
                    
         
                 {/* <div className="flash">
