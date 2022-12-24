@@ -12,7 +12,7 @@ const BoxFilter = ({totalQuantity,childCate, functions}) => {
                 <p className='title-quantity'>{totalQuantity} {childCate}</p>
                    
         
-                <div className="flash">
+                {/* <div className="flash">
                     <a href="">
                         <input type="checkbox" />
                         <img src={flash} alt="flash" />
@@ -24,11 +24,11 @@ const BoxFilter = ({totalQuantity,childCate, functions}) => {
                 <div className="discount-accessories">
                     <input type="checkbox" />
                     <p>Giảm giá</p>
-                </div>
+                </div> */}
       </div>
 
 
-                <div className="select-sort">
+                {/* <div className="select-sort">
                 <span>Xếp theo: </span>
                 <select name="" id="arrange"  >
                     <option value="percent_increase">% Giảm</option>
@@ -38,7 +38,7 @@ const BoxFilter = ({totalQuantity,childCate, functions}) => {
                 
 
                 
-            </div>
+            </div> */}
 
     </div>
 
