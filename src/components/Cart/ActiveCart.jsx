@@ -1,17 +1,29 @@
 import React from 'react'
 import '../../sass/cart/checkoutCart.scss'
 import ListingCart from './ListingCart'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import InfoCustomer from './InfoCustomer'
 import Voucher from './Voucher'
 import FinalTotal from './FinalTotal'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { getAddress } from '../../redux/address/addressSlice'
+import { resetCart } from '../../redux/Cart/cartSlice'
 
 const ActiveCart = ({listCartUser}) => {
 
   const dispatch= useDispatch()
+  const {successOrder } = useSelector(state => state.order)
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if(successOrder){
+      dispatch(resetCart())
+      navigate('/thanks')
+      
+    }
+    
+  }, [successOrder]);
 
   useEffect(() => {
       dispatch(getAddress())

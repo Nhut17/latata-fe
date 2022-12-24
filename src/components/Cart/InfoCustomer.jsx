@@ -18,7 +18,15 @@ const InfoCustomer = ({totalPrice}) => {
     const { listAddress , addressCurrent} = useSelector(state => state.address)
 
    
+        const [nameI,setName] = useState(addressCurrent ? addressCurrent[0]?.name : '')
+        const [phoneI,setPhone] = useState(addressCurrent ? addressCurrent[0]?.phone : '')
 
+        useEffect(() => {
+
+            setPhone(addressCurrent ? addressCurrent[0]?.phone : '')
+            setName(addressCurrent ? addressCurrent[0]?.name : '')
+
+        },[addressCurrent])
 
 
   const handleClickOrderDetail = () => {
@@ -52,7 +60,7 @@ const InfoCustomer = ({totalPrice}) => {
             <div className="name input"  >
                 <input 
                     type="text" 
-                    defaultValue={addressCurrent ? addressCurrent[0]?.name : ''}
+                    value={nameI}
             
                     {...register('name',{
                         required: true,
@@ -75,7 +83,7 @@ const InfoCustomer = ({totalPrice}) => {
             <div className="number input">
                 <input 
                     type="text"  
-                    defaultValue={addressCurrent ? addressCurrent[0]?.phone : ''}
+                    value={phoneI}
                     {...register('phoneNo',{
                         required: true,
                        

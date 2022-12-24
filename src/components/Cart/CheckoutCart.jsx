@@ -9,34 +9,23 @@ import { useEffect } from 'react'
 import ActiveCart from './ActiveCart'
 import EmptyCart from './EmptyCart'
 import { getCartUser } from '../../redux/Cart/cartSlice'
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+
 import { getAddress } from '../../redux/address/addressSlice'
 
 const CheckoutCart = () => {
 
   const dispatch = useDispatch()
-  const navigate = useNavigate()
   const { listCartUser } = useSelector(state => state.cart)
-  const {successOrder } = useSelector(state => state.order)
-
-  // toastify success order
-  useEffect(() => {
-    if(successOrder){
-      navigate('/thanks')
-      
-    }
-    
-  }, [successOrder]);
-
-  useEffect(() => {
-    dispatch(getCartUser())
   
-  },[])
+  
+
+  // useEffect(() => {
+  //   dispatch(getCartUser())
+  
+  // },[])
 
   return (
     <React.Fragment>
-            <ToastContainer />
 
       {
         listCartUser?.products &&
