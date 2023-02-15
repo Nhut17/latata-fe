@@ -13,7 +13,7 @@
             }
 
             .sliders{
-                position: absolute;
+                position: absolute; 
                 transform: translate(50%,-80px);
                 right: 50%;
                 .slick-slider{
@@ -486,7 +486,7 @@
     font-size: 30px;
     position: fixed;
     right: 20px;
-    bottom: 20px;
+    bottom: 40px;
     z-index: 100;
     transition: all 0.2s;
     cursor: pointer;
