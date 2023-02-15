@@ -10,6 +10,8 @@ const LoginForm = () => {
     const navigate = useNavigate()
     const {  errorLogin } = useSelector(state => state.user)
 
+    console.log('error login: ' + errorLogin)
+
     // useEffect(() => {
     //     if(currentUser)
     //     {

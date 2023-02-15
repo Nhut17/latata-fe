@@ -14,7 +14,7 @@ import {
     PURGE,
     REGISTER,
   } from 'redux-persist'
-  import storage from 'redux-persist/lib/storage'
+import storage from 'redux-persist/lib/storage'
 import cartSlice from './redux/Cart/cartSlice'
 import adminSlice from './redux/Admin/adminSlice'
 import categorySlice from './redux/Category/categorySlice'
@@ -28,14 +28,26 @@ import addressSlice from './redux/address/addressSlice'
     storage,
   }
 
+const userPersistConfig = {
+  key: 'root',
+  storage,
+  whitelist: ['user','userDetail','currentUser','accessToken','emailOtp','myOrders']
+}
+
+const orderPersistConfig = {
+  key: 'order',
+  storage,
+  whitelist: ['listOrder']
+}
+
 const rootReducer = combineReducers({
     product: productSlice,
-    user: userSlice,
+    user: persistReducer(userPersistConfig,userSlice),
     province: provinceVNSlice,
     cart: cartSlice,
     admin: adminSlice,
     category: categorySlice,
-    order: orderSlice,
+    order: persistReducer(orderPersistConfig,orderSlice),
     address: addressSlice
 
   })

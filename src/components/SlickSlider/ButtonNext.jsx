@@ -3,7 +3,6 @@ import React from 'react'
 const ButtonNext = (props) => {
     const  {className, style, onClick} = props
 
-    console.log(props)
   return (
     <span className={className} onClick={onClick}
                       style={{...style,

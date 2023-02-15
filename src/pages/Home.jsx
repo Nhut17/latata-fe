@@ -40,12 +40,11 @@ const Home = () => {
   })
   }, [])
 
-  useEffect(() => {
+//   useEffect(() => {
    
+//     dispatch(resetActionOrder())
     
-    dispatch(resetActionOrder())
-    
-},[])
+// },[])
 
   useEffect(() =>{
     if(successLogin)
