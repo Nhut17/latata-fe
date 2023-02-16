@@ -12,17 +12,11 @@ import { getCartUser } from '../../redux/Cart/cartSlice'
 
 import { getAddress } from '../../redux/address/addressSlice'
 
-const CheckoutCart = () => {
+const CheckoutCart = () => {  
 
-  const dispatch = useDispatch()
   const { listCartUser } = useSelector(state => state.cart)
   
-  
-
-  // useEffect(() => {
-  //   dispatch(getCartUser())
-  
-  // },[])
+  console.log('list cart: ', listCartUser?.products.length)
 
   return (
     <React.Fragment>

@@ -87,7 +87,7 @@ const LoginForm = () => {
                     
                    
 
-                    <button className='btn-sign-up'>ĐĂNG NHẬP</button>
+                    <button className='btn-sign-up' type='submit'>ĐĂNG NHẬP</button>
                     {
                             errorLogin && <span className='err-msg'>Sai email hoặc mật khẩu!</span>
                     }

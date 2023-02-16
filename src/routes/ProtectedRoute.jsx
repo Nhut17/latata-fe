@@ -7,7 +7,7 @@ const ProtectedRoute = ({children}) => {
 
     const { currentUser } = useSelector(state => state.user)
     
-    console.log(currentUser)
+    // console.log(currentUser)
 
     if(currentUser?.role === 'admin')
     {

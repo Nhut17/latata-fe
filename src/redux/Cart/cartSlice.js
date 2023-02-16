@@ -1,5 +1,6 @@
 import axios from "axios";
 import api from '../../api/api'
+import { useNavigate } from "react-router-dom";
 
 const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
 
@@ -7,6 +8,7 @@ const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
 const initialState = {
   isFetching: false,
   listCartUser:null,
+  success: false
 }
 
 export const addCart = createAsyncThunk('cart/add',
@@ -23,7 +25,10 @@ export const addCart = createAsyncThunk('cart/add',
 
                         const res = await api.post('/api/v1/cart/add',data,config)
                       
-                        thunkAPI.dispatch(getCartUser())
+                       
+
+                        await thunkAPI.dispatch(getCartUser())
+
 
                         return res.data
 
@@ -70,7 +75,7 @@ export const deleteCart = createAsyncThunk('cart/delete',
 
                         const res = await api.put(`/api/v1/cart/${id}`,{},config)
 
-                        thunkAPI.dispatch(getCartUser())
+                        await thunkAPI.dispatch(getCartUser())
 
                         return res.data
 
@@ -96,7 +101,7 @@ export const increaseQuantity = createAsyncThunk('cart/delete',
                 try{
 
                         const res = await api.put(`/api/v1/cart/increase/${id}`,{},config)
-                        thunkAPI.dispatch(getCartUser())
+                        await thunkAPI.dispatch(getCartUser())
 
                         return res.data
 
@@ -122,7 +127,8 @@ export const decreaseQuantity = createAsyncThunk('cart/delete',
                 try{
 
                         const res = await api.put(`/api/v1/cart/decrease/${id}`,{},config)
-                        thunkAPI.dispatch(getCartUser())
+
+                        await thunkAPI.dispatch(getCartUser())
 
                         return res.data
 

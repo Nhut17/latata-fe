@@ -29,7 +29,7 @@ import addressSlice from './redux/address/addressSlice'
   }
 
 const userPersistConfig = {
-  key: 'root',
+  key: 'user',
   storage,
   whitelist: ['user','userDetail','currentUser','accessToken','emailOtp','myOrders']
 }

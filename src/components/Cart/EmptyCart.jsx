@@ -11,6 +11,8 @@ const EmptyCart = () => {
   })
   }, [])
 
+  console.log('Empty cart ')
+
   return (
     <div className='empty-cart flex a-center j-center bd-bottom'>
       <img src={emptycart} alt="" />

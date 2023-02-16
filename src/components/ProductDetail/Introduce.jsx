@@ -14,22 +14,22 @@ const Introduce = ({data}) => {
 
     const { id } = useParams()
     const dispatch = useDispatch()
-    const [active, setActive] = useState(0);
+    // const [active, setActive] = useState(0);
     const priceDeal = useSelector(state => state.product.priceDeal)
     const navigate = useNavigate()
     const { currentUser } = useSelector(state => state.user)
     const { listCartUser } = useSelector(state => state.cart)
     const currentProduct = listCartUser?.products.find(val => val.productId == id)
     
-    console.log(currentProduct)
+    // console.log(currentProduct)
     const [isStock,setIsStock] = useState(currentProduct ? data.stock - currentProduct?.quantity : data.stock)
 
-    const handleClick = (e) =>{
-        setActive(e.target.id)
-    }
+    // const handleClick = (e) =>{
+    //     setActive(e.target.id)
+    // }
 
     // handle Buy
-    const handleBuy = () => {
+    const handleBuy =  () => {
         if(!currentUser){
             navigate('/dang-nhap')
         }
@@ -38,8 +38,15 @@ const Introduce = ({data}) => {
                 productId: id,
                 quantity: 1
             }
-            dispatch(addCart(data))
-            navigate('/cart')
+
+
+                dispatch(addCart(data))
+                    .then(() => {
+                        navigate('/cart')
+                    })
+
+                  
+            
         }
     }
 
