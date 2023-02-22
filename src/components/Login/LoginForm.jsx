@@ -10,21 +10,8 @@ const LoginForm = () => {
     const navigate = useNavigate()
     const {  errorLogin } = useSelector(state => state.user)
 
-    console.log('error login: ' + errorLogin)
+    // console.log('error login: ' + errorLogin)
 
-    // useEffect(() => {
-    //     if(currentUser)
-    //     {
-    //         if(currentUser?.role === "ADMIN")
-    //         {
-    //             navigate('/admin')
-    //         } 
-    //         if(currentUser?.role === "USER"){
-    //             navigate('/')
-    //         }
-            
-    //     }
-    // },[currentUser])
 
     const { 
         register,
