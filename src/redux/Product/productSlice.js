@@ -65,20 +65,25 @@ const productReducer = createSlice({
     },
     extraReducers: {
         [getProduct.pending]: (state,action) => {
-            state.loading = true
+            
+            
         },
         [getProduct.fulfilled]: (state,action) => {
-            state.loading = false;
+            
             state.listProduct = action.payload
         },
         [getProductCate.fulfilled]: (state,action) => {
-            state.loading = false;
+            // state.loading = false;
             state.listProductCate = action.payload
         },
         [getProduct.rejected]: (state,action) => {
 
         },
+        [getProductDetail.pending] : (state,action) => {
+            state.loading = true
+        },
         [getProductDetail.fulfilled] : (state,action) => {
+            state.loading = false
             state.productDetail = action.payload
             state.priceDeal  = state.productDetail.price - state.productDetail.price*(state.productDetail.promotion / 100) 
         }

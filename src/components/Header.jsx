@@ -20,6 +20,21 @@ const Header = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
+  const cates = ['Điện thoại','Laptop','tablet','Phụ kiện','smartwatch','Đồng hồ','Tivi', 'Nhà thông minh']
+
+  const list_cate = []
+
+  cates.forEach(el => {
+    listCate.forEach(val => {
+        if(val.name.toLowerCase() === el.toLocaleLowerCase())
+        {
+          list_cate.push(val)
+        }
+    })
+  });
+
+  // console.log('listCate: ', listCate)
+  // console.log('list_cate: ', list_cate)
 
   useEffect(() => {
     dispatch(getCate())
@@ -128,7 +143,7 @@ const Header = () => {
 
         <div className="header-content">
             <div className="list-categories flex j-between">
-                {listCate.map(item => (
+                {list_cate.map(item => (
                   <div className="item pointer" key={item._id}>
                    
                     <Link to={`/${item.name}/${item._id}`}>

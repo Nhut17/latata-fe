@@ -40,8 +40,14 @@ const orderPersistConfig = {
   whitelist: ['listOrder']
 }
 
+const productPersistConfig = {
+  key: 'product',
+  storage,
+  
+}
+
 const rootReducer = combineReducers({
-    product: productSlice,
+    product: persistReducer(productPersistConfig,productSlice),
     user: persistReducer(userPersistConfig,userSlice),
     province: provinceVNSlice,
     cart: cartSlice,
