@@ -1,11 +1,7 @@
 import React, { useEffect } from "react";
 import {
-  BellOutlined,
-  SearchOutlined,
   ShoppingCartOutlined,
-  ShoppingOutlined,
   DollarCircleOutlined,
-  FileTextOutlined,
   UsergroupDeleteOutlined,
   SkinOutlined,
 } from "@ant-design/icons";
@@ -94,7 +90,7 @@ export default function DashBoard() {
             </div>
             
           </div>
-          {/* <ChartDashBoard></ChartDashBoard> */}
+          <ChartDashBoard></ChartDashBoard>
         </div>
 
        
