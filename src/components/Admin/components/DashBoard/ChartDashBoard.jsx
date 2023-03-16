@@ -25,44 +25,43 @@ export default function ChartDashBoard() {
   // }, [dispatch])
 
   const chartOptions = {
-    series: [{
-        name: 'Monthly bill',
-        data: [
-          // numberOfOrdersOnMonth(1) + 7,
-          // numberOfOrdersOnMonth(2) + 4,
-          // numberOfOrdersOnMonth(3) + 7,
-          // numberOfOrdersOnMonth(4)+ 5,
-          // numberOfOrdersOnMonth(5)+ 3,
-          // numberOfOrdersOnMonth(6)+ 14,
-          // numberOfOrdersOnMonth(7),
-          // numberOfOrdersOnMonth(8)+ 8,
-          // numberOfOrdersOnMonth(9)+ 8,
-          // numberOfOrdersOnMonth(10)+ 18,
-          // numberOfOrdersOnMonth(11) + 20,
-          // numberOfOrdersOnMonth(12) + 11,
-        ]
-    }],
+    series: [
+      {
+        name: 'Khách hàng',
+        data: [50, 69, 79, 54, 91, 88, 84, 41, 43, 45, 78, 57]
+      },
+      {
+        name: 'Sản phẩm',
+        data: [77, 50, 42, 81, 82, 95, 48, 70, 99, 84, 96, 82]
+      }, {
+        name: 'Tổng danh thu',
+        data: [57, 50, 54, 99, 59, 63, 51, 89, 86, 82, 86, 46]
+      }
+  
+    ],
     options: {
-        color: ['#6ab04c', '#2980b9'],
-        chart: {
-            background: 'transparent'
-        },
-        dataLabels: {
-            enabled: false
-        },
-        stroke: {
-            curve: 'smooth'
-        },
-        xaxis: {
-            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-        },
-        legend: {
-            position: 'top'
-        },
-        grid: {
-            show: false
-        }
+      color: ['#6a04c', '#2980b9', '#DC3545'],
+      chart: {
+        background: 'transparent'
+      },
+      dataLabels: {
+        enabled: false
+      },
+      stroke: {
+        curve: 'smooth'
+      },
+      xaxis: {
+        categories: ['Jan', 'Feb', 'Mar', 'Apr ', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc', 'Nov', 'Dec']
+      },
+      legend: {
+        position: 'bottom'
+  
+      },
+      grid: {
+        show: false
+      }
     }
+  
   }
 
   return (
@@ -71,7 +70,7 @@ export default function ChartDashBoard() {
         options={chartOptions.options}
         series={chartOptions.series}
         type='line'
-        width="500"
+        height='100%'
       />
     </div>
   );
