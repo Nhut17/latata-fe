@@ -399,7 +399,43 @@
             .title{
                 display: flex;
                 align-items: center;
+                justify-content: center;
+                border: 1px solid #5856d6;
+                padding: 10px;
+                width: 150px;
+                border-radius: 50px;
+                background-color: white;
+                position: relative;
+                overflow: hidden;
+                &::before{
+                    content: '';
+                    position: absolute;
+                    width: 150%;
+                    height: 150%;
+                    background-color: #5856d6;
+                    // left: 0;
+                    right: 10%;
+                    // top: -10%;
+                    z-index: 0;
+                    transform: rotate(-45deg);
+                    
+                }
+                &::after{
+                    content: '';
+                    position: absolute;
+                    width: 150%;
+                    height: 150%;
+                    background-color: white;
+                    // left: 0;
+                    left: 10%;
+                    // top: -10%;
+                    z-index: 0;
+                    transform: rotate(315deg);
+                    
+                }
                 .img{
+
+                    z-index: 2;
                     width: 40px;
                     img{
                         width: 100%;
@@ -407,8 +443,13 @@
                 }
 
                 h3{
+                    z-index: 3;
                     padding-right: 10px;
-                    font-size: 28px;
+                    font-size: 25px;
+                    font-weight: bold;
+                    span{
+                        z-index: 3;
+                    }
                 }
             }
             

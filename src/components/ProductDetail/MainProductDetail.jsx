@@ -17,6 +17,7 @@ const MainProductDetail = ({data}) => {
            {data.category}
             </span>
       </div>
+      
       <div className="product-title flex a-center bd-bottom">
       <h2 className="product-title-name">{data.name}</h2>
         <div className="product-title-star">
