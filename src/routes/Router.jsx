@@ -49,6 +49,9 @@ import SubProduct from "../pages/SubProduct";
 import News24h from "../components/Tech24h/News24h";
 import Hoidap from "../components/Tech24h/Hoidap";
 import Gameapp from "../components/Tech24h/Gameapp";
+import Brand from "../components/Admin/components/AdminCate/SubAdminCate/Brand";
+import Specification from "../components/Admin/components/AdminCate/SubAdminCate/Specification";
+import Cate from "../components/Admin/components/AdminCate/SubAdminCate/Cate";
 
 
 const Router = () => {
@@ -201,7 +204,14 @@ const Router = () => {
           <Route path="order" element={<AdminOrder />} />
           <Route path="customer" element={<AdminUser />} />
 
-          <Route path="category" element={<AdminCate />} />
+          {/* <Route path="category" element={<AdminCate />} /> */}
+          <Route path="category" element={<AdminCate />}>
+            <Route index element={<Cate/>} />
+            <Route path="brand" element={<Brand />} />
+            <Route path="specification" element={<Specification />} />  
+          </Route> 
+          
+
           <Route path="category/create" element={<AdminCreateCate />} />
 
           

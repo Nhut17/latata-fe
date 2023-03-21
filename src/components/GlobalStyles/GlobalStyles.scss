@@ -19,6 +19,10 @@
  
 }//loai bo padding margin mac dinh, bat buoc co
 
+*:focus {
+  outline: none;
+}
+
 button,input, select,textarea{
   text-decoration: none;
   border: none;

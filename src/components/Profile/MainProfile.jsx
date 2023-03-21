@@ -124,6 +124,9 @@ const MainProfile = ({currentUser}) => {
                     <span>Số điện thoại</span>
                     <input  {...register("phone")} defaultValue={currentUser?.phone}/>
 
+                    <span>Ngày sinh</span>
+                    <input  {...register("birthday")} type='date'/>
+
                     <Link to='/reset-password'>
                     <p className='change-pass'><u>Đổi mật khẩu</u></p>
                     </Link>

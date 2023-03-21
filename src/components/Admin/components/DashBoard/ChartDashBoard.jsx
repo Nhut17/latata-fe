@@ -70,7 +70,7 @@ export default function ChartDashBoard() {
         options={chartOptions.options}
         series={chartOptions.series}
         type='line'
-        height='100%'
+        height='500px'
       />
     </div>
   );
