@@ -20,11 +20,14 @@ const RecommendToday = () => {
    
         <div className='recommend-today' id='topdeal'>
         <div className="title">
-        <div className="img" style={{marginRight : '10px'}}>
+        {/* <div className="img" style={{marginRight : '10px'}}>
             <img src='https://res.cloudinary.com/dx8xengfd/image/upload/v1671612207/depositphotos_36001719-stock-illustration-recommended-stamp-removebg-preview_djojny.png' alt="" />
-          </div>
-          <h3 style={{color : '#5856d6'}}>TOP DEAL</h3> 
+          </div> */}
+
+            <h3 h3 style={{color : 'white'}}>TOP <span style={{color: '#5856d6',
+                paddingLeft: '10px'}}>DEAL</span></h3> 
           
+   
           {/* <div className="img">
             <img src={icon} alt="" />
           </div> */}

@@ -79,6 +79,8 @@ const MainProfile = ({currentUser}) => {
     
   }
 
+  console.log('birr : ' + currentUser?.birthday)
+
 
   return (
     <div className='bg-profile'>
@@ -125,7 +127,7 @@ const MainProfile = ({currentUser}) => {
                     <input  {...register("phone")} defaultValue={currentUser?.phone}/>
 
                     <span>Ngày sinh</span>
-                    <input  {...register("birthday")} type='date'/>
+                    <input  {...register("birthday")} type='date' defaultValue={currentUser?.birthday} disabled/>
 
                     <Link to='/reset-password'>
                     <p className='change-pass'><u>Đổi mật khẩu</u></p>

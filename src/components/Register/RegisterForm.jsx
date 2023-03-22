@@ -5,9 +5,14 @@ import { getUser, registerUser, loginUser, resetActionRegister } from '../../red
 import { useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import DateTimePicker from 'react-datetime-picker';
+// import 'react-calendar/dist/Calendar.css'
 import { useRef } from 'react';
+import DatePicker, {registerLocale} from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
+
+import vi from 'date-fns/locale/vi'
+registerLocale('vi', vi)
 const RegisterForm = () => {
 
     const dispatch = useDispatch()
@@ -58,15 +63,19 @@ const RegisterForm = () => {
             name :  name,
             email: email,
             phone: phone,
+            birthday : birthday,
             password: password
        }
         dispatch(registerUser(data)) 
+        // console.log('dataa' + JSON.stringify(data))
        
 
      }
      const inputRef = useRef();
-     const [birthday, setBirthday] = useState(null);
+    //  const [value, onChange] = useState(new Date());
+     const [birthday, setBirthday] = useState()
 
+     console.log('birthday' + birthday)
      
   return (
     <form className='main' onSubmit={handleSubmit(onHandleSubmit)}>
@@ -138,6 +147,7 @@ const RegisterForm = () => {
 
                         <div className="input-birthday flex a-center">
                             <i class="fa-solid fa-cake-candles ic"></i>
+                            {/* <DateTimePicker onChange={onChange} value={value} /> */}
                             {/* <input 
                                     type="date" 
                                     placeholder='Ngày sinh'
@@ -158,15 +168,16 @@ const RegisterForm = () => {
                                 onChange={(date) => {
                                     setBirthday(date);
                                 }}
-                                dateFormat='dd/MM/yyyy'
+                                dateFormat='dd-MM-yyyy'
                                 placeholderText='Ngày sinh'
-                                maxDate={new Date()}
-                                
+                                locale='vi'
+                                maxDate={birthday}
+                                value={birthday}
                                 
                             />
 
-                            <input
-                                    ref={inputRef}
+                            {/* <input
+                                    
                                     value={birthday}
                                     type="hidden"
                                  
@@ -177,7 +188,7 @@ const RegisterForm = () => {
 
                             {
                              errors.birthday?.type === 'required' &&  <span className='err-msg'>Mời bạn nhập ngày sinh</span>
-                            }
+                            } */}
                                      
                         </div>
                         <div className="input-password">
