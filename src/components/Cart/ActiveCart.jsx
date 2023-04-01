@@ -16,7 +16,7 @@ const ActiveCart = ({listCartUser}) => {
   const {successOrder } = useSelector(state => state.order)
   const navigate = useNavigate()
 
-  console.log('active cart')
+ 
 
   useEffect(() => {
     if(successOrder){
