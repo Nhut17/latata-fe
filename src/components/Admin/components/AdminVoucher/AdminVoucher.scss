@@ -1,0 +1,57 @@
+.admin-voucher{
+    background: white;
+    width: 80%;
+    border-radius: 12px;
+    margin-left: 1rem;
+
+    .input-group{
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        span{
+            font-size: 16px;
+            // padding: 5px;
+        }
+        input{
+            background: white;
+            border: 1px solid #e4e4e4;
+            padding: 5px 16px;
+            border-radius: 4px;
+        }
+    }
+}
+
+form{
+    margin-left:20px;
+}
+
+
+h4{
+    font-size: 22px;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.add-voucher{
+    // text-align: center;
+    button{
+        margin-top: 20px;
+        background: green;
+        color: white;
+        // font-weight: bold;
+        padding: 7px 30px;
+        border-radius: 7px;
+        font-size: 18px;
+        text-align: center;
+        cursor: pointer;
+        opacity: 0.5;
+        transition: all .3s;
+        &:hover{
+            // background: rgba(green, 0.9);
+            opacity: 1;
+        }
+    }
+}
+    
+
+

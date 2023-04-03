@@ -37,7 +37,8 @@ const userPersistConfig = {
 const orderPersistConfig = {
   key: 'order',
   storage,
-  whitelist: ['listOrder']
+  whitelist: ['listOrder'],
+  blacklist : ['successOrder']
 }
 
 const productPersistConfig = {

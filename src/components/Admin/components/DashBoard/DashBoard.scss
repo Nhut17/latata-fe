@@ -118,6 +118,43 @@
     margin: 1rem 0.5rem 1rem 1rem;
     // margin-left:  1rem;
     box-shadow: 0px 8px 24px rgba(#333, 0.2);
+
+    .filter-chart{
+        p{
+            margin-bottom: 5px;
+        }
+        input, select{
+            width: 150px;
+            background: white;
+            border: 1px solid #6b6b6b;
+            border-radius: 4px;
+            padding: 5px 10px;
+        }
+        .from-date{
+            margin-right: 40px;
+        }
+
+        .to-date{
+            margin-right: 40px;
+        }
+
+        .filter-option{
+           
+        }
+    }
+}
+
+.filter-result{
+    
+
+    button{
+        background: #000b49;
+        width: 100px;
+        padding: 10px 15px;
+        color: white;
+        border-radius: 4px;
+
+    }
 }
 .dashboard-top-customer{
     margin-top: 2rem;

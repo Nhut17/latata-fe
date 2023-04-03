@@ -355,3 +355,24 @@
       }
     }
 }
+
+.order-pending{
+  padding-right: 10px;
+ 
+  .tab-pending{
+    position: relative;
+    .quantity{
+      position: absolute;
+      top: 0;
+      font-size: 9px;
+      margin-left: 3px;
+      background: rgb(181, 20, 20);
+      color: white;
+      padding: 0 3px;
+      border-radius: 50%;
+      // right: 0;
+    }
+  }
+
+  
+}

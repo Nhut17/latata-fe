@@ -66,6 +66,32 @@ export default function ChartDashBoard() {
 
   return (
     <div className="dashboard-middle-chart">
+
+      <div className="filter-chart flex">
+        <div className="from-date">
+          <p>Từ ngày : </p>
+          <input type="date" />
+        </div>
+
+        <div className="to-date">
+          <p>Đến ngày : </p>
+          <input type="date" />
+        </div>
+
+        <div className="filter-option">
+          <p>Lọc theo : </p>   
+          <select name="" id="">
+            <option value=""></option>
+          </select>
+        </div>
+
+
+        
+      </div>
+      <div className="filter-result">
+          <button>Lọc kết quả</button>
+      </div>
+      
       <Chart
         options={chartOptions.options}
         series={chartOptions.series}

@@ -382,5 +382,21 @@
                 }
             }
         }
+
+        .submit{
+            margin-top: 10px;
+            button{
+                background: green;
+                opacity: 0.5;
+                color: white;
+                padding: 10px 15px;
+                border-radius: 7px;
+                transition: all .3s;
+
+                &:hover{
+                    opacity: 1;
+                }
+            }
+        }
     }
 }

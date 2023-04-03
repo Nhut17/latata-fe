@@ -11,7 +11,9 @@ import {
   WechatOutlined,
   LogoutOutlined,
   ProfileOutlined,
-  MessageOutlined
+  MessageOutlined,
+  CalendarOutlined,
+  ShakeOutlined
 } from "@ant-design/icons";
 import clx from 'classnames'
 
@@ -121,6 +123,20 @@ function Sidebar(props) {
             </span>
             <p>Chat</p>
           </Link> */}
+
+          <Link to="/admin/event" className={'sidebar-list-item'} >
+            <span>
+              <CalendarOutlined />
+            </span>
+            <p>Sự kiện</p>
+          </Link>
+
+          <Link to="/admin/voucher" className={'sidebar-list-item'} >
+            <span>
+              <ShakeOutlined />
+            </span>
+            <p>Mã giảm giá</p>
+          </Link>
           <div className="sidebar-list-item" onClick={handleLogout}>
             <span >
             <LogoutOutlined />
