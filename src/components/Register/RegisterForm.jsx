@@ -1,10 +1,18 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from 'react-redux'
 import { getUser, registerUser, loginUser, resetActionRegister } from '../../redux/User/userSlice';
 import { useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import DateTimePicker from 'react-datetime-picker';
+// import 'react-calendar/dist/Calendar.css'
+import { useRef } from 'react';
+import DatePicker, {registerLocale} from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
+
+import vi from 'date-fns/locale/vi'
+registerLocale('vi', vi)
 const RegisterForm = () => {
 
     const dispatch = useDispatch()
@@ -55,13 +63,20 @@ const RegisterForm = () => {
             name :  name,
             email: email,
             phone: phone,
+            birthday : birthday,
             password: password
        }
         dispatch(registerUser(data)) 
+        // console.log('dataa' + JSON.stringify(data))
        
 
      }
+     const inputRef = useRef();
+    //  const [value, onChange] = useState(new Date());
+     const [birthday, setBirthday] = useState()
 
+     console.log('birthday' + birthday)
+     
   return (
     <form className='main' onSubmit={handleSubmit(onHandleSubmit)}>
             <ToastContainer />
@@ -127,6 +142,54 @@ const RegisterForm = () => {
                                      {
                                         errors.phone?.type === 'minLength' &&  <span className='err-msg'>Số điện thoại không hợp lệ</span>
                                         }
+                        </div>
+
+
+                        <div className="input-birthday flex a-center">
+                            <i class="fa-solid fa-cake-candles ic"></i>
+                            {/* <DateTimePicker onChange={onChange} value={value} /> */}
+                            {/* <input 
+                                    type="date" 
+                                    placeholder='Ngày sinh'
+                                    max={}
+                                    
+                                    {...register('birthday',{
+                                        required: true,
+                                        
+                                    }) }/>
+
+                                    {
+                                        errors.birthday?.type === 'required' &&  <span className='err-msg'>Mời bạn nhập ngày sinh</span>
+
+                                    } */}
+
+                            <DatePicker
+                                selected={birthday} 
+                                onChange={(date) => {
+                                    setBirthday(date);
+                                }}
+                                dateFormat='dd-MM-yyyy'
+                                placeholderText='Ngày sinh'
+                                locale='vi'
+                                maxDate={birthday}
+                                value={birthday}
+                                
+                            />
+
+                            {/* <input
+                                    
+                                    value={birthday}
+                                    type="hidden"
+                                 
+                                    {...register("birthdate", {
+                                        required: true
+                                    })}
+                                    />
+
+                            {
+                             errors.birthday?.type === 'required' &&  <span className='err-msg'>Mời bạn nhập ngày sinh</span>
+                            } */}
+                                     
                         </div>
                         <div className="input-password">
                             <i class="fa-solid fa-lock ic"></i>

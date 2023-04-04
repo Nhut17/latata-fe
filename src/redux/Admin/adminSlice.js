@@ -6,6 +6,7 @@ import { getProduct } from "../Product/productSlice";
 
 const initialState = {
     listUser: [],
+    sale_figure: [],
     successCreate: false,
     successUpdate: false
 
@@ -139,6 +140,17 @@ export const updateProduct = createAsyncThunk('admin/product/update',
                         }
                  })
                  
+
+// get sale figures
+export const saleFigure = createAsyncThunk( 'sales/get', 
+                async(data, thunkAPI) => {
+
+                    const ret = await api.get('/api/v1/sale-figures')
+
+
+                    return ret.data.sale_figure
+                })
+
 const adminSlice = createSlice({
     name: "admin",
     initialState,
@@ -161,6 +173,9 @@ const adminSlice = createSlice({
         [updateProduct.fulfilled]: (state,action) => {
             state.successUpdate = true
         },
+        [saleFigure.fulfilled] : (state,action) => {
+            state.sale_figure = action.payload
+        }   
     }
 })
 

@@ -45,6 +45,7 @@ const orderPersistConfig = {
   key: 'order',
   storage: storage,
   blacklist: ['successOrder', 'successReview', 'successUpdateOrder']
+
 }
 
 const productPersistConfig = {

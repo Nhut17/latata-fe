@@ -26,6 +26,8 @@ import { resetActionOrder } from '../redux/Order/orderSlice'
 import ScrollToTop from '../components/Home/ScrollToTop'
 import ListPhone from '../components/Home/ListPhone'
 
+import MessengerCustomerChat from 'react-messenger-customer-chat';
+
 const Home = () => {
   const navigate = useNavigate()
   const success = useSelector(state => state.user.successLogin)
@@ -135,7 +137,16 @@ const shoppingTrendsRef = useRef()
             <ToastContainer />
             {
                 visible &&
-            <ScrollToTop />
+                <>
+                    <ScrollToTop />
+                    {/* <MessengerCustomerChat
+                        pageId="100090895334787"
+                        appId="1385632485087591"
+                        htmlRef="<REF_STRING>"
+                        /> */}
+
+                        
+                </>
             }
         
 

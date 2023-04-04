@@ -94,7 +94,17 @@
 }
 
 .sidebar-list-item:hover{
-    background: #1890ff;
+    background: rgba(#1890ff, 0.5);
     color: white;
     transition: .3s;
+}
+
+.btn-blue{
+    background: #007aff;
+    color: white;
+}
+
+.btn-white{
+    background: white;
+    color: #6b6b6b;
 }

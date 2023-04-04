@@ -49,6 +49,11 @@ import SubProduct from "../pages/SubProduct";
 import News24h from "../components/Tech24h/News24h";
 import Hoidap from "../components/Tech24h/Hoidap";
 import Gameapp from "../components/Tech24h/Gameapp";
+import Brand from "../components/Admin/components/AdminCate/SubAdminCate/Brand";
+import Specification from "../components/Admin/components/AdminCate/SubAdminCate/Specification";
+import Cate from "../components/Admin/components/AdminCate/SubAdminCate/Cate";
+import AdminEvent from "../components/Admin/components/AdminEvent/AdminEvent";
+import AdminVoucher from "../components/Admin/components/AdminVoucher/AdminVoucher";
 
 
 const Router = () => {
@@ -200,8 +205,19 @@ const Router = () => {
           {/* <Route path="customers" element={<AdminCustomer />} /> */}
           <Route path="order" element={<AdminOrder />} />
           <Route path="customer" element={<AdminUser />} />
+          <Route path="event" element={<AdminEvent />} />
+          <Route path="voucher" element={<AdminVoucher />} />
 
-          <Route path="category" element={<AdminCate />} />
+
+
+          {/* <Route path="category" element={<AdminCate />} /> */}
+          <Route path="category" element={<AdminCate />}>
+            <Route index element={<Cate/>} />
+            <Route path="brand" element={<Brand />} />
+            <Route path="specification" element={<Specification />} />  
+          </Route> 
+          
+
           <Route path="category/create" element={<AdminCreateCate />} />
 
           

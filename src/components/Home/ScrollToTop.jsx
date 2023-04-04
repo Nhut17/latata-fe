@@ -10,9 +10,14 @@ const ScrollToTop = () => {
     }
 
   return (
-    <div className='scroll-to-top' onClick={handelScrollTop} >
-        <i class="fa-solid fa-angle-up ic"></i>
-    </div>
+    <>
+      <div className='scroll-to-top' onClick={handelScrollTop} >
+          <i class="fa-solid fa-angle-up ic"></i>
+      </div>
+      <div className="chat-fixed">
+        
+      </div>
+    </>
   )
 }
 
