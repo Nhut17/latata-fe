@@ -104,6 +104,6 @@
     "eslint-config-react-app": "^7.0.1",
     "postcss": "^8.4.14",
     "tailwindcss": "^3.1.6",
-    "webpack": "^5.74.0"
+    "webpack": "^5.77.0"
   }
 }
