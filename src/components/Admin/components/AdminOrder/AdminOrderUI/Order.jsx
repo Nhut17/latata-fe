@@ -135,7 +135,7 @@ function Order({data}) {
       <button className="detail btn" onClick={handleClickOrderDetail}
       >
         
-        <span className="action pending">Xem chi tiết</span>
+        <span className="action view">Xem chi tiết</span>
         
         
       </button>
