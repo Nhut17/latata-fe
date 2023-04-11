@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useCallback, useEffect, useState} from "react";
 import Chart from "react-apexcharts";
 import { useDispatch, useSelector } from "react-redux";
 import { saleFigure } from "../../../../redux/Admin/adminSlice";
@@ -11,51 +11,129 @@ export default function ChartDashBoard() {
         const dispatch = useDispatch()
         const { sale_figure } = useSelector(state => state.admin)
 
-        const [sales,setSales] = useState(sale_figure.filter(el => el.sales))
+        const [dateStart, setDateStart] = useState()
+        const [dateEnd, setDateEnd] = useState()
 
-        console.log(sales)
+        // const date_start = new Date(dateStart?.timeStamp)
 
+      // console.log('date start: ', dateStart.split('-').reverse().join('/'))
+      // console.log('date end: ', dateEnd.split('-').reverse().join('/'))
+
+        const [saleDate, setSaleDate] = useState([])
+        const [listSale,setListSale] = useState([])
+        const [listSell,setListSell] = useState([])
+
+        // const list_date = useCallback(() => {
+
+        //   sale_figure.forEach(element => {
+
+
+            
+
+        //     const date = element.order_date?.split('/').slice(0,2).reverse().join('/')
+            
+            
+
+
+        //     saleDate.push(date)
+
+        //     console.log(date)
+        //     console.log(saleDate)
+        // });
+
+        // },[sale_figure])
+
+        // list_date()
+       
         useEffect(() => {
             dispatch(saleFigure())
         },[])
 
-        console.log(sale_figure)
+
+        useEffect(() => {
+          sale_figure.forEach(el => {
+
+              const date = el.order_date.split('/').splice(0,2).reverse().join('/')
+              const sales = el.sales / 1000000
+
+              if(!saleDate.includes(date))
+              {
+                saleDate.push(date)
+                listSale.push(sales)
+                listSell.push(el.quantity)
+              }
 
 
-        // const [sales, setSales]  = useState(sale_figure)
-  // const numberOfOrdersOnMonth = (month) => {
-  //   if(allOrder){
-  //     return allOrder.filter((order) => {
-  //       const allOrder = new Date(order.createdAt).getMonth();
-  //       if (allOrder + 1 === month) {
-  //         return order;
-  //       }
-  //     }).length;
-  //   }
-  //   return
-  // };
+              
 
-  // useEffect(() => {
-  //   dispatch(getAllOrder())
-  // }, [dispatch])
+              
 
+
+          });
+
+
+        },[sale_figure])
+
+
+        console.log(saleDate)
+        console.log(listSale)
+        console.log(listSell)
+
+
+
+  const chart_column_options = {
+    series: [
+      {
+        name: 'Sản phẩm',
+
+        data: [...listSell]
+      },
+      {
+        name: 'Doanh thu',
+        data: [...listSale]
+      },
+  
+    ],
+    options: {
+      color: ['#2980b9', '#DC3545'],
+      chart: {
+        background: 'transparent'
+      },
+      dataLabels: {
+        enabled: false
+      },
+      stroke: {
+        curve: 'smooth'
+      },
+      xaxis: {
+        categories: [...saleDate]
+      },
+      legend: {
+        position: 'bottom'
+  
+      },
+      grid: {
+        show: false
+      }
+    }
+  
+  }
 
 
   const chartOptions = {
     series: [
       {
         name: 'Khách hàng',
-        // data: [50, 69, 79, 54, 91, 88, 84, 41, 43, 45, 78, 57]
-        data: [50, 69, 79]
+
+        data: [50, 69, 79, 54, 91, 88, 84]
       },
       {
         name: 'Sản phẩm',
-        // data: [77, 50, 42, 81, 82, 95, 48, 70, 99, 84, 96, 82]
-        data: [77, 50, 42]
+        data: [77, 50, 42, 81, 82, 95, 48]
       }, {
         name: 'Tổng danh thu',
-        // data: [57, 50, 54, 99, 59, 63, 51, 89, 86, 82, 86, 46]
-        data: [57, 50, 54]
+        data: [100, 50, 54, 99, 59, 63, 0.3]
+
       }
   
     ],
@@ -71,8 +149,9 @@ export default function ChartDashBoard() {
         curve: 'smooth'
       },
       xaxis: {
-        // categories: ['Jan', 'Feb', 'Mar', 'Apr ', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oc', 'Nov', 'Dec']
-        categories: ['Jan', 'Feb', 'Mar']
+
+        categories: ['Jan', 'Feb', 'Mar', 'Apr ', 'May', 'Jun', 'Jul']
+
       },
       legend: {
         position: 'bottom'
@@ -86,39 +165,65 @@ export default function ChartDashBoard() {
   }
 
   return (
+    <>
     <div className="dashboard-middle-chart">
 
-      <div className="filter-chart flex">
-        <div className="from-date">
-          <p>Từ ngày : </p>
-          <input type="date" />
-        </div>
-
-        <div className="to-date">
-          <p>Đến ngày : </p>
-          <input type="date" />
-        </div>
-
-        <div className="filter-option">
-          <p>Lọc theo : </p>   
-          <select name="" id="">
-            <option value=""></option>
-          </select>
-        </div>
-
-
-        
+      <div className="filter-chart-line">
+          <div className="filter-option">
+            <p>Lọc theo : </p>   
+            <select name="" id="">
+              <option value="">2023</option>
+            </select>
+          </div>
       </div>
-      <div className="filter-result">
-          <button>Lọc kết quả</button>
-      </div>
-      
+
       <Chart
         options={chartOptions.options}
         series={chartOptions.series}
         type='line'
         height='500px'
       />
-    </div>
+
+
+          
+      </div>
+
+      <div className="chart-column">
+
+        <div className="filter-chart-column flex">
+          <div className="from-date">
+            <p>Từ ngày : </p>
+            <input type="date"
+                    onChange={(e) => setDateStart(e.target.value)}
+                     />
+          </div>
+
+          <div className="to-date">
+            <p>Đến ngày : </p>
+            <input type="date"
+                    onChange={(e) => setDateEnd(e.target.value)} />
+          </div>
+
+          <div className="filter-option">
+            <p>Lọc theo : </p>   
+            <select name="" id="">
+              <option value=""></option>
+            </select>
+          </div>
+
+
+          
+        </div>
+        <div className="filter-result">
+            <button>Lọc kết quả</button>
+        </div>
+        <Chart
+          options={chart_column_options.options}
+          series={chart_column_options.series}
+          type='bar'
+          height='500px'
+        />
+      </div>
+    </>
   );
 }

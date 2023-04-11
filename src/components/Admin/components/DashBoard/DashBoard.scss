@@ -2,6 +2,10 @@
     // box-sizing: content-box;
 }
 
+.dashboard{
+    background: whitesmoke;
+}
+
 .dashboard-top {
     padding: 1rem;
   display: flex;
@@ -119,28 +123,42 @@
     // margin-left:  1rem;
     box-shadow: 0px 8px 24px rgba(#333, 0.2);
 
-    .filter-chart{
-        p{
-            margin-bottom: 5px;
-        }
-        input, select{
-            width: 150px;
-            background: white;
-            border: 1px solid #6b6b6b;
-            border-radius: 4px;
-            padding: 5px 10px;
-        }
-        .from-date{
-            margin-right: 40px;
-        }
+    
+}
+.filter-chart-line{
+    input, select{
+        width: 150px;
+        background: white;
+        border: 1px solid #6b6b6b;
+        border-radius: 4px;
+        padding: 5px 10px;
+    }
 
-        .to-date{
-            margin-right: 40px;
-        }
+    p{
+        margin-bottom: 5px;
+    }
+}
+.filter-chart-column{
+    p{
+        margin-bottom: 5px;
+    }
+    input, select{
+        width: 150px;
+        background: white;
+        border: 1px solid #6b6b6b;
+        border-radius: 4px;
+        padding: 5px 10px;
+    }
+    .from-date{
+        margin-right: 40px;
+    }
 
-        .filter-option{
-           
-        }
+    .to-date{
+        margin-right: 40px;
+    }
+
+    .filter-option{
+       
     }
 }
 
@@ -159,5 +177,12 @@
 .dashboard-top-customer{
     margin-top: 2rem;
     margin-left: 1rem;
+}
+
+.chart-column{
+    background: white;
+    margin: 1rem;
+    border-radius: 30px;
+    padding: 1rem;
 }
 

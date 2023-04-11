@@ -6,9 +6,11 @@ import { useForm } from "react-hook-form";
 import "./AdminCate.scss";
 import { getCate } from "../../../../redux/Category/categorySlice";
 import ListCate from "./ListCate";
-import CateNavBar from "./SubAdminCate/CateNavBar";
 
-
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import Cate from "./SubAdminCate/Cate";
+import Specification from "./SubAdminCate/Specification";
+import Brand from "./SubAdminCate/Brand"
 function AdminCate() {
  
     
@@ -27,10 +29,35 @@ function AdminCate() {
 
           
 
-            <CateNavBar>
-                <Outlet/>
+            <Tabs>
+                <TabList>
+                    <Tab>
+                        Danh mục
+                    </Tab>
 
-            </CateNavBar>
+                    <Tab>
+                        Hãng
+                    </Tab>
+
+                    <Tab>
+                        Thông số kĩ thuật
+                    </Tab>
+                </TabList>
+
+             
+                <TabPanel>
+                    <Cate/>
+                </TabPanel>
+                <TabPanel>
+                    <Brand/>
+                </TabPanel>
+                <TabPanel>
+
+                    <Specification/>
+                </TabPanel>
+
+              
+            </Tabs>
 
 
             

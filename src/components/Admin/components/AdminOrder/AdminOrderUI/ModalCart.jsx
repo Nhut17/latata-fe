@@ -2,6 +2,7 @@ import React from 'react'
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 import EachProduct from './EachProduct';
+import '../AdminOrder.scss'
 
 const ModalCart = ({ showOrderDetail, setShowOrderDetail, data }) => {
 
@@ -13,7 +14,7 @@ const ModalCart = ({ showOrderDetail, setShowOrderDetail, data }) => {
   return (
     <Modal
             open={showOrderDetail}
-            onClose={showOrderDetail}
+            onClose={handleClickOrderDetail}
             classNames={{
                 overlay: 'customOverlay',
                 modal: 'custom-modal-detail-order',
@@ -23,14 +24,14 @@ const ModalCart = ({ showOrderDetail, setShowOrderDetail, data }) => {
             <div className="bg-modal-cart">
                 <h2 className='title'>Thông tin đơn hàng </h2>
                 <div className='summary-infor-order'>
-                    <ul>
+                    <ul style={{'width' : '20%', 'fontWeight' : 'bold'}}>
                         <li className='data-in-modal'>Mã đơn hàng</li>
                         <li className='data-in-modal '>Ngày đặt</li>
                         <li className='data-in-modal'>Trạng Thái</li>
                         <li className='data-in-modal'>Tổng giá</li>
                         <li className='data-in-modal'>Phone</li>
                     </ul>
-                    <ul>
+                    <ul style={{'width' : '30%'}}>
                         <li className='data-in-modal'>#{data?._id.slice(0,7)}</li>
                         <li className='data-in-modal'>{data?.createAt}</li>
                         {
@@ -49,14 +50,14 @@ const ModalCart = ({ showOrderDetail, setShowOrderDetail, data }) => {
                             .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}<span className='currency'>&#8363;</span></li>
                         <li className='data-in-modal'>{data?.phoneNo}</li>
                     </ul>
-                    <ul>
+                    <ul style={{'width' : '20%','fontWeight' : 'bold'}}>
                         <li className='data-in-modal'>Thông tin khách hàng</li>
                         <li className='data-in-modal'>Địa chỉ nhận hàng</li>
                         <li className='data-in-modal'>Phương thức thanh toán</li>
                         <li className='data-in-modal'>Phí vận chuyển</li>
                         <li className='data-in-modal'>Ghi chú</li>
                     </ul>
-                    <ul>
+                    <ul style={{'width' : '30%'}}>
                         <li className='data-in-modal'>{data?.name}</li>
                         <li className='data-in-modal'>{data?.address}</li>
                         <li className='data-in-modal'>{data?.payment}</li>
@@ -78,12 +79,23 @@ const ModalCart = ({ showOrderDetail, setShowOrderDetail, data }) => {
                 <hr />
                 <div>
                     <h2 className='title'>Chi tiết đơn hàng </h2>
-                    
+
+                    <table >
+                        <tr>
+                            <th style={{'width': '25%'}}>Sản phẩm</th>
+                            <th style={{'width': '50%'}}>Tên sản phẩm</th>
+                            <th style={{'width': '15%'}}>Tạm tính</th>
+                        </tr> 
                         {
-                            data.orderItems.map(item => (
-                                <EachProduct data={item} />
-                            ))
+                        data.orderItems.map(item => (
+                            <EachProduct data={item} />
+                        ))
+
+                      
                         }
+                         
+                       
+                    </table>
 
                    
                 </div>

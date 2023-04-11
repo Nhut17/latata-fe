@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import ListProduct from '../ListProduct'
 import icon from '../../assets/images/flash-sale.png'
 import { HashScroll } from "react-hash-scroll";
+import clx from 'classnames'
 
 const RecommendToday = () => {
 
@@ -11,26 +12,44 @@ const RecommendToday = () => {
   // const [topDeal,setTopDeal] = useState(listProduct.slice().sort((a,b) =>  b.promotion - a.promotion))
 
   const topDeal = listProduct.slice().sort((a,b) =>  b.promotion - a.promotion)
+  const [activeTopDeal, setActiveTopDeal] = useState(false)
 
-  // console.log(topDeal)
+  // scroll
+  useEffect(() => {
 
-  // const listDeal = topDeal.filter(val => val.promotion >= 1)
+      console.log(window.scrollY)
+
+      const scroll = () => {
+        if(window.scrollY >= 150 )
+        {
+          setActiveTopDeal(true)
+        }
+        else{
+          setActiveTopDeal(false)
+        }
+      }
+
+      document.addEventListener('scroll', scroll)
+
+      return () => {
+      document.removeEventListener('scroll', scroll)
+      }
+
+  },[])
 
   return (
    
         <div className='recommend-today' id='topdeal'>
-        <div className="title">
-        {/* <div className="img" style={{marginRight : '10px'}}>
-            <img src='https://res.cloudinary.com/dx8xengfd/image/upload/v1671612207/depositphotos_36001719-stock-illustration-recommended-stamp-removebg-preview_djojny.png' alt="" />
-          </div> */}
+        <div className={`title ${clx({
+          'active-top-deal': activeTopDeal
+        })}`}
+         >
+        
 
-            <h3 h3 style={{color : 'white'}}>TOP <span style={{color: '#5856d6',
-                paddingLeft: '10px'}}>DEAL</span></h3> 
+            <h3 >TOP DEAL <i class="fa-solid fa-bolt fa-fade"></i></h3> 
           
    
-          {/* <div className="img">
-            <img src={icon} alt="" />
-          </div> */}
+         
         </div>
           
           <ListProduct quantity={10}

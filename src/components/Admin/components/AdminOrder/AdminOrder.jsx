@@ -6,10 +6,11 @@ import AdminOrderAll from "./AdminOrderAll/AdminOrderAll";
 
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
+import { FolderOpenOutlined } from "@ant-design/icons";
 
 
 function AdminOrder(props) {
-
+  let lengthOrder = 0
   return (
     
       <div className="order">
@@ -28,7 +29,9 @@ function AdminOrder(props) {
                   
                 </div>
               </Tab>
+
               <Tab>Đang giao</Tab>
+              
               <Tab>Đã giao</Tab>
               <Tab>Đã hủy</Tab>
             </TabList>
@@ -36,9 +39,22 @@ function AdminOrder(props) {
             <TabPanel>
               <AdminOrderAll />
             </TabPanel>
-            <TabPanel>
-              <h2>Đang giao</h2>
-            </TabPanel>
+            {
+                lengthOrder == 0 ?  
+                (<TabPanel>
+
+                  <div className="empty-order">
+                    <p>
+                      <FolderOpenOutlined />
+                      <p>Chưa có đơn hàng nào</p>
+
+                    </p>
+                  </div>
+                </TabPanel>)
+                :              
+                (<TabPanel>Đang giao</TabPanel>)
+
+            }
 
             <TabPanel>
               <h2>Đã giao</h2>

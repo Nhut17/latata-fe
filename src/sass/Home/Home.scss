@@ -1,5 +1,16 @@
 
 @import '../variables.scss';
+
+
+@keyframes top-deal{
+    0% {
+        width: 50%;
+    }
+    25% {
+        width: 100%;
+    }
+}
+
 .home{
     background-color: $second-color;
     
@@ -397,59 +408,69 @@
         .recommend-today{
             margin: 30px auto;
             .title{
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                border: 1px solid #5856d6;
+                // display: flex;
+                // align-items: center;
+                // justify-content: center;
+                text-align: center;
+               
+                // border: 1px solid #5856d6;
                 padding: 10px;
-                width: 150px;
-                border-radius: 50px;
-                background-color: white;
+                width: 200px;
+                // border-radius: 50px;
+                // background-color: white;
                 position: relative;
-                overflow: hidden;
+                color: #00B4DB;
+                transition: all 0.3s;
+                &.active-top-deal{
+                    &::after{
+                        animation-name: top-deal;
+                        animation-duration: 2s;
+                        width: 100%;
+                    }
+                    &::before{
+                        animation-name: top-deal;
+                        animation-duration: 2s;
+                        width: 100%;
+                    }
+                    
+
+                }
+                // overflow: hidden;
                 &::before{
-                    content: '';
                     position: absolute;
-                    width: 150%;
-                    height: 150%;
-                    background-color: #5856d6;
-                    // left: 0;
-                    right: 10%;
-                    // top: -10%;
-                    z-index: 0;
-                    transform: rotate(-45deg);
+                    content: '';
+                    width: 50%;
+                    height: 3px;
+                    // border-color: #5856d6;
+                    background: #00B4DB;  
+                    background: -webkit-linear-gradient(to right, #0083B0, #00B4DB);  
+                    background: linear-gradient(to right, #0083B0, #00B4DB); 
+
+                    top: 0;
+                    left: 0;
                     
                 }
                 &::after{
-                    content: '';
                     position: absolute;
-                    width: 150%;
-                    height: 150%;
-                    background-color: white;
-                    // left: 0;
-                    left: 10%;
-                    // top: -10%;
-                    z-index: 0;
-                    transform: rotate(315deg);
+                    content: '';
+                    width: 50%;
+                    height: 3px;
+                    // border-color: #5856d6;
+                    background: #00B4DB;  
+                    background: -webkit-linear-gradient(to right, #0083B0, #00B4DB);  
+                    background: linear-gradient(to right, #0083B0, #00B4DB); 
+
+                    bottom:  0;
+                    right: 0;
                     
                 }
-                .img{
-
-                    z-index: 2;
-                    width: 40px;
-                    img{
-                        width: 100%;
-                    }
-                }
+               
 
                 h3{
-                    z-index: 3;
                     padding-right: 10px;
-                    font-size: 25px;
                     font-weight: bold;
-                    span{
-                        z-index: 3;
-                    }
+                    font-size: 28px;
+                    
                 }
             }
             
