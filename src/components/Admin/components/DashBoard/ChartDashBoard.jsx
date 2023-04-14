@@ -1,5 +1,6 @@
 import React, {useCallback, useEffect, useState} from "react";
 import Chart from "react-apexcharts";
+import DatePicker from "react-date-picker";
 import { useDispatch, useSelector } from "react-redux";
 import { saleFigure } from "../../../../redux/Admin/adminSlice";
 // import { useDispatch, useSelector } from "react-redux";
@@ -212,15 +213,34 @@ export default function ChartDashBoard() {
         <div className="filter-chart-column flex">
           <div className="from-date">
             <p>Từ ngày : </p>
-            <input type="date"
+            {/* <input type="date"
                     onChange={(e) => setDateStart(e.target.value)}
-                     />
+                     /> */}
+
+            <DatePicker
+              
+              
+              dateFormat='dd-MM-yyyy'
+              placeholderText=''
+              locale='vi'
+              maxDate={''}
+              value={''}
+              
+          />
           </div>
 
           <div className="to-date">
             <p>Đến ngày : </p>
-            <input type="date"
-                    onChange={(e) => setDateEnd(e.target.value)} />
+            <DatePicker
+              
+              
+              dateFormat='dd-MM-yyyy'
+              placeholderText=''
+              locale='vi'
+              maxDate={''}
+              value={''}
+              
+          />
           </div>
 
           <div className="filter-option">
