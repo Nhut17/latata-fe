@@ -29,6 +29,9 @@ export default function ChartDashBoard() {
         const [listSell,setListSell] = useState([])
 
         console.log(list_sale_date)
+        console.log('sale date: ', saleDate)
+        console.log('list sale: ', listSale)
+        console.log('list sell: ', listSell)
        
         useEffect(() => {
             dispatch(saleFigure())
@@ -36,21 +39,23 @@ export default function ChartDashBoard() {
 
 
         useEffect(() => {
-          sale_figure.forEach(el => {
+          list_sale_date.forEach(el => {
 
               const date = el.order_date.split('/').splice(0,2).reverse().join('/')
               const sales = (el.sales / 1000000).toFixed(3)
 
               if(!saleDate.includes(date))
               {
-                saleDate.push(date)
-                listSale.push(sales)
-                listSell.push(el.quantity)
+                setSaleDate(prev => [...saleDate,date])
+                
+                setListSale(prev => [...listSale,sales])
+                setListSell(prev => [...listSell,el.quantity])
+               
               }
           });
 
 
-        },[sale_figure])
+        },[list_sale_date])
 
 
         const handleOnClick = () => {
@@ -63,6 +68,7 @@ export default function ChartDashBoard() {
             }
 
             dispatch(selectSaleDate(data))
+
           }
         }
 
@@ -76,7 +82,7 @@ export default function ChartDashBoard() {
         data: [...listSell]
       },
       {
-        name: 'Doanh thu',
+        name: 'Doanh thu (Triệu VND)',
         data: [...listSale]
       },
   
