@@ -54,7 +54,7 @@ export default function ChartDashBoard() {
           sale_figure.forEach(el => {
 
               const date = el.order_date.split('/').splice(0,2).reverse().join('/')
-              const sales = el.sales / 1000000
+              const sales = (el.sales / 1000000).toFixed(3)
 
               if(!saleDate.includes(date))
               {
@@ -108,6 +108,23 @@ export default function ChartDashBoard() {
       xaxis: {
         categories: [...saleDate]
       },
+
+
+      yaxis:{
+        title: {
+          text:'triệu VNĐ',
+          rotate: -90,
+          offsetX: 0,
+          offsetY: 0,
+          style: {
+              color: undefined,
+              fontSize: '15px',
+              fontFamily: 'Helvetica, Arial, sans-serif',
+              fontWeight: 600,
+              cssClass: 'apexcharts-yaxis-title',
+          }
+      },
+    },
       legend: {
         position: 'bottom'
   
@@ -159,7 +176,9 @@ export default function ChartDashBoard() {
       },
       grid: {
         show: false
-      }
+      },
+
+     
     }
   
   }
