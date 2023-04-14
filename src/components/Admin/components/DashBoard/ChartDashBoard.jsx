@@ -1,11 +1,13 @@
 import React, {useCallback, useEffect, useState} from "react";
 import Chart from "react-apexcharts";
-import DatePicker from "react-date-picker";
 import { useDispatch, useSelector } from "react-redux";
 import { saleFigure } from "../../../../redux/Admin/adminSlice";
 // import { useDispatch, useSelector } from "react-redux";
 // import { getAllOrder } from "../../../../actions/OrderAction";
+import DatePicker, {registerLocale} from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
 
+import vi from 'date-fns/locale/vi'
 
 export default function ChartDashBoard() {
 
@@ -24,6 +26,10 @@ export default function ChartDashBoard() {
         const [listSale,setListSale] = useState([])
         const [listSell,setListSell] = useState([])
 
+
+        const [startDate, setStartDate] = useState()
+
+        console.log(startDate)
         // const list_date = useCallback(() => {
 
         //   sale_figure.forEach(element => {
@@ -218,13 +224,15 @@ export default function ChartDashBoard() {
                      /> */}
 
             <DatePicker
-              
-              
+              selected={dateStart}
+              onChange={(date) => {
+                setDateStart(date);
+              }}
               dateFormat='dd-MM-yyyy'
               placeholderText=''
               locale='vi'
-              maxDate={''}
-              value={''}
+              maxDate={dateStart}
+              value={dateStart}
               
           />
           </div>
