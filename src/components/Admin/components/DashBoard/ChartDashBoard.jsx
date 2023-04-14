@@ -1,7 +1,7 @@
 import React, {useCallback, useEffect, useState} from "react";
 import Chart from "react-apexcharts";
 import { useDispatch, useSelector } from "react-redux";
-import { saleFigure } from "../../../../redux/Admin/adminSlice";
+import { saleFigure, selectSaleDate } from "../../../../redux/Admin/adminSlice";
 // import { useDispatch, useSelector } from "react-redux";
 // import { getAllOrder } from "../../../../actions/OrderAction";
 import DatePicker, {registerLocale} from 'react-datepicker';
@@ -12,19 +12,22 @@ import vi from 'date-fns/locale/vi'
 export default function ChartDashBoard() {
 
         const dispatch = useDispatch()
-        const { sale_figure } = useSelector(state => state.admin)
+        const { sale_figure, list_sale_date } = useSelector(state => state.admin)
 
-        const [dateStart, setDateStart] = useState()
+        const [dateStart, setDateStart] = useState(new Date())
         const [dateEnd, setDateEnd] = useState()
+
+        // console.log('start: ', dateStart.toLocaleDateString())
 
         // const date_start = new Date(dateStart?.timeStamp)
 
-      // console.log('date start: ', dateStart.split('-').reverse().join('/'))
+      
       // console.log('date end: ', dateEnd.split('-').reverse().join('/'))
 
         const [saleDate, setSaleDate] = useState([])
         const [listSale,setListSale] = useState([])
         const [listSell,setListSell] = useState([])
+
 
 
         const [startDate, setStartDate] = useState()
@@ -51,6 +54,9 @@ export default function ChartDashBoard() {
         // },[sale_figure])
 
         // list_date()
+
+        console.log(list_sale_date)
+
        
         useEffect(() => {
             dispatch(saleFigure())
@@ -69,22 +75,24 @@ export default function ChartDashBoard() {
                 listSale.push(sales)
                 listSell.push(el.quantity)
               }
-
-
-              
-
-              
-
-
           });
 
 
         },[sale_figure])
 
 
-        console.log(saleDate)
-        console.log(listSale)
-        console.log(listSell)
+        const handleOnClick = () => {
+
+          if(dateStart && dateEnd)
+          {
+            const data = {
+              date_start: dateStart,
+              date_end: dateEnd
+            }
+
+            dispatch(selectSaleDate(data))
+          }
+        }
 
 
 
@@ -118,19 +126,19 @@ export default function ChartDashBoard() {
 
 
       yaxis:{
-        title: {
-          text:'triệu VNĐ',
-          rotate: -90,
-          offsetX: 0,
-          offsetY: 0,
-          style: {
-              color: undefined,
-              fontSize: '15px',
-              fontFamily: 'Helvetica, Arial, sans-serif',
-              fontWeight: 600,
-              cssClass: 'apexcharts-yaxis-title',
-          }
-      },
+      //   title: {
+      //     text:'triệu VNĐ',
+      //     rotate: -90,
+      //     offsetX: 0,
+      //     offsetY: 0,
+      //     style: {
+      //         color: undefined,
+      //         fontSize: '15px',
+      //         fontFamily: 'Helvetica, Arial, sans-serif',
+      //         fontWeight: 600,
+      //         cssClass: 'apexcharts-yaxis-title',
+      //     }
+      // },
     },
       legend: {
         position: 'bottom'
@@ -221,7 +229,8 @@ export default function ChartDashBoard() {
             <p>Từ ngày : </p>
             {/* <input type="date"
                     onChange={(e) => setDateStart(e.target.value)}
-                     /> */}
+
+                     />  */}
 
             <DatePicker
               selected={dateStart}
@@ -233,13 +242,28 @@ export default function ChartDashBoard() {
               locale='vi'
               maxDate={dateStart}
               value={dateStart}
+
+                     />
+
+            {/* <DatePicker
+                  selected={dateStart}
+                  onChange={setDateStart}
+                  dateFormat='dd-MM-yyyy'
+                  placeholderText=''
+                  locale='vi'
+                  maxDate={new Date()}
+                  value={dateStart}
+>>>>>>> f684236f1fa8a4fed0464e8777e048833534f671
               
-          />
+          /> */}
           </div>
 
           <div className="to-date">
             <p>Đến ngày : </p>
-            <DatePicker
+            <input type="date"
+                    onChange={(e) => setDateEnd(e.target.value)}
+                     />
+            {/* <DatePicker
               
               
               dateFormat='dd-MM-yyyy'
@@ -248,7 +272,7 @@ export default function ChartDashBoard() {
               maxDate={''}
               value={''}
               
-          />
+          /> */}
           </div>
 
           <div className="filter-option">
@@ -262,7 +286,7 @@ export default function ChartDashBoard() {
           
         </div>
         <div className="filter-result">
-            <button>Lọc kết quả</button>
+            <button onClick={handleOnClick}>Lọc kết quả</button>
         </div>
         <Chart
           options={chart_column_options.options}
