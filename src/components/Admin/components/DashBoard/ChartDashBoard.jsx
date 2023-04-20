@@ -28,7 +28,7 @@ export default function ChartDashBoard() {
         const [listSale,setListSale] = useState([])
         const [listSell,setListSell] = useState([])
 
-        console.log(list_sale_date)
+        
         console.log('sale date: ', saleDate)
         console.log('list sale: ', listSale)
         console.log('list sell: ', listSell)
@@ -39,23 +39,36 @@ export default function ChartDashBoard() {
 
 
         useEffect(() => {
-          list_sale_date.forEach(el => {
+          // console.log(list_sale_date)
+
+          // if(!list_sale_date)
+          // {
+          //   setSaleDate(prev => [...saleDate])
+                
+          //   setListSale(prev => [...listSale])
+          //   setListSell(prev => [...listSell])
+          // }
+
+          sale_figure.forEach(el => {
 
               const date = el.order_date.split('/').splice(0,2).reverse().join('/')
               const sales = (el.sales / 1000000).toFixed(3)
 
               if(!saleDate.includes(date))
               {
-                setSaleDate(prev => [...saleDate,date])
+                // setSaleDate(prev => [...saleDate].concat(date))
                 
-                setListSale(prev => [...listSale,sales])
-                setListSell(prev => [...listSell,el.quantity])
+                // setListSale(prev => [...listSale].concat(sales))
+                // setListSell(prev => [...listSell].concat(el.quantity))
+                saleDate.push(date)
+                listSale.push(sales)
+                listSell.push(el.quantity)
                
               }
           });
 
 
-        },[list_sale_date])
+        },[sale_figure])
 
 
         const handleOnClick = () => {
