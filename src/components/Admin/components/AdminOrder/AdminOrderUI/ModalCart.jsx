@@ -31,7 +31,7 @@ const ModalCart = ({ showOrderDetail, setShowOrderDetail, data }) => {
                         <li className='data-in-modal'>Tổng giá</li>
                         <li className='data-in-modal'>Phone</li>
                     </ul>
-                    <ul style={{'width' : '30%'}}>
+                    <ul style={{'width' : '28%'}}>
                         <li className='data-in-modal'>#{data?._id.slice(0,7)}</li>
                         <li className='data-in-modal'>{data?.createAt}</li>
                         {
@@ -50,9 +50,10 @@ const ModalCart = ({ showOrderDetail, setShowOrderDetail, data }) => {
                             .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}<span className='currency'>&#8363;</span></li>
                         <li className='data-in-modal'>{data?.phoneNo}</li>
                     </ul>
-                    <ul style={{'width' : '20%','fontWeight' : 'bold'}}>
+                    <ul style={{'width' : '22%','fontWeight' : 'bold'}}>
                         <li className='data-in-modal'>Thông tin khách hàng</li>
                         <li className='data-in-modal'>Địa chỉ nhận hàng</li>
+                        <br />
                         <li className='data-in-modal'>Phương thức thanh toán</li>
                         <li className='data-in-modal'>Phí vận chuyển</li>
                         <li className='data-in-modal'>Ghi chú</li>

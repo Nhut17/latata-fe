@@ -1,19 +1,19 @@
 @import '../variables.scss';
 $primaryColor: #000B49;
 
-// .header{
-//     position: sticky;
-//     top: 0;
-//     width: 100%;
-//     z-index: 9;
-// }
+.header{
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 9;
+}
 
 header{
     color: white;
     background: $primaryColor;
     padding: 20px 0;
     position: relative;
-   
+    
 
 
    
