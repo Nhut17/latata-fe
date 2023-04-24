@@ -2,12 +2,12 @@ import React, {useCallback, useEffect, useState} from "react";
 import Chart from "react-apexcharts";
 import { useDispatch, useSelector } from "react-redux";
 import { saleFigure, selectSaleDate } from "../../../../redux/Admin/adminSlice";
-import DatePicker, {registerLocale} from 'react-datepicker';
-import "react-datepicker/dist/react-datepicker.css";
-import vi from 'date-fns/locale/vi'
 // import { useDispatch, useSelector } from "react-redux";
 // import { getAllOrder } from "../../../../actions/OrderAction";
+import DatePicker, {registerLocale} from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
 
+import vi from 'date-fns/locale/vi'
 
 export default function ChartDashBoard() {
 
@@ -28,10 +28,17 @@ export default function ChartDashBoard() {
         const [listSale,setListSale] = useState([])
         const [listSell,setListSell] = useState([])
 
-        
-        console.log('sale date: ', saleDate)
-        console.log('list sale: ', listSale)
-        console.log('list sell: ', listSell)
+
+
+
+        const [startDate, setStartDate] = useState()
+
+        console.log(startDate)
+       
+
+        console.log(list_sale_date)
+
+
        
         useEffect(() => {
             dispatch(saleFigure())
@@ -39,15 +46,7 @@ export default function ChartDashBoard() {
 
 
         useEffect(() => {
-          // console.log(list_sale_date)
-
-          // if(!list_sale_date)
-          // {
-          //   setSaleDate(prev => [...saleDate])
-                
-          //   setListSale(prev => [...listSale])
-          //   setListSell(prev => [...listSell])
-          // }
+       
 
           sale_figure.forEach(el => {
 
@@ -218,8 +217,22 @@ export default function ChartDashBoard() {
         <div className="filter-chart-column flex">
           <div className="from-date">
             <p>Từ ngày : </p>
-            <input type="date"
+            {/* <input type="date"
                     onChange={(e) => setDateStart(e.target.value)}
+
+                     />  */}
+
+            <DatePicker
+              selected={dateStart}
+              onChange={(date) => {
+                setDateStart(date);
+              }}
+              dateFormat='dd-MM-yyyy'
+              placeholderText=''
+              locale='vi'
+              maxDate={dateStart}
+              value={dateStart}
+
                      />
 
             {/* <DatePicker
@@ -230,6 +243,7 @@ export default function ChartDashBoard() {
                   locale='vi'
                   maxDate={new Date()}
                   value={dateStart}
+>>>>>>> f684236f1fa8a4fed0464e8777e048833534f671
               
           /> */}
           </div>
