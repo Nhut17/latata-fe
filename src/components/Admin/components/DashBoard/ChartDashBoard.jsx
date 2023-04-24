@@ -8,12 +8,13 @@ import DatePicker, {registerLocale} from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 
 import vi from 'date-fns/locale/vi'
+import styled from "styled-components";
 
 export default function ChartDashBoard() {
 
         const dispatch = useDispatch()
 
-        const [active, setActive] = useState('month');
+       
         const { sale_figure, list_sale_date } = useSelector(state => state.admin)
 
         const [dateStart, setDateStart] = useState(new Date())
@@ -32,11 +33,7 @@ export default function ChartDashBoard() {
 
 
 
-        const handleClick = (e) => {
-          setActive('year');
-          
-          
-      };
+        
 
         const [startDate, setStartDate] = useState()
 
@@ -119,6 +116,33 @@ export default function ChartDashBoard() {
           }
         }
 
+
+  const [active, setActive] = useState(0);
+  const handleClick = e => {
+  const index = parseInt(e.target.id, 0);
+    if (index !== active) {
+      setActive(index);
+    }
+  };
+
+
+  const Button = styled.button`
+  
+  display : inline-block;
+  padding: 7px 15px;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  font-size: 1em;
+  border: ${props => (props.active ? "1px solid #11698E" : "")};
+  background-color: ${props => (props.active ? "#D8E3E7" : "white")};
+  transition: background-color 0.5s ease-in-out;
+      
+  :hover {
+      background-color: white;
+  }
+`;
+  
 
 
   const chart_column_options = {
@@ -277,16 +301,15 @@ export default function ChartDashBoard() {
 
               
               <div className="month" 
-              
-                  
+               
               >
-                <button>Tháng</button>
+                <Button onClick={handleClick} active={active === 0} id={0}>Tháng</Button>
               </div>
               <div className="year"
               
             
               >
-                <button>Năm</button>
+                <Button onClick={handleClick} active={active === 1} id={1}>Năm</Button>
 
               </div>
             </div>
