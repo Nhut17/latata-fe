@@ -115,17 +115,14 @@
 
 .dashboard-middle-chart{
     width: 97%;
-    padding: 1rem;
-    background: white;
-    border-radius: 30px;
+    // padding: 1rem;
+    // background: white;
+    // border-radius: 30px;
     // margin: 1rem 2rem 1rem 1rem;
-    margin: 1rem 0.5rem 1rem 1rem;
-    // margin-left:  1rem;
-    box-shadow: 0px 8px 24px rgba(#333, 0.2);
-
-    
-}
-.filter-chart-line{
+    // margin: 1rem 0.5rem 1rem 1rem;
+   
+    margin-left:  1rem;
+    // box-shadow: 0px 8px 24px rgba(#333, 0.2);
     input, select{
         width: 150px;
         background: white;
@@ -133,6 +130,47 @@
         border-radius: 4px;
         padding: 5px 10px;
     }
+
+    .chart-line{
+        background: white;
+        border-radius: 20px;
+        padding: 1rem;
+    }
+
+    .chart-pie{
+        background: white;
+        border-radius: 20px;
+        padding: 1rem;
+
+        .btn-select{
+            margin-bottom: 10px;
+            button{
+                color: gray;
+                border: 1px solid rgb(167, 166, 166);
+                padding: 5px 0;
+                width: 50px;
+            }
+            .year{
+                button{
+                    border-top-right-radius: 5px;
+                    border-bottom-right-radius: 5px;
+
+                }
+            }
+            .month{
+                button{
+                    border-top-left-radius: 5px;
+                    border-bottom-left-radius: 5px;
+
+                }
+            }
+        }
+
+    }
+    
+}
+.filter-chart-line{
+    
 
     p{
         margin-bottom: 5px;

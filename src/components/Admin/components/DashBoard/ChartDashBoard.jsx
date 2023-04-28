@@ -7,22 +7,18 @@ import { saleFigure, selectSaleDate } from "../../../../redux/Admin/adminSlice";
 import DatePicker, {registerLocale} from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 
-import vi from 'date-fns/locale/vi'
+
+
 
 export default function ChartDashBoard() {
 
         const dispatch = useDispatch()
+
+        const [active, setActive] = useState('month');
         const { sale_figure, list_sale_date } = useSelector(state => state.admin)
 
         const [dateStart, setDateStart] = useState(new Date())
         const [dateEnd, setDateEnd] = useState()
-
-        // console.log('start: ', dateStart.toLocaleDateString())
-
-        // const date_start = new Date(dateStart?.timeStamp)
-
-      
-      // console.log('date end: ', dateEnd.split('-').reverse().join('/'))
 
         const [saleDate, setSaleDate] = useState([])
         const [listSale,setListSale] = useState([])
@@ -31,43 +27,47 @@ export default function ChartDashBoard() {
 
 
 
+        const handleClick = (e) => {
+          setActive('year');
+          
+          
+      };
+
+
         const [startDate, setStartDate] = useState()
 
-        console.log(startDate)
-       
+        // list_date()
 
-        console.log(list_sale_date)
-
-
-       
         useEffect(() => {
             dispatch(saleFigure())
         },[])
 
 
+
+        // handle sales figure
         useEffect(() => {
        
 
           sale_figure.forEach(el => {
 
-              const date = el.order_date.split('/').splice(0,2).reverse().join('/')
-              const sales = (el.sales / 1000000).toFixed(3)
-
-              if(!saleDate.includes(date))
-              {
-                // setSaleDate(prev => [...saleDate].concat(date))
+        //       if(!saleDate.includes(date))
+        //       {
+        //         // setSaleDate(prev => [...saleDate].concat(date))
                 
-                // setListSale(prev => [...listSale].concat(sales))
-                // setListSell(prev => [...listSell].concat(el.quantity))
-                saleDate.push(date)
-                listSale.push(sales)
-                listSell.push(el.quantity)
-               
-              }
-          });
+        //         // setListSale(prev => [...listSale].concat(sales))
+        //         // setListSell(prev => [...listSell].concat(el.quantity))
+        //         saleDate.push(date)
+        //         listSale.push(sales)
+        //         listSell.push(el.quantity)
 
 
-        },[sale_figure])
+        // }
+      })
+    }
+      ,[sale_figure])
+
+
+
 
 
         const handleOnClick = () => {
@@ -142,19 +142,41 @@ export default function ChartDashBoard() {
   }
 
 
+  const chart_pie_options ={
+    series: [44, 55, 13, 43, 22,44, 55, 13],
+    
+    options: {
+      chart: {
+        width: 380,
+        type: 'pie',
+      },
+      labels: ['Điện thoại', 'Laptop', 'Tablet', 'Smartwatch', 'Đồng hồ','Tivi','Nhà thông minh', 'Phụ kiện'],
+      legend: {
+        position: 'bottom',
+        horizontalAlign: 'left',
+       
+      
+      },
+      colors: ['#c00', '#d06', '#007', '#00f', '#2cc','#394','#cc0','#c70'],
+      
+
+    }
+  }
+
+
   const chartOptions = {
     series: [
       {
         name: 'Khách hàng',
 
-        data: [50, 69, 79, 54, 91, 88, 84]
+        data: [50, 69, 79, 54, 91, 88, 84,50, 69, 79, 54, 91]
       },
       {
         name: 'Sản phẩm',
-        data: [77, 50, 42, 81, 82, 95, 48]
+        data: [77, 50, 42, 81, 82, 95, 48,50, 69, 79, 54, 91]
       }, {
         name: 'Tổng danh thu',
-        data: [100, 50, 54, 99, 59, 63, 0.3]
+        data: [100, 50, 54, 99, 59, 63, 0.3,50, 69, 79, 54, 91]
 
       }
   
@@ -172,7 +194,7 @@ export default function ChartDashBoard() {
       },
       xaxis: {
 
-        categories: ['Jan', 'Feb', 'Mar', 'Apr ', 'May', 'Jun', 'Jul']
+        categories: ['Jan', 'Feb', 'Mar', 'Apr ', 'May', 'Jun', 'Jul','Aug','Sep','Oct','Nov','Dec']
 
       },
       legend: {
@@ -190,24 +212,64 @@ export default function ChartDashBoard() {
 
   return (
     <>
-    <div className="dashboard-middle-chart">
+    <div className="dashboard-middle-chart flex j-between">
 
-      <div className="filter-chart-line">
-          <div className="filter-option">
-            <p>Lọc theo : </p>   
-            <select name="" id="">
-              <option value="">2023</option>
-            </select>
-          </div>
+      <div className="chart-line" style={{'width': '65%'}}>
+        <div className="filter-chart-line">
+            <div className="filter-option">
+              <select name="" id="">
+                <option value="">Năm</option>
+              </select>
+              <div className="filter-result">
+                <button onClick={handleOnClick}>Lọc kết quả</button>
+              </div>
+            </div>
+        </div>
+
+        <Chart
+          options={chartOptions.options}
+          series={chartOptions.series}
+          type='line'
+          height='500px'
+        />
       </div>
 
-      <Chart
-        options={chartOptions.options}
-        series={chartOptions.series}
-        type='line'
-        height='500px'
-      />
+      <div className="chart-pie" style={{'width': '34%'}}>
+        <div className="filter-chart-pie">
 
+            <div className="btn-select flex">
+
+
+              
+              <div className="month" 
+              
+                  
+              >
+                <button>Tháng</button>
+              </div>
+              <div className="year"
+              
+            
+              >
+                <button>Năm</button>
+
+              </div>
+            </div>
+            <div className="filter-option">
+      
+              <div className="filter-result">
+                <button onClick={handleOnClick}>Lọc kết quả</button>
+              </div>
+            </div>
+        </div>
+
+        <Chart
+          options={chart_pie_options.options}
+          series={chart_pie_options.series}
+          type='pie'
+          width={380}
+        />
+      </div>
 
           
       </div>
@@ -217,12 +279,12 @@ export default function ChartDashBoard() {
         <div className="filter-chart-column flex">
           <div className="from-date">
             <p>Từ ngày : </p>
-            {/* <input type="date"
+            <input type="date"
                     onChange={(e) => setDateStart(e.target.value)}
 
-                     />  */}
+                     /> 
 
-            <DatePicker
+            {/* <DatePicker
               selected={dateStart}
               onChange={(date) => {
                 setDateStart(date);
@@ -233,7 +295,7 @@ export default function ChartDashBoard() {
               maxDate={dateStart}
               value={dateStart}
 
-                     />
+                     /> */}
 
             {/* <DatePicker
                   selected={dateStart}

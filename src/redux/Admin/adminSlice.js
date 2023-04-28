@@ -162,6 +162,26 @@ export const selectSaleDate = createAsyncThunk('sales/select-date',
 
                 })
 
+
+// get summary sale figures
+export const getSummarySaleFigure = createAsyncThunk('sum-sales/get',
+            async (data,thunkAPI) => {
+
+                const ret = await api.get('/api/v1/sum-sales')
+
+                return ret.data.check_sum
+            })
+
+// select sum sales
+export const selectSumSales = createAsyncThunk('sum-sales/select',
+                async (data,thunkAPI) => {
+
+                    const ret = await api.post('/api/v1/select-sum-sales',data)
+
+                    return ret.data.sum_sales
+
+                })
+
 const adminSlice = createSlice({
     name: "admin",
     initialState,
