@@ -284,30 +284,9 @@ export default function ChartDashBoard() {
 
                      /> 
 
-            {/* <DatePicker
-              selected={dateStart}
-              onChange={(date) => {
-                setDateStart(date);
-              }}
-              dateFormat='dd-MM-yyyy'
-              placeholderText=''
-              locale='vi'
-              maxDate={dateStart}
-              value={dateStart}
+           
 
-                     /> */}
-
-            {/* <DatePicker
-                  selected={dateStart}
-                  onChange={setDateStart}
-                  dateFormat='dd-MM-yyyy'
-                  placeholderText=''
-                  locale='vi'
-                  maxDate={new Date()}
-                  value={dateStart}
->>>>>>> f684236f1fa8a4fed0464e8777e048833534f671
-              
-          /> */}
+            
           </div>
 
           <div className="to-date">
@@ -315,16 +294,7 @@ export default function ChartDashBoard() {
             <input type="date"
                     onChange={(e) => setDateEnd(e.target.value)}
                      />
-            {/* <DatePicker
-              
-              
-              dateFormat='dd-MM-yyyy'
-              placeholderText=''
-              locale='vi'
-              maxDate={''}
-              value={''}
-              
-          /> */}
+           
           </div>
 
           <div className="filter-option">
