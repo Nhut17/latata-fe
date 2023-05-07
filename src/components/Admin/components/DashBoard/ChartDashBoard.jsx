@@ -15,7 +15,9 @@ export default function ChartDashBoard() {
         const dispatch = useDispatch()
 
         const [active, setActive] = useState('month');
-        const { sale_figure, list_sale_date } = useSelector(state => state.admin)
+        const { sale_figure, list_sale_date,sum_cates, sale_cates } = useSelector(state => state.admin)
+
+        const { listCate } = useSelector(state => state.category)
 
         const [dateStart, setDateStart] = useState(new Date())
         const [dateEnd, setDateEnd] = useState()
@@ -24,15 +26,28 @@ export default function ChartDashBoard() {
         const [listSale,setListSale] = useState([])
         const [listSell,setListSell] = useState([])
 
+        const cates = []
+        listCate.forEach(el => {
+
+          cates.push(el.name)
+
+        })
 
 
+        // get sale figure from 7 days before
+        const date_time = new Date()
+        const seven_days = date_time.getTime() - 3600*1000*24*7
+
+        const sale_seven_days = new Date(seven_days)
+
+        // console.log('seven' + )
 
         const handleClick = (e) => {
           setActive('year');
           
-          
       };
 
+      console.log(listCate)
 
         const [startDate, setStartDate] = useState()
 
@@ -144,13 +159,12 @@ export default function ChartDashBoard() {
 
   const chart_pie_options ={
     series: [44, 55, 13, 43, 22,44, 55, 13],
-    
     options: {
       chart: {
         width: 380,
         type: 'pie',
       },
-      labels: ['Điện thoại', 'Laptop', 'Tablet', 'Smartwatch', 'Đồng hồ','Tivi','Nhà thông minh', 'Phụ kiện'],
+      labels: cates,
       legend: {
         position: 'bottom',
         horizontalAlign: 'left',
