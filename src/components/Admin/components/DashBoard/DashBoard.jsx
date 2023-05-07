@@ -28,10 +28,7 @@ export default function DashBoard() {
     dispatch(getProduct())
     dispatch(getAllOrder())
     dispatch(getCate())
-    dispatch(resetActionAdmin())
 
-
-    dispatch(resetActionAdmin())
 
 }, [])
 
