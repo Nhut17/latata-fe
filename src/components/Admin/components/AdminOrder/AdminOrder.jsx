@@ -37,7 +37,7 @@ function AdminOrder(props) {
             </TabList>
 
             <TabPanel>
-              <AdminOrderAll />
+              <AdminOrderAll/>
             </TabPanel>
             {
                 lengthOrder == 0 ?  

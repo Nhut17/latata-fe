@@ -2,11 +2,19 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Chart from "react-apexcharts";
 import { selectSaleDate } from '../../../../../redux/Admin/adminSlice';
-import DatePicker from 'react-date-picker';
+
+import DatePicker from "react-datepicker";  
+import "react-datepicker/dist/react-datepicker.css";  
+
 const ChartColumn = () => {
 
-    const [dateStart, setDateStart] = useState(new Date())
-    const [dateEnd, setDateEnd] = useState()
+    const date = new Date()
+    const max_current_day = date.toLocaleDateString().split("/").reverse().join('-')
+
+    const [dateStart, setDateStart] = useState('')
+    const [dateEnd, setDateEnd] = useState('')
+
+
     const dispatch = useDispatch()
 
     const [saleDate, setSaleDate] = useState([])
@@ -15,16 +23,16 @@ const ChartColumn = () => {
 
     const handleOnClick = () => {
 
-        if(dateStart && dateEnd)
-        {
-          const data = {
-            date_start: dateStart,
-            date_end: dateEnd
-          }
+        // if(dateStart && dateEnd)
+        // {
+        //   const data = {
+        //     date_start: dateStart,
+        //     date_end: dateEnd
+        //   }
 
-          dispatch(selectSaleDate(data))
+        //   dispatch(selectSaleDate(data))
 
-        }
+        // }
       }
 
 
@@ -38,6 +46,10 @@ const ChartColumn = () => {
         // chart seven days ago
         const date = new Date()
         const seven_days = new Date(date.getTime() - 7*3600*1000*24)
+
+        // set value date start
+        const date_start = seven_days.toLocaleDateString().split('/').reverse().join('-')
+        setDateStart(date_start)
 
         // the previous day
         const previous_day = new Date(date.getTime() - 3600*24*1000)
@@ -111,6 +123,10 @@ const ChartColumn = () => {
         }
       
       }
+
+      console.log('date-start:', dateStart)
+      console.log('date-end:', dateEnd)
+
     return (
         <div className="chart-column">
 
@@ -119,10 +135,24 @@ const ChartColumn = () => {
                 <p>Từ ngày : </p>
                 <input type="date"
                         onChange={(e) => setDateStart(e.target.value)}
-
+                        value={dateStart}
+                        max={max_current_day}
                         /> 
 
-               
+
+                {/* <DatePicker
+                selected={dateStart}
+                onChange={(date) => {
+                    setDateStart(date);
+                }}
+                dateFormat='dd-MM-yyyy'
+                placeholderText='Ng'
+                locale='vi'
+                maxDate={dateStart}
+                value={dateStart}
+
+                        /> */}
+
             </div>
 
             <div className="to-date">
@@ -136,8 +166,8 @@ const ChartColumn = () => {
                 dateFormat='dd-MM-yyyy'
                 placeholderText=''
                 locale='vi'
-                maxDate={''}
-                value={''}
+                maxDate={dateStart}
+                value={dateStart}
                 
             /> */}
             </div>

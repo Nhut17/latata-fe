@@ -141,7 +141,29 @@
         background: white;
         border-radius: 20px;
         padding: 1rem;
+        .year{
+            // transition: all .3s;
+            &:hover{
+                background: rgb(#6dabe4, 0.2);
 
+            }
+            button{
+                border-top-right-radius: 5px;
+                border-bottom-right-radius: 5px;
+
+            }
+        }
+        .month{
+            // transition: all .3s;
+            &:hover{
+                background: rgb(#6dabe4, 0.2);
+            }
+            button{
+                border-top-left-radius: 5px;
+                border-bottom-left-radius: 5px;
+
+            }
+        }
         .btn-select{
             margin-bottom: 10px;
             button{
@@ -150,20 +172,7 @@
                 padding: 5px 0;
                 width: 50px;
             }
-            .year{
-                button{
-                    border-top-right-radius: 5px;
-                    border-bottom-right-radius: 5px;
-
-                }
-            }
-            .month{
-                button{
-                    border-top-left-radius: 5px;
-                    border-bottom-left-radius: 5px;
-
-                }
-            }
+           
         }
 
     }
