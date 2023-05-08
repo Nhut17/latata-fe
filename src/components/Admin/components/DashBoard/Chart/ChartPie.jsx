@@ -149,8 +149,8 @@ const ChartPie = () => {
                             borderTopLeftRadius: '5px',
                             borderBottomLeftRadius: '5px',
                             transition: 'all 0.4s',
-                            background: active == 0 ? 'white' : '#6dabe4',
-                            color: active == 0 ? '' : 'white'
+                            background: active == 1 ? 'white' : '#6dabe4',
+                            color: active == 1 ? '' : 'white'
                           }}
                   >Tháng</button>
                    

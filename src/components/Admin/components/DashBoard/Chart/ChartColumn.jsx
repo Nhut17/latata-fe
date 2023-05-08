@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import Chart from "react-apexcharts";
 import { selectSaleDate } from '../../../../../redux/Admin/adminSlice';
+import DatePicker from "react-datepicker";  
+import "react-datepicker/dist/react-datepicker.css";  
 const ChartColumn = () => {
 
     const [dateStart, setDateStart] = useState(new Date())
@@ -86,52 +88,41 @@ const ChartColumn = () => {
             <div className="filter-chart-column flex">
             <div className="from-date">
                 <p>Từ ngày : </p>
-                <input type="date"
+                {/* <input type="date"
                         onChange={(e) => setDateStart(e.target.value)}
 
-                        /> 
+                        />  */}
 
-                {/* <DatePicker
+                <DatePicker
                 selected={dateStart}
                 onChange={(date) => {
                     setDateStart(date);
                 }}
                 dateFormat='dd-MM-yyyy'
-                placeholderText=''
+                placeholderText='Ng'
                 locale='vi'
                 maxDate={dateStart}
                 value={dateStart}
 
-                        /> */}
+                        />
 
-                {/* <DatePicker
-                    selected={dateStart}
-                    onChange={setDateStart}
-                    dateFormat='dd-MM-yyyy'
-                    placeholderText=''
-                    locale='vi'
-                    maxDate={new Date()}
-                    value={dateStart}
-    >>>>>>> f684236f1fa8a4fed0464e8777e048833534f671
-                
-            /> */}
             </div>
 
             <div className="to-date">
                 <p>Đến ngày : </p>
-                <input type="date"
+                {/* <input type="date"
                         onChange={(e) => setDateEnd(e.target.value)}
-                        />
-                {/* <DatePicker
+                        /> */}
+                <DatePicker
                 
                 
                 dateFormat='dd-MM-yyyy'
                 placeholderText=''
                 locale='vi'
-                maxDate={''}
-                value={''}
+                maxDate={dateStart}
+                value={dateStart}
                 
-            /> */}
+            />
             </div>
 
             <div className="filter-option">
