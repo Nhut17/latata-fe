@@ -146,12 +146,22 @@ const ChartColumn = () => {
                     setDateStart(date);
                 }}
                 dateFormat='dd-MM-yyyy'
-                placeholderText='Ng'
+                placeholderText='Ngày bắt đầu'
                 locale='vi'
                 maxDate={dateStart}
                 value={dateStart}
+                
 
-                        /> */}
+
+                />
+                        
+
+            {/* <DatePickerComponent 
+            id="datepicker" 
+            value={dateStart} 
+            format='dd-MM-yyyy' 
+            placeholder='Ngày bắt đầu'/> */}
+
 
             </div>
 
