@@ -198,10 +198,26 @@
     }
     .from-date{
         margin-right: 40px;
+        position: relative;
+        &::after{
+            content: '\f133';
+            font-family: 'FontAwesome';
+            position: absolute;
+            right: 10px;
+            top: 29px;
+        }
     }
 
     .to-date{
         margin-right: 40px;
+        position: relative;
+        &::after{
+            content: '\f133';
+            font-family: 'FontAwesome';
+            position: absolute;
+            right: 10px;
+            top: 29px;
+        }
     }
 
     .filter-option{
