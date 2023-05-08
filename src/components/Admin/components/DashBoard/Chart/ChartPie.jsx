@@ -58,7 +58,6 @@ const ChartPie = () => {
 
 
 
-    console.log('sales: ',sale_cates)
     const [saleCates, setSaleCates] = useState([])
 
     // set up chart
@@ -90,7 +89,6 @@ const ChartPie = () => {
               if(val.cate == el)
               {     
                 const sale = val.sales_cate / 1000000
-                console.log(sale.toFixed(2))
                 // list_sales.push(sale.toFixed(2))
                 list_sales.push(val.sales_cate)
               }
@@ -105,7 +103,6 @@ const ChartPie = () => {
     },[listCates,sale_cates])
 
 
-    console.log('sales cate: ', saleCates)
 
     const chart_pie_options ={
         series: saleCates,

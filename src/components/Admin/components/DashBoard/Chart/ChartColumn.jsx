@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import Chart from "react-apexcharts";
 import { selectSaleDate } from '../../../../../redux/Admin/adminSlice';
+import DatePicker from 'react-date-picker';
 const ChartColumn = () => {
 
     const [dateStart, setDateStart] = useState(new Date())
@@ -25,6 +26,36 @@ const ChartColumn = () => {
 
         }
       }
+
+
+      // state admin chart column
+      const { list_sale_date } = useSelector(state => state.admin)
+      console.log('list_sale_date', list_sale_date)
+
+     // handle select  7 days  
+      useEffect(() => {
+
+        // chart seven days ago
+        const date = new Date()
+        const seven_days = new Date(date.getTime() - 7*3600*1000*24)
+
+        // the previous day
+        const previous_day = new Date(date.getTime() - 3600*24*1000)
+       
+
+        const data = {
+          // date_start : seven_days.toLocaleDateString('en-US'),
+          // date_end: previous_day.toLocaleDateString('en-US')
+          date_start : '3/30/2023',
+          date_end: '5/5/2023'
+        }
+
+        console.log(data)
+
+        dispatch(selectSaleDate(data))
+
+      },[])
+
 
     const chart_column_options = {
         series: [
@@ -91,30 +122,7 @@ const ChartColumn = () => {
 
                         /> 
 
-                {/* <DatePicker
-                selected={dateStart}
-                onChange={(date) => {
-                    setDateStart(date);
-                }}
-                dateFormat='dd-MM-yyyy'
-                placeholderText=''
-                locale='vi'
-                maxDate={dateStart}
-                value={dateStart}
-
-                        /> */}
-
-                {/* <DatePicker
-                    selected={dateStart}
-                    onChange={setDateStart}
-                    dateFormat='dd-MM-yyyy'
-                    placeholderText=''
-                    locale='vi'
-                    maxDate={new Date()}
-                    value={dateStart}
-    >>>>>>> f684236f1fa8a4fed0464e8777e048833534f671
-                
-            /> */}
+               
             </div>
 
             <div className="to-date">
