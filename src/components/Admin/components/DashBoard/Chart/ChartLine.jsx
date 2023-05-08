@@ -55,8 +55,7 @@ const ChartLine = () => {
 
     },[sum_sales])
 
-    console.log('sum: ', sum_sales)
-    console.log('list month: ', sales)
+    
 
 
     // handle select year sum sales

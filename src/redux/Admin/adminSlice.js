@@ -189,20 +189,24 @@ export const selectSumSales = createAsyncThunk('sum-sales/select',
 
 
 // get sales categories
-export const getSalesCategories = createAsyncThunk('sale-category/get',
-                async (date,thunkAPI) => {
+export const getSalesCategoriesYear = createAsyncThunk('sale-category/year',
+                async (data,thunkAPI) => {
 
-                    const ret = await api.get('/api/v1/sale-cate')
+                    const ret = await api.post('/api/v1/sales-cate-year',{
+                        year: data
+                    })
                     
 
                     return ret.data.sales_cate
                 })
 
 // select sales category
-export const selectSalesCate = createAsyncThunk('sale-category/select',
+export const getSalesCategoriesMonth = createAsyncThunk('sale-category/month',
                 async (data, thunkAPI) => {
 
-                    const ret = await api.post('/api/v1/select-sale-cate', data)
+                    console.log('data: ', data)
+
+                    const ret = await api.post('/api/v1/sales-cate-month', data)
 
                     return ret.data.sale_cates
 
@@ -237,10 +241,10 @@ const adminSlice = createSlice({
         [selectSaleDate.fulfilled] : (state,action) => {
             state.list_sale_date = action.payload
         } , 
-        [getSalesCategories.fulfilled] : (state,action) => {
+        [getSalesCategoriesYear.fulfilled] : (state,action) => {
             state.sale_cates = action.payload
         }, 
-        [selectSalesCate.fulfilled] : (state,action) => {
+        [getSalesCategoriesMonth.fulfilled] : (state,action) => {
             state.sale_cates = action.payload
         }, 
         [getSummarySaleFigure.fulfilled] : (state,action) => {
