@@ -160,11 +160,14 @@ const ChartPie = () => {
                               style={{
                         
                                 padding: '7px 15px',
-                                border: '1px solid black',
+                                border: '1px solid',
                                 borderTopRightRadius: '5px',
                                 borderBottomRightRadius: '5px',
                                 borderLeft: 'transparent',
                                 transition: 'all 0.4s',
+                                background: active == 0 ? 'white' : '#6dabe4',
+                                color: active == 0 ? '' : 'white'
+                                
                               }}
                     >Năm</button>
 
