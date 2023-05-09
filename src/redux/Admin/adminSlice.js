@@ -8,7 +8,8 @@ const initialState = {
     listUser: [],
     sale_figure: [],
     list_sale_date: [],
-    sale_cates: [],
+    sale_cates_month: [],
+    sale_cates_year: [],
     sum_sales: [],
     successCreate: false,
     successUpdate: false
@@ -242,10 +243,10 @@ const adminSlice = createSlice({
             state.list_sale_date = action.payload
         } , 
         [getSalesCategoriesYear.fulfilled] : (state,action) => {
-            state.sale_cates = action.payload
+            state.sale_cates_year = action.payload
         }, 
         [getSalesCategoriesMonth.fulfilled] : (state,action) => {
-            state.sale_cates = action.payload
+            state.sale_cates_month = action.payload
         }, 
         [getSummarySaleFigure.fulfilled] : (state,action) => {
             state.sum_sales = action.payload
