@@ -8,12 +8,11 @@ import "react-datepicker/dist/react-datepicker.css";
 
 const ChartColumn = () => {
 
-    const date = new Date()
-    const max_current_day = date.toLocaleDateString().split("/").reverse().join('-')
 
-    const [dateStart, setDateStart] = useState('')
-    const [dateEnd, setDateEnd] = useState('')
 
+    const [dateStart, setDateStart] = useState(new Date())
+    const [dateEnd, setDateEnd] = useState(new Date())
+    const [maxDate,setMaxDate] = useState()
 
     const dispatch = useDispatch()
 
@@ -46,14 +45,12 @@ const ChartColumn = () => {
         // chart seven days ago
         const date = new Date()
         const seven_days = new Date(date.getTime() - 7*3600*1000*24)
-
-        // set value date start
-        const date_start = seven_days.toLocaleDateString().split('/').reverse().join('-')
-        setDateStart(date_start)
+        setDateStart(seven_days)
+     
 
         // the previous day
         const previous_day = new Date(date.getTime() - 3600*24*1000)
-       
+        setDateEnd(previous_day)
 
         const data = {
           // date_start : seven_days.toLocaleDateString('en-US'),
@@ -133,14 +130,10 @@ const ChartColumn = () => {
             <div className="filter-chart-column flex">
             <div className="from-date">
                 <p>Từ ngày : </p>
-                <input type="date"
-                        onChange={(e) => setDateStart(e.target.value)}
-                        value={dateStart}
-                        max={max_current_day}
-                        /> 
+               
 
 
-                {/* <DatePicker
+                 <DatePicker
                 selected={dateStart}
                 onChange={(date) => {
                     setDateStart(date);
@@ -148,7 +141,7 @@ const ChartColumn = () => {
                 dateFormat='dd-MM-yyyy'
                 placeholderText='Ngày bắt đầu'
                 locale='vi'
-                maxDate={dateStart}
+                maxDate={new Date()}
                 value={dateStart}
                 
 
@@ -156,30 +149,22 @@ const ChartColumn = () => {
                 />
                         
 
-            {/* <DatePickerComponent 
-            id="datepicker" 
-            value={dateStart} 
-            format='dd-MM-yyyy' 
-            placeholder='Ngày bắt đầu'/> */}
-
 
             </div>
 
             <div className="to-date">
                 <p>Đến ngày : </p>
-                <input type="date"
-                        onChange={(e) => setDateEnd(e.target.value)}
-                        />
-                {/* <DatePicker
-                
-                
+              
+                <DatePicker
+                selected={dateEnd}
+                onChange={setDateEnd}
                 dateFormat='dd-MM-yyyy'
                 placeholderText=''
                 locale='vi'
-                maxDate={dateStart}
-                value={dateStart}
+                maxDate={new Date()}
+                value={dateEnd}
                 
-            /> */}
+            />
             </div>
 
             <div className="filter-option">
