@@ -3,7 +3,7 @@ import { Tabs, Tab, Content } from '../TabButton/Tab.jsx'
 import './AdminEvent.scss'
 import Banner from './SubComponent/Banner.jsx';
 import BannerHome from './SubComponent/BannerHome.jsx';
-import ModalBanner from './SubComponent/ModalBanner.jsx';
+import ModalBanner from './SubComponent/ModalBannerHome.jsx';
 const AdminEvent = () => {
 
   const [active, setActive] = useState(0);

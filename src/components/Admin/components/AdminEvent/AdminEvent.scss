@@ -115,7 +115,9 @@
 
     }
 }
-
+.upload-image{
+    margin-bottom: 15px;
+}
 .image-upload > input
 {
     display: none;
@@ -142,8 +144,27 @@
     }
 }
 
-.modal-banner{
+.modal-banner-home{
     width: 1300px;
+    
+
+   
+}
+
+.save-image{
+    text-align: center;
+    
+    button{
+        background: #2be;
+        width: 150px;
+        justify-content: center;
+        align-items: center;
+        padding: 10px 0;
+        border-radius: 5px;
+        margin: 10px auto;
+        font-size: 17px;
+        font-weight: bold;
+    }
 }
 
 .banner-orther{

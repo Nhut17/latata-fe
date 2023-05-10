@@ -145,9 +145,9 @@ const ChartPie = () => {
                   <button onClick={handleClick} active={active === 0} id={0}
                           style={{
                             padding: '7px 15px',
-                            border: '1px solid ',
-                            borderTopLeftRadius: '5px',
+                            border: '1px solid', 
                             borderBottomLeftRadius: '5px',
+                            borderRight: '0',
                             transition: 'all 0.4s',
                             background: active == 1 ? 'white' : '#6dabe4',
                             color: active == 1 ? '' : 'white'
