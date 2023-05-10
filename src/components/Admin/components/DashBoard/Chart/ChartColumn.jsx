@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Chart from "react-apexcharts";
-import { selectSaleDate } from '../../../../../redux/Admin/adminSlice';
+import { messageErrorPickDateChartCol, selectSaleDate } from '../../../../../redux/Admin/adminSlice';
 
 import DatePicker from "react-datepicker";  
 import "react-datepicker/dist/react-datepicker.css";  
 
 const ChartColumn = () => {
-
-
 
     const [dateStart, setDateStart] = useState(new Date())
     const [dateEnd, setDateEnd] = useState(new Date())
@@ -16,28 +14,53 @@ const ChartColumn = () => {
 
     const dispatch = useDispatch()
 
-    const [saleDate, setSaleDate] = useState([])
+    const [listDate, setListDate] = useState([])
     const [listSale,setListSale] = useState([])
     const [listSell,setListSell] = useState([])
 
+    // hanlde  select date
     const handleOnClick = () => {
 
-        // if(dateStart && dateEnd)
-        // {
-        //   const data = {
-        //     date_start: dateStart,
-        //     date_end: dateEnd
-        //   }
+         // check select date start to end not overdue 7days ago
+         const condi_7days_ago = new Date(dateEnd.getTime() - 7*24*3600*1000) 
+         
+        // check date end is not valid
+        if(dateEnd < dateStart && dateEnd.getDay() !== dateStart.getDay())
+        {
+          dispatch(messageErrorPickDateChartCol('Lỗi chọn ngày kết thúc. Xin mời chọn lại!'))
+          return 
+        }
 
-        //   dispatch(selectSaleDate(data))
+       
+        // check select date not overdue 7days
+         if( dateStart >= condi_7days_ago && (dateStart.getTime() - condi_7days_ago.getTime() > 0) ) 
+         {
+           dispatch(messageErrorPickDateChartCol(''))
+          
 
-        // }
+           const data = {
+              date_start: dateStart.toLocaleDateString('en-US'),
+              date_end: dateEnd.toLocaleDateString('en-US')
+           }
+          
+           dispatch(selectSaleDate(data))
+
+         }
+         else{
+          dispatch(messageErrorPickDateChartCol('Không chọn quá 7 ngày. Tính từ ngày bắt đầu đến ngày kết thúc'))
+         }
+
+
       }
 
 
       // state admin chart column
-      const { list_sale_date } = useSelector(state => state.admin)
-      console.log('list_sale_date', list_sale_date)
+      const { list_sale_date,errorChartCol } = useSelector(state => state.admin)
+      // console.log('list_sale_date', list_sale_date)
+
+   
+
+
 
      // handle select  7 days  
       useEffect(() => {
@@ -66,6 +89,40 @@ const ChartColumn = () => {
       },[])
 
 
+      // handle setting chart sale columns
+      useEffect(() => {
+
+          const list_date = []
+          const list_sale = []
+
+          if(list_sale_date)
+          {
+
+            list_sale_date.forEach(date => {
+                if(!list_date.includes(date.order_date))
+                {
+                  // format date
+                  const format_date = new Date(date.order_date)
+                  list_date.push(format_date.toLocaleDateString('en-GB'))
+
+                  // calculate sales
+                  const sale = date.sales / 1_000_000
+                  list_sale.push(sale.toFixed(2))
+                }
+            })
+
+          }
+
+          if(list_date.length > 0 )
+          {
+              setListDate(list_date)
+              setListSale(list_sale)
+          }
+
+      },[list_sale_date])
+
+
+      // setting chart column
     const chart_column_options = {
         series: [
           {
@@ -91,7 +148,7 @@ const ChartColumn = () => {
             curve: 'smooth'
           },
           xaxis: {
-            categories: [...saleDate]
+            categories: listDate
           },
     
     
@@ -121,8 +178,6 @@ const ChartColumn = () => {
       
       }
 
-      console.log('date-start:', dateStart)
-      console.log('date-end:', dateEnd)
 
     return (
         <div className="chart-column">
@@ -180,6 +235,16 @@ const ChartColumn = () => {
             <div className="filter-result">
                 <button onClick={handleOnClick}>Lọc kết quả</button>
             </div>
+
+            <div style={{
+              margin: '10px 0'
+            }}>
+              <span style={{
+                color:'red',
+                fontSize: '13px'
+              }}>{errorChartCol}</span>
+            </div>
+
             <Chart
             options={chart_column_options.options}
             series={chart_column_options.series}

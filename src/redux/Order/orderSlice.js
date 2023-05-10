@@ -9,7 +9,7 @@ const initialState = {
     successOrder: false,
     successReview: false,
     successUpdateOrder: false,
-    listOrder: null
+    listOrder: []
 }
 
 export const createOrder = createAsyncThunk('order/create', 

@@ -12,7 +12,8 @@ const initialState = {
     sale_cates_year: [],
     sum_sales: [],
     successCreate: false,
-    successUpdate: false
+    successUpdate: false,
+    errorChartCol: ''
 
 }
 
@@ -221,6 +222,10 @@ const adminSlice = createSlice({
         resetActionAdmin: (state,action) => {
             state.successCreate = false
             state.successUpdate = false
+        },
+        messageErrorPickDateChartCol: (state,action) => {
+            
+            state.errorChartCol = action.payload
         }
     },
     extraReducers: {
@@ -258,5 +263,5 @@ const adminSlice = createSlice({
     }
 })
 
-export const { resetActionAdmin } = adminSlice.actions
+export const { resetActionAdmin, messageErrorPickDateChartCol } = adminSlice.actions
 export default adminSlice.reducer

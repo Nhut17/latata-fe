@@ -30,11 +30,6 @@ const ChartPie = () => {
     const [listCates,setListCates] = useState([])
 
 
-
-    console.log('sale_cates_year: ', sale_cates_year)
-    console.log('sale_cates_month: ', sale_cates_month)
-    console.log('active: ', active)
-
     // dispatch
     useEffect(() => {
 
@@ -123,8 +118,6 @@ const ChartPie = () => {
 
     },[listCates])
 
-    console.log('sales_month: ', saleCatesMonth)
-    console.log('sales_year: ', saleCatesYear)
 
     const chart_pie_month_options ={
         series: saleCatesMonth,
