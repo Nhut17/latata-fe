@@ -5,6 +5,7 @@ import { createProduct, resetActionAdmin } from "../../../../redux/Admin/adminSl
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from "react-router-dom";
+import preImage from '../../../../assets/images/preImage.png'
 import {PlusOutlined} from "@ant-design/icons";
 
 
@@ -20,7 +21,7 @@ function AdminCreate(props) {
     } = useForm()
 
   const [selectImage,setSelectImage] = useState('')
-  const [previewImg,setPreviewImg] = useState('')
+  const [previewImg,setPreviewImg] = useState(preImage)
   const [subCategories,setSubCategories] = useState('')
 
 

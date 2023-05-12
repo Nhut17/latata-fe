@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 import { Tabs, Tab, Content } from '../TabButton/Tab.jsx'
 import './AdminEvent.scss'
-import Banner from './SubComponent/Banner.jsx';
+import BannerCate from './SubComponent/BannerCate.jsx';
 import BannerHome from './SubComponent/BannerHome.jsx';
-import ModalBanner from './SubComponent/ModalBannerHome.jsx';
 const AdminEvent = () => {
 
   const [active, setActive] = useState(0);
@@ -58,14 +57,16 @@ const AdminEvent = () => {
           <BannerHome/>
         </Content>
         <Content active={active === 1}>
-          <Banner/>
+          <BannerCate cate={`Điện thoại`}/>
         </Content>
 
         <Content active={active === 2}>
-          <h1>Content 1</h1>
+          <BannerCate cate={`Laptop`}/>
+
         </Content>
         <Content active={active === 3}>
-          <h1>Content 2</h1>
+          <BannerCate cate={`Tablet`}/>
+
         </Content>
 
         <Content active={active === 4}>

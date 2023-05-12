@@ -1,34 +1,128 @@
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import Chart from "react-apexcharts";
-import { selectSaleDate } from '../../../../../redux/Admin/adminSlice';
+import { messageErrorPickDateChartCol, selectSaleDate } from '../../../../../redux/Admin/adminSlice';
+
 import DatePicker from "react-datepicker";  
 import "react-datepicker/dist/react-datepicker.css";  
-import { DatePickerComponent } from '@syncfusion/ej2-react-calendars';
+
 const ChartColumn = () => {
 
     const [dateStart, setDateStart] = useState(new Date())
-    const [dateEnd, setDateEnd] = useState()
+    const [dateEnd, setDateEnd] = useState(new Date())
+    const [maxDate,setMaxDate] = useState()
+
     const dispatch = useDispatch()
 
-    const [saleDate, setSaleDate] = useState([])
+    const [listDate, setListDate] = useState([])
     const [listSale,setListSale] = useState([])
     const [listSell,setListSell] = useState([])
 
+    // hanlde  select date
     const handleOnClick = () => {
 
-        if(dateStart && dateEnd)
+         // check select date start to end not overdue 7days ago
+         const condi_7days_ago = new Date(dateEnd.getTime() - 7*24*3600*1000) 
+         
+        // check date end is not valid
+        if(dateEnd < dateStart && dateEnd.getDay() !== dateStart.getDay())
         {
-          const data = {
-            date_start: dateStart,
-            date_end: dateEnd
-          }
-
-          dispatch(selectSaleDate(data))
-
+          dispatch(messageErrorPickDateChartCol('Lỗi chọn ngày kết thúc. Xin mời chọn lại!'))
+          return 
         }
+
+       
+        // check select date not overdue 7days
+         if( dateStart >= condi_7days_ago && (dateStart.getTime() - condi_7days_ago.getTime() > 0) ) 
+         {
+           dispatch(messageErrorPickDateChartCol(''))
+          
+
+           const data = {
+              date_start: dateStart.toLocaleDateString('en-US'),
+              date_end: dateEnd.toLocaleDateString('en-US')
+           }
+          
+           dispatch(selectSaleDate(data))
+
+         }
+         else{
+          dispatch(messageErrorPickDateChartCol('Không chọn quá 7 ngày. Tính từ ngày bắt đầu đến ngày kết thúc'))
+         }
+
+
       }
 
+
+      // state admin chart column
+      const { list_sale_date,errorChartCol } = useSelector(state => state.admin)
+      // console.log('list_sale_date', list_sale_date)
+
+   
+
+
+
+     // handle select  7 days  
+      useEffect(() => {
+
+        // chart seven days ago
+        const date = new Date()
+        const seven_days = new Date(date.getTime() - 7*3600*1000*24)
+        setDateStart(seven_days)
+     
+
+        // the previous day
+        const previous_day = new Date(date.getTime() - 3600*24*1000)
+        setDateEnd(previous_day)
+
+        const data = {
+          // date_start : seven_days.toLocaleDateString('en-US'),
+          // date_end: previous_day.toLocaleDateString('en-US')
+          date_start : '3/30/2023',
+          date_end: '5/5/2023'
+        }
+
+        console.log(data)
+
+        dispatch(selectSaleDate(data))
+
+      },[])
+
+
+      // handle setting chart sale columns
+      useEffect(() => {
+
+          const list_date = []
+          const list_sale = []
+
+          if(list_sale_date)
+          {
+
+            list_sale_date.forEach(date => {
+                if(!list_date.includes(date.order_date))
+                {
+                  // format date
+                  const format_date = new Date(date.order_date)
+                  list_date.push(format_date.toLocaleDateString('en-GB'))
+
+                  // calculate sales
+                  const sale = date.sales / 1_000_000
+                  list_sale.push(sale.toFixed(2))
+                }
+            })
+
+          }
+
+          if(list_date.length > 0 )
+          {
+              setListDate(list_date)
+              setListSale(list_sale)
+          }
+
+      },[list_sale_date])
+
+
+      // setting chart column
     const chart_column_options = {
         series: [
           {
@@ -54,7 +148,7 @@ const ChartColumn = () => {
             curve: 'smooth'
           },
           xaxis: {
-            categories: [...saleDate]
+            categories: listDate
           },
     
     
@@ -83,18 +177,18 @@ const ChartColumn = () => {
         }
       
       }
+
+
     return (
         <div className="chart-column">
 
             <div className="filter-chart-column flex">
             <div className="from-date">
                 <p>Từ ngày : </p>
-                {/* <input type="date"
-                        onChange={(e) => setDateStart(e.target.value)}
+               
 
-                        />  */}
 
-                <DatePicker
+                 <DatePicker
                 selected={dateStart}
                 onChange={(date) => {
                     setDateStart(date);
@@ -102,34 +196,28 @@ const ChartColumn = () => {
                 dateFormat='dd-MM-yyyy'
                 placeholderText='Ngày bắt đầu'
                 locale='vi'
-                maxDate={dateStart}
+                maxDate={new Date()}
                 value={dateStart}
                 
+
 
                 />
                         
 
-            {/* <DatePickerComponent 
-            id="datepicker" 
-            value={dateStart} 
-            format='dd-MM-yyyy' 
-            placeholder='Ngày bắt đầu'/> */}
 
             </div>
 
             <div className="to-date">
                 <p>Đến ngày : </p>
-                {/* <input type="date"
-                        onChange={(e) => setDateEnd(e.target.value)}
-                        /> */}
+              
                 <DatePicker
-                
-                
+                selected={dateEnd}
+                onChange={setDateEnd}
                 dateFormat='dd-MM-yyyy'
                 placeholderText=''
                 locale='vi'
-                maxDate={dateStart}
-                value={dateStart}
+                maxDate={new Date()}
+                value={dateEnd}
                 
             />
             </div>
@@ -147,6 +235,16 @@ const ChartColumn = () => {
             <div className="filter-result">
                 <button onClick={handleOnClick}>Lọc kết quả</button>
             </div>
+
+            <div style={{
+              margin: '10px 0'
+            }}>
+              <span style={{
+                color:'red',
+                fontSize: '13px'
+              }}>{errorChartCol}</span>
+            </div>
+
             <Chart
             options={chart_column_options.options}
             series={chart_column_options.series}

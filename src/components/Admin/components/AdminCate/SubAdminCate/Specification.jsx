@@ -3,10 +3,11 @@ import React, { useEffect, useRef, useState } from 'react';
 const Specification = () => {
     
     const [tags, setTags] = useState([
-        "HTML", "CSS", "JavaScript"
+        "HTML", "CSS", "JavaScript","HTML", "CSS", "JavaScript","HTML", "CSS", "JavaScript","HTML", "CSS", "JavaScript","HTML", "CSS", "JavaScript","HTML", "CSS", "JavaScript"
     ])
 
     function handleKeyDown(e){
+
         if(e.key !== 'Enter') return
         const value = e.target.value
         if(!value.trim()) return
@@ -30,7 +31,7 @@ const Specification = () => {
                             </select>
                         </div>
                         <div className="list-specifications">
-                            <span >Thông số kĩ thuật : </span>
+                            <span style={{marginBottom : '10px'}}>Thông số kĩ thuật : </span>
                            
                             <div className="specification-selected">
                                 {/* <TagsInput
@@ -43,13 +44,16 @@ const Specification = () => {
 
                                
                             <div className="tags-input-container">
-                                        { tags.map((tag, index) => (
-                                            <div className="tag-item" key={index}>
-                                                <span className="text">{tag}</span>
-                                                <span className="close" onClick={() => removeTag(index)}>&times;</span>
-                                            </div>
-                                        )) }
-                                        <input onKeyDown={handleKeyDown} type="text" className="tags-input" placeholder="Nhập thông số" />
+                                <div className="input-specification">
+                                    <input onKeyDown={handleKeyDown} type="text" className="tags-input" placeholder="Nhập thông số" />
+                                </div>
+                                { tags.map((tag, index) => (
+                                    <div className="tag-item" key={index}>
+                                        <span className="text">{tag}</span>
+                                        <span className="close" onClick={() => removeTag(index)}>&times;</span>
+                                    </div>
+                                )) }
+                                        
                             </div>
 
                             </div>

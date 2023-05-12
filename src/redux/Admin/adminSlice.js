@@ -8,10 +8,12 @@ const initialState = {
     listUser: [],
     sale_figure: [],
     list_sale_date: [],
-    sale_cates: [],
+    sale_cates_month: [],
+    sale_cates_year: [],
     sum_sales: [],
     successCreate: false,
-    successUpdate: false
+    successUpdate: false,
+    errorChartCol: ''
 
 }
 
@@ -220,6 +222,10 @@ const adminSlice = createSlice({
         resetActionAdmin: (state,action) => {
             state.successCreate = false
             state.successUpdate = false
+        },
+        messageErrorPickDateChartCol: (state,action) => {
+            
+            state.errorChartCol = action.payload
         }
     },
     extraReducers: {
@@ -242,10 +248,10 @@ const adminSlice = createSlice({
             state.list_sale_date = action.payload
         } , 
         [getSalesCategoriesYear.fulfilled] : (state,action) => {
-            state.sale_cates = action.payload
+            state.sale_cates_year = action.payload
         }, 
         [getSalesCategoriesMonth.fulfilled] : (state,action) => {
-            state.sale_cates = action.payload
+            state.sale_cates_month = action.payload
         }, 
         [getSummarySaleFigure.fulfilled] : (state,action) => {
             state.sum_sales = action.payload
@@ -257,5 +263,5 @@ const adminSlice = createSlice({
     }
 })
 
-export const { resetActionAdmin } = adminSlice.actions
+export const { resetActionAdmin, messageErrorPickDateChartCol } = adminSlice.actions
 export default adminSlice.reducer

@@ -43,7 +43,7 @@ const ChartLine = () => {
             }
         })
       }
-      console.log(list_month)
+      console.log(sum_sales)
 
       if(list_month.length > 0)
       {
