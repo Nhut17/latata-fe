@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import {FormOutlined}  from "@ant-design/icons"
 import '../AdminEvent.scss'
-import ModalBanner from './ModalBanner'
+import ModalBannerHome from './ModalBannerHome'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from 'react-slick';
@@ -64,14 +64,14 @@ const BannerHome = () => {
                     
                 </div>
 
-                <div className="banner-watch">
+                {/* <div className="banner-watch">
                     <p>Banner đồng hồ</p>
-                </div>
+                </div> */}
             </div>
 
             {
                 showBanner && 
-                <ModalBanner  showBanner={showBanner} 
+                <ModalBannerHome  showBanner={showBanner} 
                 setShowBanner={setShowBanner} 
                 />
             }

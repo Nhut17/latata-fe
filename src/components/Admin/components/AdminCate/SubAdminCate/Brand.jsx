@@ -38,17 +38,18 @@ const Brand = () => {
 
                     <div className="input-group">
                         <span style={{width : '100px'}}>Tên hãng : </span>
-                        <input {...register("brand",{
+                        <input  {...register("brand",{
                             required : true,
                             
                         })} />
                     </div>
+                    
                     <div className="img-group flex ">
-                    <span style={{width: '100px'}}>Hình ảnh : </span>
-                    <form>
-                    <div class="image-upload">
+                        <span style={{width: '100px'}}>Hình ảnh : </span>
+                  
+                        <div class="image-upload">
                         <label for="file-input">
-                            <div class="upload-icon">
+                            <div class="upload-img">
                             <img src='' alt="" 
                             
                             />
@@ -59,10 +60,8 @@ const Brand = () => {
                         accept="images/*"
                         />
                         </div>
-                    </form>
+                    </div>
 
-            
-            </div>
                     <div className="add-brand">
                         <button>Thêm</button>
 

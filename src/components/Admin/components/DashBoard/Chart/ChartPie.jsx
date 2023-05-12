@@ -118,6 +118,7 @@ const ChartPie = () => {
 
     },[listCates])
 
+    console.log('active: ', active)
 
     const chart_pie_month_options ={
         series: saleCatesMonth,
@@ -178,9 +179,9 @@ const ChartPie = () => {
                   <button onClick={handleClick} active={active === 0} id={0}
                           style={{
                             padding: '7px 15px',
-                            boxShadow: '0 0 10px 2px rgba(0,0,0,0.75);',
-                            borderTopLeftRadius: '5px',
+                            border: '1px solid', 
                             borderBottomLeftRadius: '5px',
+                            borderRight: '0',
                             transition: 'all 0.4s',
                             background: active === 1 ? 'white' : '#6dabe4',
                             color: active === 1 ? '' : 'white'
@@ -215,7 +216,7 @@ const ChartPie = () => {
             </div>
 
               {
-                active === 0 ?
+                sale_cates_month || active === 0 ?
                 <>
                 <Chart
                 options={chart_pie_month_options.options}
