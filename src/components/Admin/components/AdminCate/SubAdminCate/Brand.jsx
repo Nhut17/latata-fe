@@ -5,6 +5,7 @@ import preImage from '../../../../../assets/images/preImage.png'
 const Brand = () => {
 
     const [previewImg,setPreviewImg] = useState(preImage)
+    const [selectImage,setSelectImage] = useState('')
     const {
         register,
         handleSubmit,
@@ -12,7 +13,17 @@ const Brand = () => {
         formState: { errors }
     } = useForm()
 
-
+    const handleImage = (e) => {
+        const reader = new FileReader();
+    
+        reader.onload = () => {
+          if(reader.readyState === 2){
+            setPreviewImg(reader.result)
+            setSelectImage(reader.result)
+          }
+        }
+        reader.readAsDataURL(e.target.files[0])
+      }
 
     const BrandItem = () => {
         return(
@@ -60,6 +71,7 @@ const Brand = () => {
                         </label>
                         <input id="file-input" type="file"
                         {...register("images")}
+                        onChange={handleImage}
                         accept="images/*"
                         />
                         
