@@ -1,4 +1,6 @@
 import React from 'react'
+import DatePicker from "react-datepicker";  
+import "react-datepicker/dist/react-datepicker.css"; 
 import { useForm } from 'react-hook-form'
 import './AdminVoucher.scss'
 const AdminVoucher = () => {
@@ -39,20 +41,45 @@ const AdminVoucher = () => {
                 </div>
 
                 <div className="flex">
-                    <div className="input-group" style={{marginRight : '20px'}}>
+                    <div className="input-group from-date" style={{marginRight : '20px'}}>
                         <span  style={{width : '150px'}}>Ngày bắt đầu : </span>
-                        <input type='date' {...register("date-start",{
+                        {/* <input type='date' {...register("date-start",{
                             required : true,
                             
-                        })} />
+                        })} /> */}
+
+                <DatePicker
+                    // selected={dateStart}
+                    // onChange={(date) => {
+                    //     setDateStart(date);
+                    // }}
+                    dateFormat='dd-MM-yyyy'
+                    placeholderText='Ngày bắt đầu'
+                    locale='vi'
+                    maxDate={new Date()}
+                    // value={dateStart}
+                    />              
                     </div>
 
-                    <div className="input-group">
+                    <div className="input-group to-date">
                         <span style={{width : '150px'}}>Ngày kết thúc: </span>
-                        <input type='date' {...register("date-end",{
+                        {/* <input type='date' {...register("date-end",{
                             required : true,
                             
-                        })} />
+                        })} /> */}
+
+
+                    <DatePicker
+                        // selected={dateStart}
+                        // onChange={(date) => {
+                        //     setDateStart(date);
+                        // }}
+                        dateFormat='dd-MM-yyyy'
+                        placeholderText='Ngày bắt đầu'
+                        locale='vi'
+                        maxDate={new Date()}
+                        // value={dateStart}
+                        />     
                     </div>
                 </div>
 

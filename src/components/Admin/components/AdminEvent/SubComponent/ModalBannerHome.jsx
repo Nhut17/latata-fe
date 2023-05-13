@@ -3,24 +3,24 @@ import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 import '../AdminEvent.scss'
 import UploadImage from './UploadImage';
-const ModalBannerHome = ({showBanner,setShowBanner}) => {
+const ModalBannerHome = ({showBannerHome,setShowBannerHome}) => {
 
-    const handleClickBanner = () => {
-        setShowBanner(false)
+    const handleClickBannerHome = () => {
+        setShowBannerHome(false)
     }
     return (
         <div className="modal-banner-home">
             <Modal
-                open={showBanner}
-                onClose={handleClickBanner}
+                open={showBannerHome}
+                onClose={handleClickBannerHome}
                 classNames={{
                     overlay: 'customOverlay',
                     modal: 'custom-modal-detail-order',
                 }}
             >
-                <UploadImage/>
-                <UploadImage/>
-                <UploadImage/>
+                <p style={{fontWeight : 'bold', marginBottom : '10px'}}>Banner chính trang chủ: </p>
+                <UploadImage width={850} height={200}/>
+                
 
                 <div className="save-image">
                     <button>Lưu</button>

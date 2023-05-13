@@ -25,6 +25,8 @@ const ChartPie = () => {
     // state admin
     const { sale_cates_year, sale_cates_month } = useSelector(state => state.admin)
     const { listCate }  = useSelector(state => state.category)
+    console.log('sale year : ' + sale_cates_year )
+    console.log('sale month : ' + sale_cates_month )
 
     // state list cate
     const [listCates,setListCates] = useState([])
@@ -40,8 +42,8 @@ const ChartPie = () => {
 
       // dispatch sale cates month
         dispatch(getSalesCategoriesMonth({
-          year: 2023,
-          month: 4
+          year,
+          month :4 
         }))
 
       // dispatch sale cates year
@@ -85,6 +87,7 @@ const ChartPie = () => {
               {     
                 list_sales_month.push(val.sales_cate)
               }
+              
           })
         })
 
@@ -179,12 +182,16 @@ const ChartPie = () => {
                   <button onClick={handleClick} active={active === 0} id={0}
                           style={{
                             padding: '7px 15px',
-                            border: '1px solid', 
+
+                            border: '1px groove', 
+                            borderTopLeftRadius: '5px',
+
                             borderBottomLeftRadius: '5px',
                             borderRight: '0',
                             transition: 'all 0.4s',
                             background: active === 1 ? 'white' : '#6dabe4',
-                            color: active === 1 ? '' : 'white'
+                            color: active === 1 ? '' : 'white',
+                           
                           }}
                   >Tháng</button>
                    
@@ -194,7 +201,7 @@ const ChartPie = () => {
                               style={{
                         
                                 padding: '7px 15px',
-                               
+                                border: '1px groove', 
                                 borderTopRightRadius: '5px',
                                 borderBottomRightRadius: '5px',
                                 borderLeft: 'transparent',

@@ -1,9 +1,10 @@
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons'
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
-
+import preImage from '../../../../../assets/images/preImage.png'
 const Brand = () => {
 
+    const [previewImg,setPreviewImg] = useState(preImage)
     const {
         register,
         handleSubmit,
@@ -34,7 +35,7 @@ const Brand = () => {
             <div className="box-brand">
                 <h4>Thêm thương hiệu</h4>
 
-                <form>
+                <form style={{marginLeft : '20px'}}>
 
                     <div className="input-group">
                         <span style={{width : '100px'}}>Tên hãng : </span>
@@ -49,8 +50,10 @@ const Brand = () => {
                   
                         <div class="image-upload">
                         <label for="file-input">
-                            <div class="upload-img">
-                            <img src='' alt="" 
+
+                            
+                            <div class="upload-icon">
+                                <img src={previewImg} alt="" 
                             
                             />
                             </div>
@@ -59,6 +62,7 @@ const Brand = () => {
                         {...register("images")}
                         accept="images/*"
                         />
+                        
                         </div>
                     </div>
 
