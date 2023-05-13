@@ -13,7 +13,9 @@ const initialState = {
     sum_sales: [],
     successCreate: false,
     successUpdate: false,
-    errorChartCol: ''
+    errorChartCol: '',
+    successUploadBrand: false,
+    listBrand: []
 
 }
 
@@ -206,7 +208,7 @@ export const getSalesCategoriesYear = createAsyncThunk('sale-category/year',
 export const getSalesCategoriesMonth = createAsyncThunk('sale-category/month',
                 async (data, thunkAPI) => {
 
-                    console.log('data: ', data)
+                  
 
                     const ret = await api.post('/api/v1/sales-cate-month', data)
 
@@ -215,6 +217,42 @@ export const getSalesCategoriesMonth = createAsyncThunk('sale-category/month',
                 })
 
 
+// upload logo brand
+export const uploadLogo = createAsyncThunk('brand/upload',
+                async (data,thunkAPI) => {
+
+                    const ret = await api.post('/api/v1/brand/add',data)
+
+                    return ret.data
+
+                })
+
+// get brand logo
+export const getBrand = createAsyncThunk('brand/get',
+                async (data,thunkAPI) => {
+
+                    const ret = await api.get('api/v1/brand')
+                    
+                    return ret.data.brand
+                })
+
+// delete brand logo
+export const deleteBrand = createAsyncThunk('brand/delete',
+                async (id,thunkAPI) => {
+
+                    const ret = await api.delete(`api/v1/brand/${id}`)
+
+                    return ret.data
+
+                } )
+
+// update brand
+export const updateBrand = createAsyncThunk('brand/update',
+                async (data,thunkAPI) => {
+
+                    const ret = await api.put('/api/v1/brand')
+
+                })
 const adminSlice = createSlice({
     name: "admin",
     initialState,
@@ -259,6 +297,14 @@ const adminSlice = createSlice({
         [selectSumSales.fulfilled] : (state,action) => {
             state.sum_sales = action.payload
         },
+        [uploadLogo.fulfilled] : (state,action) => {
+            state.successUploadBrand = true
+        }, 
+        [uploadLogo.rejected] : (state,action) => {
+        }, 
+        [getBrand.fulfilled] : (state,action) => {
+            state.listBrand = action.payload
+        }, 
         
     }
 })

@@ -56,8 +56,7 @@ function AdminCreate(props) {
     }
   },[successCreate])
 
-  console.log('create: ' + successCreate)
-  console.log('update: ' + successUpdate)
+  
 
   useEffect(() => {
     dispatch(resetActionAdmin())
@@ -86,19 +85,6 @@ function AdminCreate(props) {
       
     const { name,category,price,promotion,stock, description, subCate } = formData
 
-
-    const data = {
-      name,
-      price,
-      promotion,
-      description,
-      images: [{
-        url: JSON.stringify(selectImage)
-      }] ,
-      category,
-      stock,
-      reviews: []
-    }
 
     const dataS= new FormData()
     dataS.set('name', name)
