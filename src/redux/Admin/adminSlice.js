@@ -253,6 +253,8 @@ export const updateBrand = createAsyncThunk('brand/update',
                     const ret = await api.put('/api/v1/brand')
 
                 })
+
+
 const adminSlice = createSlice({
     name: "admin",
     initialState,
@@ -308,6 +310,8 @@ const adminSlice = createSlice({
         
     }
 })
+
+
 
 export const { resetActionAdmin, messageErrorPickDateChartCol } = adminSlice.actions
 export default adminSlice.reducer
