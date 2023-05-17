@@ -1,8 +1,14 @@
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import preImage from '../../../../../assets/images/preImage.png'
+import { useDispatch, useSelector } from 'react-redux'
+import { toast , ToastContainer} from 'react-toastify'
+import { useNavigate } from 'react-router-dom'
+import { uploadLogo } from '../../../../../redux/Admin/adminSlice'
 const Brand = () => {
+
+    const navigate = useNavigate()
 
     const [previewImg,setPreviewImg] = useState(preImage)
     const [selectImage,setSelectImage] = useState('')
@@ -13,6 +19,9 @@ const Brand = () => {
         formState: { errors }
     } = useForm()
 
+    const { successUploadBrand } = useSelector(state => state.admin)
+    const dispatch = useDispatch()
+    // handle review previous image
     const handleImage = (e) => {
         const reader = new FileReader();
     
@@ -24,6 +33,44 @@ const Brand = () => {
         }
         reader.readAsDataURL(e.target.files[0])
       }
+
+    // handle submit 
+    const handleOnSubmit = (formData) => {
+        const { name } = formData
+        const data = new FormData()
+
+        console.log(name)
+        data.set('name',name)
+        data.set('logo',selectImage)
+
+        dispatch(uploadLogo(data))
+        
+    }
+
+    // handle toast success add brand
+    useEffect(() => {
+        if(successUploadBrand){
+          toast.success('Thêm sản thương hiệu!', {
+          position: "top-right",
+          autoClose: 500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: false,
+          progress: undefined,
+          theme: "light",
+          });
+    
+        const time = setTimeout(() => {
+          window.location.reload()
+        },1500)
+    
+        return () => {
+          clearTimeout(time)
+        }
+    
+        }
+      },[successUploadBrand])
 
     const BrandItem = () => {
         return(
@@ -42,24 +89,27 @@ const Brand = () => {
         )
     }
     return (
-    
             <div className="box-brand">
+                <ToastContainer />
                 <h4>Thêm thương hiệu</h4>
 
-                <form style={{marginLeft : '20px'}}>
+                <form style={{marginLeft : '20px'}}
+                        onSubmit={handleSubmit(handleOnSubmit)} >
 
                     <div className="input-group">
                         <span style={{width : '100px'}}>Tên hãng : </span>
-                        <input {...register("brand",{
+                        <input  {...register("name",{
                             required : true,
                             
                         })} />
                     </div>
+                    
                     <div className="img-group flex ">
-                    <span style={{width: '100px'}}>Hình ảnh : </span>
-                    <form>
-                    <div class="image-upload">
+                        <span style={{width: '100px'}}>Hình ảnh : </span>
+                  
+                        <div class="image-upload">
                         <label for="file-input">
+
                             
                             <div class="upload-icon">
                                 <img src={previewImg} alt="" 
@@ -74,12 +124,10 @@ const Brand = () => {
                         />
                         
                         </div>
-                    </form>
+                    </div>
 
-            
-            </div>
                     <div className="add-brand">
-                        <button>Thêm</button>
+                        <button type='submit'>Thêm</button>
 
                     </div>
 

@@ -26,7 +26,7 @@ import addressSlice from './redux/address/addressSlice'
     key: 'root',
     version: 1,
     storage,
-    blacklist: ['user','cart','order','admin']
+    blacklist: ['user','cart','order','admin','category']
   }
 
 const userPersistConfig = {
@@ -48,16 +48,24 @@ const orderPersistConfig = {
 
 }
 
+const categoryPersistConfig = {
+  key: 'category',
+  storage: storage,
+  blacklist: ['successAddInfoTech', 'loading','errInfoTech']
+}
+
+
 const adminPersistConfig = {
   key: 'admin',
   storage,
-  blacklist: ['successCreate','successUpdate','errorChartCol','sale_figure']
+  blacklist: ['successCreate','successUpdate','errorChartCol','sale_figure','successUploadBrand']
 }
 const productPersistConfig = {
   key: 'product',
   storage,
   
 }
+
 
 const rootReducer = combineReducers({
     product: persistReducer(productPersistConfig,productSlice),
@@ -66,7 +74,7 @@ const rootReducer = combineReducers({
     province: provinceVNSlice,
     cart: persistReducer(cartPersistConfig,cartSlice),
     admin: persistReducer(adminPersistConfig,adminSlice),
-    category: categorySlice,
+    category: persistReducer(categoryPersistConfig,categorySlice),
     address: addressSlice
 
   })
