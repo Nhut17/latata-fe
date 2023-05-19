@@ -6,25 +6,32 @@
 
     .from-date{
         // margin-right: 40px;
-        position: relative;
-        &::after{
-            content: '\f133';
-            font-family: 'FontAwesome';
-            position: absolute;
-            right: 55px;
-            top: 5px;
+        // position: relative;
+        .input-from-date{
+            position: relative;
+            &::after{
+                content: '\f133';
+                font-family: 'FontAwesome';
+                position: absolute;
+                right: 7px;
+                top: 5px;
+            }
         }
+       
     }
 
     .to-date{
         // margin-right: 40px;
         position: relative;
-        &::after{
-            content: '\f133';
-            font-family: 'FontAwesome';
-            position: absolute;
-            right: 55px;
-            top: 5px;
+        .input-to-date{
+            position: relative;
+            &::after{
+                content: '\f133';
+                font-family: 'FontAwesome';
+                position: absolute;
+                right: 7px;
+                top: 5px;
+            }
         }
     }
 

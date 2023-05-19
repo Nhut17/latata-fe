@@ -18,7 +18,7 @@ const AdminVoucher = () => {
             <form>
 
                 <div className="input-group">
-                    <span style={{width : '100px'}}>Mã giảm giá : </span>
+                    <span style={{width : '150px'}}>Mã giảm giá : </span>
                     <input {...register("id-voucher",{
                         required : true,
                         
@@ -26,21 +26,20 @@ const AdminVoucher = () => {
                 </div>
               
                 <div className="input-group">
-                    <span style={{width : '100px'}}>Nội dung : </span>
+                    <span style={{width : '150px'}}>Nội dung : </span>
                     <input {...register("detail-voucher",{
                         required : true,
                         
                     })} />
                 </div>
                 <div className="input-group">
-                    <span style={{width : '100px'}}>Số lượng : </span>
+                    <span style={{width : '150px'}}>Số lượng : </span>
                     <input {...register("amound",{
                         required : true,
                         
                     })} />
                 </div>
 
-                <div className="flex">
                     <div className="input-group from-date" style={{marginRight : '20px'}}>
                         <span  style={{width : '150px'}}>Ngày bắt đầu : </span>
                         {/* <input type='date' {...register("date-start",{
@@ -48,17 +47,20 @@ const AdminVoucher = () => {
                             
                         })} /> */}
 
-                <DatePicker
-                    // selected={dateStart}
-                    // onChange={(date) => {
-                    //     setDateStart(date);
-                    // }}
-                    dateFormat='dd-MM-yyyy'
-                    placeholderText='Ngày bắt đầu'
-                    locale='vi'
-                    maxDate={new Date()}
-                    // value={dateStart}
-                    />              
+                        <div className="input-from-date">
+                            
+                            <DatePicker
+                                // selected={dateStart}
+                                // onChange={(date) => {
+                                //     setDateStart(date);
+                                // }}
+                                dateFormat='dd-MM-yyyy'
+                                placeholderText='Ngày bắt đầu'
+                                locale='vi'
+                                maxDate={new Date()}
+                                // value={dateStart}
+                            />     
+                        </div>             
                     </div>
 
                     <div className="input-group to-date">
@@ -69,27 +71,36 @@ const AdminVoucher = () => {
                         })} /> */}
 
 
-                    <DatePicker
-                        // selected={dateStart}
-                        // onChange={(date) => {
-                        //     setDateStart(date);
-                        // }}
-                        dateFormat='dd-MM-yyyy'
-                        placeholderText='Ngày bắt đầu'
-                        locale='vi'
-                        maxDate={new Date()}
-                        // value={dateStart}
-                        />     
+                    <div className="input-to-date">
+                        <DatePicker
+                            // selected={dateStart}
+                            // onChange={(date) => {
+                            //     setDateStart(date);
+                            // }}
+                            dateFormat='dd-MM-yyyy'
+                            placeholderText='Ngày kết thúc'
+                            locale='vi'
+                            maxDate={new Date()}
+                            // value={dateStart}
+                        />   
+                    </div>  
                     </div>
-                </div>
+          
 
                 
-                <div className="input-group">
-                    <span style={{width : '100px'}}>Đối tượng: </span>
-                    <input type='text' {...register("object",{
+                <div className="select-object flex">
+                    <span style={{width : '150px'}}>Đối tượng: </span>
+                    {/* <input type='text' {...register("object",{
                         required : true,
                         
-                    })} />
+                    })} /> */}
+
+                    <select name="" id="" style={{width : '182px'}}>
+                        <option >
+                            Tất cả
+                        </option>
+                        <option value="">Top 10</option>
+                    </select>
                 </div>
 
        
