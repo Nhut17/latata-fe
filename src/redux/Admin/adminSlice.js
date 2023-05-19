@@ -18,7 +18,8 @@ const initialState = {
     listBrand: [],
     vouchers: [],
     successAdd: false,
-    errorAdd: false
+    errorAdd: false,
+    
 }
 
 
