@@ -15,8 +15,10 @@ const initialState = {
     successUpdate: false,
     errorChartCol: '',
     successUploadBrand: false,
-    listBrand: []
-
+    listBrand: [],
+    vouchers: [],
+    successAdd: false,
+    errorAdd: false
 }
 
 
@@ -255,6 +257,25 @@ export const updateBrand = createAsyncThunk('brand/update',
                 })
 
 
+// get vouchers
+export const getVouchers = createAsyncThunk('voucher/get',
+                async (data,thunkAPI) => {
+
+                    const ret = await api.get('/api/v1/voucher')
+
+                    return ret.data.voucher
+                })
+
+// add voucher
+export const addVoucher = createAsyncThunk('voucher/add',
+                async (data,thunkAPI) =>{
+
+                    const ret = await api.post('/api/v1/voucher/add',data)
+
+                    return ret.data
+
+                })
+
 const adminSlice = createSlice({
     name: "admin",
     initialState,
@@ -306,6 +327,15 @@ const adminSlice = createSlice({
         }, 
         [getBrand.fulfilled] : (state,action) => {
             state.listBrand = action.payload
+        }, 
+        [getVouchers.fulfilled] : (state,action) => {
+            state.vouchers = action.payload
+        }, 
+        [addVoucher.fulfilled] : (state,action) => {
+            state.successAdd = true
+        }, 
+        [addVoucher.rejected] : (state,action) => {
+            state.errorAdd = true
         }, 
         
     }

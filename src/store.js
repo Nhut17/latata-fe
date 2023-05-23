@@ -58,7 +58,7 @@ const categoryPersistConfig = {
 const adminPersistConfig = {
   key: 'admin',
   storage,
-  blacklist: ['successCreate','successUpdate','errorChartCol','sale_figure','successUploadBrand']
+  blacklist: ['successCreate','successUpdate','errorChartCol','sale_figure','successUploadBrand','successAdd','errorAdd']
 }
 const productPersistConfig = {
   key: 'product',

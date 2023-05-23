@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import DatePicker from "react-datepicker";  
 import "react-datepicker/dist/react-datepicker.css"; 
 import { useForm } from 'react-hook-form'
 import './AdminVoucher.scss'
+import { useDispatch, useSelector } from 'react-redux';
 const AdminVoucher = () => {
 
     const {
@@ -11,30 +12,64 @@ const AdminVoucher = () => {
         getValues,
         formState: { errors }
     } = useForm()
+
+    const [dateStart, setDateStart] = useState()
+    const [dateExpired, setDateExpired] = useState()
+
+    // console.log('dateStart', dateStart)
+    // console.log('dateExpired', dateExpired)
+
+    const dispatch = useDispatch()
+    const { vouchers, successAdd, errorAdd } = useSelector(state => state.admin)
+
+    const handleAddVoucher = (formData) => {
+
+        
+        if(dateStart && dateExpired) {
+
+            
+            const data ={
+                voucher: formData.voucher,
+                sale: formData.sales,
+                content: formData.content,
+                createAt: dateStart,
+                expiredIn: dateExpired
+            }
+            console.log(data)
+
+        
+            }
+
+    }
+
     return (
         <div className="admin-voucher">
             <h4>Thêm mã giảm giá</h4>
 
-            <form>
+            <form onSubmit={handleSubmit(handleAddVoucher)}>
 
                 <div className="input-group">
+
                     <span style={{width : '150px'}}>Mã giảm giá : </span>
-                    <input {...register("id-voucher",{
+                    <input {...register("voucher",{
                         required : true,
                         
                     })} />
                 </div>
               
                 <div className="input-group">
+
                     <span style={{width : '150px'}}>Nội dung : </span>
-                    <input {...register("detail-voucher",{
+                    <input {...register("content",{
+
                         required : true,
                         
                     })} />
                 </div>
                 <div className="input-group">
-                    <span style={{width : '150px'}}>Số lượng : </span>
-                    <input {...register("amound",{
+
+                    <span style={{width : '100px'}}>Giảm giá : </span>
+                    <input type='number' {...register("sales",{
                         required : true,
                         
                     })} />
@@ -47,20 +82,23 @@ const AdminVoucher = () => {
                             
                         })} /> */}
 
+
                         <div className="input-from-date">
-                            
-                            <DatePicker
-                                // selected={dateStart}
-                                // onChange={(date) => {
-                                //     setDateStart(date);
-                                // }}
-                                dateFormat='dd-MM-yyyy'
-                                placeholderText='Ngày bắt đầu'
-                                locale='vi'
-                                maxDate={new Date()}
-                                // value={dateStart}
-                            />     
+                        <DatePicker
+                            selected={dateStart}
+                            onChange={(date) => {
+                                setDateStart(date);
+                            }}
+                            dateFormat='dd-MM-yyyy'
+                            placeholderText='Ngày bắt đầu'
+                            locale='vi'
+                            maxDate={new Date()}
+                            />   
+                              
                         </div>             
+
+                          
+
                     </div>
 
                     <div className="input-group to-date">
@@ -71,23 +109,27 @@ const AdminVoucher = () => {
                         })} /> */}
 
 
+
                     <div className="input-to-date">
                         <DatePicker
-                            // selected={dateStart}
-                            // onChange={(date) => {
-                            //     setDateStart(date);
-                            // }}
+                            selected={dateExpired}
+                            onChange={(date) => {
+                                setDateExpired(date);
+                            }}
                             dateFormat='dd-MM-yyyy'
-                            placeholderText='Ngày kết thúc'
+                            placeholderText='Ngày bắt đầu'
                             locale='vi'
                             maxDate={new Date()}
-                            // value={dateStart}
-                        />   
+                            />  
                     </div>  
+
+                       
+
                     </div>
           
 
                 
+
                 <div className="select-object flex">
                     <span style={{width : '150px'}}>Đối tượng: </span>
                     {/* <input type='text' {...register("object",{
@@ -103,9 +145,8 @@ const AdminVoucher = () => {
                     </select>
                 </div>
 
-       
                 <div className="add-voucher">
-                    <button>Thêm</button>
+                    <button type='submit'>Thêm</button>
 
                 </div>
 
