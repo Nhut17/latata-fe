@@ -1,9 +1,12 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import DatePicker from "react-datepicker";  
 import "react-datepicker/dist/react-datepicker.css"; 
 import { useForm } from 'react-hook-form'
 import './AdminVoucher.scss'
 import { useDispatch, useSelector } from 'react-redux';
+import { addVoucher } from '../../../../redux/Admin/adminSlice';
+import { toast , ToastContainer} from 'react-toastify'
+import VoucherTable from './VoucherTable';
 const AdminVoucher = () => {
 
     const {
@@ -16,8 +19,7 @@ const AdminVoucher = () => {
     const [dateStart, setDateStart] = useState()
     const [dateExpired, setDateExpired] = useState()
 
-    // console.log('dateStart', dateStart)
-    // console.log('dateExpired', dateExpired)
+    
 
     const dispatch = useDispatch()
     const { vouchers, successAdd, errorAdd } = useSelector(state => state.admin)
@@ -35,15 +37,42 @@ const AdminVoucher = () => {
                 createAt: dateStart,
                 expiredIn: dateExpired
             }
-            console.log(data)
-
+          
+            dispatch(addVoucher(data))
         
             }
 
     }
 
+    useEffect(() => {
+
+        if(successAdd)
+        {
+            toast.success('Thêm sản thương hiệu!', {
+                position: "top-right",
+                autoClose: 500,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                progress: undefined,
+                theme: "light",
+                });
+          
+              const time = setTimeout(() => {
+                window.location.reload()
+              },1500)
+          
+              return () => {
+                clearTimeout(time)
+              }
+        }
+
+    },[successAdd])
+
     return (
         <div className="admin-voucher">
+            <ToastContainer />
             <h4>Thêm mã giảm giá</h4>
 
             <form onSubmit={handleSubmit(handleAddVoucher)}>
@@ -103,10 +132,7 @@ const AdminVoucher = () => {
 
                     <div className="input-group to-date">
                         <span style={{width : '150px'}}>Ngày kết thúc: </span>
-                        {/* <input type='date' {...register("date-end",{
-                            required : true,
-                            
-                        })} /> */}
+                     
 
 
 
@@ -123,7 +149,18 @@ const AdminVoucher = () => {
                             />  
                     </div>  
 
-                       
+
+                    <DatePicker
+                        selected={dateExpired}
+                        onChange={(date) => {
+                            setDateExpired(date);
+                        }}
+                        dateFormat='dd-MM-yyyy'
+                        placeholderText='Ngày kết thúc'
+                        locale='vi'
+                 
+                        minDate={dateStart}
+                        />     
 
                     </div>
           
@@ -154,18 +191,9 @@ const AdminVoucher = () => {
 
             <div className="list-brand">
             <p>Danh sách mã giảm giá</p>
-            <table>
-                    <tr>
-                        <th>Mã giảm giá</th>
-                        <th>Nội dung</th>
-                        <th>Thời gian</th>
-                        <th>Đối tượng</th>
-
-                    </tr>
-
-                    {/* <BrandItem/> */}
-                    
-            </table>
+            
+                <VoucherTable />
+            
             </div>
         </div>
     )
