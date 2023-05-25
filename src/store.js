@@ -20,13 +20,13 @@ import adminSlice from './redux/Admin/adminSlice'
 import categorySlice from './redux/Category/categorySlice'
 import orderSlice from './redux/Order/orderSlice'
 import addressSlice from './redux/address/addressSlice'
-
+import paymentSlice from './redux/payment/paymentSlice'
 
   const persistConfig = {
     key: 'root',
     version: 1,
     storage,
-    blacklist: ['user','cart','order','admin','category']
+    blacklist: ['user','cart','order','admin','category','payment']
   }
 
 const userPersistConfig = {
@@ -39,6 +39,12 @@ const cartPersistConfig = {
   key: 'cart',
   storage,
   blacklist: ['success']
+}
+
+const paymentPersistConfig = {
+  key: 'payment',
+  storage,
+  blacklist: ['url_create']
 }
 
 const orderPersistConfig = {
@@ -75,7 +81,8 @@ const rootReducer = combineReducers({
     cart: persistReducer(cartPersistConfig,cartSlice),
     admin: persistReducer(adminPersistConfig,adminSlice),
     category: persistReducer(categoryPersistConfig,categorySlice),
-    address: addressSlice
+    address: addressSlice,
+    payment: persistReducer(paymentPersistConfig,paymentSlice)
 
   })
 

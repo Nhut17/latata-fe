@@ -5,6 +5,7 @@ import { createOrder } from '../../redux/Order/orderSlice'
 import ModalListAddress from './ModalListAddress'
 import { ShakeOutlined } from "@ant-design/icons";
 import InfoVoucher from './InfoVoucher'
+import Payment from './Payment'
 
 
 const InfoCustomer = ({totalPrice}) => {
@@ -18,6 +19,7 @@ const InfoCustomer = ({totalPrice}) => {
     const dispatch = useDispatch()
 
     const { listAddress , addressCurrent} = useSelector(state => state.address)
+    const { url_create } = useSelector(state => state.payment)
 
    
         const [nameI,setName] = useState(addressCurrent ? addressCurrent[0]?.name : '')
@@ -39,12 +41,14 @@ const InfoCustomer = ({totalPrice}) => {
 
   // create order
   const handleCreateOrder = (formData) =>{
-    const data = {
-        ...formData,
-        address: addressCurrent[0]?.address
-    }
-        console.log(data)
-        dispatch(createOrder(data))
+    // const data = {
+    //     ...formData,
+    //     address: addressCurrent[0]?.address
+    // }
+       
+    //     dispatch(createOrder(data))
+
+    
   }
  
 
@@ -153,6 +157,8 @@ const InfoCustomer = ({totalPrice}) => {
             <span className="price">{totalPrice.toString()
                 .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}<span className='currency'>&#8363;</span></span>
             </div>
+
+            <Payment amount={totalPrice} />
 
             <button className='order' type='submit'>ĐẶT HÀNG</button>
 
