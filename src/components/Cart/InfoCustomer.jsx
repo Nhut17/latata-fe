@@ -3,6 +3,8 @@ import { useForm } from 'react-hook-form'
 import { useDispatch,useSelector } from 'react-redux'
 import { createOrder } from '../../redux/Order/orderSlice'
 import ModalListAddress from './ModalListAddress'
+import { ShakeOutlined } from "@ant-design/icons";
+import InfoVoucher from './InfoVoucher'
 
 
 const InfoCustomer = ({totalPrice}) => {
@@ -126,6 +128,8 @@ const InfoCustomer = ({totalPrice}) => {
                     <u className='change' onClick={handleClickOrderDetail}>Thay đổi</u>
 
             </div>
+
+           <InfoVoucher/>
 
 
             <div className="note">

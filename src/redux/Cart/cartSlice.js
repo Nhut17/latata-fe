@@ -138,6 +138,24 @@ export const decreaseQuantity = createAsyncThunk('cart/delete',
 
                 }
             })
+
+export const useVoucher = createAsyncThunk('cart/use-voucher',
+            async(data, thunkAPI) => {
+                  
+                const token = localStorage.getItem('token')
+                const config = {
+                    headers: {
+                        Authorization: 'Bearer ' + token
+                    }
+                }
+                try {
+                    const res = await api.post('/api/v1/use-voucher',data,config)
+                    console.log('vos' + res.data)
+                    return res.data
+                } catch (e) {
+                    
+                }
+            })
             
 const cartSlice = createSlice({
     name: "cart",

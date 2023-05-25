@@ -2,6 +2,7 @@ import { height } from '@mui/system'
 import React from 'react'
 import '../AdminEvent.scss'
 const UploadImage = ({width, height}) => {
+  
   return (
     <div className="upload-image-event">
         <div className="img-group flex ">
@@ -16,7 +17,7 @@ const UploadImage = ({width, height}) => {
               </label>
               <input id="file-input" type="file"
             //   {...register("images")}
-            //   onChange={handleImage}
+       
               accept="images/*"
               />
             </div>
