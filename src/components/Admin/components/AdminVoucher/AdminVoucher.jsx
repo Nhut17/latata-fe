@@ -97,7 +97,7 @@ const AdminVoucher = () => {
                 </div>
                 <div className="input-group">
 
-                    <span style={{width : '100px'}}>Giảm giá : </span>
+                    <span style={{width : '150px'}}>Giảm giá : </span>
                     <input type='number' {...register("sales",{
                         required : true,
                         
@@ -143,14 +143,14 @@ const AdminVoucher = () => {
                                 setDateExpired(date);
                             }}
                             dateFormat='dd-MM-yyyy'
-                            placeholderText='Ngày bắt đầu'
+                            placeholderText='Ngày kết thúc'
                             locale='vi'
                             maxDate={new Date()}
                             />  
                     </div>  
 
 
-                    <DatePicker
+                    {/* <DatePicker
                         selected={dateExpired}
                         onChange={(date) => {
                             setDateExpired(date);
@@ -160,7 +160,7 @@ const AdminVoucher = () => {
                         locale='vi'
                  
                         minDate={dateStart}
-                        />     
+                        />      */}
 
                     </div>
           
@@ -174,12 +174,18 @@ const AdminVoucher = () => {
                         
                     })} /> */}
 
-                    <select name="" id="" style={{width : '182px'}}>
-                        <option >
-                            Tất cả
-                        </option>
-                        <option value="">Top 10</option>
-                    </select>
+                   <div className="send-voucher flex">
+                        <div className="all-user flex a-center">
+                            <input type="radio" />
+                            <span style={{marginLeft : '5px'}}>Tất cả khách hàng</span>
+                        </div>
+                        <div className="top-10-user flex a-center" style={{marginLeft : '40px'}}>
+                            <input type="radio" />
+                            <span style={{marginLeft : '5px'}}>Top 10</span>
+                        </div>
+                   
+
+                   </div>
                 </div>
 
                 <div className="add-voucher">
