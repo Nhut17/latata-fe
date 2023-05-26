@@ -26,7 +26,7 @@ const Payment = ({amount}) => {
   const handleCreatePayment = () => {
     const data = {
       amount,
-      bankCode: 'NCB'
+      
     }
 
     
