@@ -5,7 +5,6 @@ import { getUser, registerUser, loginUser, resetActionRegister } from '../../red
 import { useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import DateTimePicker from 'react-datetime-picker';
 // import 'react-calendar/dist/Calendar.css'
 import { useRef } from 'react';
 import DatePicker, {registerLocale} from 'react-datepicker';

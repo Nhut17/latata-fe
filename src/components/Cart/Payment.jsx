@@ -11,7 +11,7 @@ const Payment = ({amount}) => {
   const navigate = useNavigate()
 
 
-  console.log(url_create)
+  console.log('url_create: ' +url_create)
 
   // useEffect(() => {
 
@@ -29,6 +29,7 @@ const Payment = ({amount}) => {
       bankCode: 'NCB'
     }
 
+    
     dispatch(createPayment(data))
 
   }
