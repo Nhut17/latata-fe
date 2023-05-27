@@ -15,7 +15,7 @@ const CheckoutCart = () => {
 
   const { listCartUser } = useSelector(state => state.cart)
   
-  console.log('list cart: ', listCartUser?.products.length)
+  
 
   return (
     <React.Fragment>
