@@ -15,7 +15,7 @@ const ListVoucher = () => {
     console.log(vouchers)
 
   return (
-    <tr style={{textAlign: 'center'}}>
+    <>
         {
             vouchers && vouchers.map( data => (
                 <>
@@ -23,7 +23,7 @@ const ListVoucher = () => {
                 </>
             ))
         }
-    </tr>
+    </>
   )
 }
 

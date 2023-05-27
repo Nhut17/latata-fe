@@ -273,6 +273,7 @@ export const addVoucher = createAsyncThunk('voucher/add',
 
                     const ret = await api.post('/api/v1/voucher/add',data)
 
+                    thunkAPI.dispatch(getVouchers())
                     return ret.data
 
                 })

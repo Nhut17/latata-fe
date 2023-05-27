@@ -133,34 +133,19 @@ const AdminVoucher = () => {
                     <div className="input-group to-date">
                         <span style={{width : '150px'}}>Ngày kết thúc: </span>
                      
+                        <div className="input-to-date">
+                            <DatePicker
+                                selected={dateExpired}
+                                onChange={(date) => {
+                                    setDateExpired(date);
+                                }}
+                                dateFormat='dd-MM-yyyy'
+                                placeholderText='Ngày kết thúc'
+                                locale='vi'
+                                maxDate={new Date()}
+                                />  
+                        </div> 
 
-
-
-                    <div className="input-to-date">
-                        <DatePicker
-                            selected={dateExpired}
-                            onChange={(date) => {
-                                setDateExpired(date);
-                            }}
-                            dateFormat='dd-MM-yyyy'
-                            placeholderText='Ngày kết thúc'
-                            locale='vi'
-                            maxDate={new Date()}
-                            />  
-                    </div>  
-
-
-                    {/* <DatePicker
-                        selected={dateExpired}
-                        onChange={(date) => {
-                            setDateExpired(date);
-                        }}
-                        dateFormat='dd-MM-yyyy'
-                        placeholderText='Ngày kết thúc'
-                        locale='vi'
-                 
-                        minDate={dateStart}
-                        />      */}
 
                     </div>
           
