@@ -79,7 +79,7 @@ const MainProfile = ({currentUser}) => {
     
   }
 
-  console.log('birr : ' + currentUser?.birthday)
+  
 
 
   return (

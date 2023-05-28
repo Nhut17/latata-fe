@@ -3,7 +3,12 @@ import { Tabs, Tab, Content } from '../TabButton/Tab.jsx'
 import './AdminEvent.scss'
 import BannerCate from './SubComponent/BannerCate.jsx';
 import BannerHome from './SubComponent/BannerHome.jsx';
+import { useDispatch, useSelector } from 'react-redux';
+import { addEventBanner } from '../../../../redux/Admin/adminSlice.js';
 const AdminEvent = () => {
+
+  const dispatch = useDispatch()
+  const { successAddEventBanner } = useSelector(state => state.admin)
 
   const [active, setActive] = useState(0);
   const handleClick = e => {
@@ -13,10 +18,45 @@ const AdminEvent = () => {
     }
   };
 
+  const [selectedImage, setSelectedImage] = useState([])
+
+  
+ const handleOnChangeImages = (e) =>{
+  const reader = new FileReader()
+
+  reader.onload = () => {
+   
+      if(reader.readyState === 2)
+      {
+       
+        setSelectedImage(prev => [...prev , reader.result])
+      }
+  }
+
+ 
+  reader.readAsDataURL(e.target.files[0])
+
+ }
+
+ const handleUpload = () => {
+
+    const formData = new FormData()
+
+    selectedImage.forEach((img,index) => formData.set(`image_${index+1}`, img))
+
+    dispatch(addEventBanner(formData))
+
+    
+
+ }
+
+
+ console.log('success : ', successAddEventBanner)
   
   return (
     
     <div className="admin-event">
+
       <Tabs>
         <Tab onClick={handleClick} active={active === 0} id={0}>
           Trang chủ
@@ -52,6 +92,34 @@ const AdminEvent = () => {
           Nhà thông minh
         </Tab>
       </Tabs>
+
+      <>
+        <div style={{
+          margin: 10
+        }}>
+          <span>image 1</span>
+          <input type="file"
+                  accept='images/*'
+                  onChange={handleOnChangeImages}
+                  />
+            
+        </div>
+        <div style={{
+          margin: 10
+        }}>
+          <span>image 2</span>
+          <input type="file"
+                  accept='images/*'
+                  onChange={handleOnChangeImages}
+                  />
+            
+        </div>
+      
+
+        <button onClick={handleUpload}>upload</button>
+
+      </>
+
       <>
         <Content active={active === 0}>
           <BannerHome/>

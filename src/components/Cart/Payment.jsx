@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { createPayment } from '../../redux/payment/paymentSlice'
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import api from '../../api/api'
 
 const Payment = ({amount}) => {
 
@@ -23,15 +24,16 @@ const Payment = ({amount}) => {
 
   // },[url_create])
 
-  const handleCreatePayment = () => {
-    const data = {
-      amount,
-      
-    }
+  const handleCreatePayment = async  () => {
 
+    const money = parseInt(amount)
+   
     
-    dispatch(createPayment(data))
-
+    await window.open(`
+          http://localhost:4000/api/v1/create-payment/${money}
+    `)
+    
+    window.location.reload(0);
   }
 
   return (

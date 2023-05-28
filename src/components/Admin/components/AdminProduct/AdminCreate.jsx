@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from "react-router-dom";
 import preImage from '../../../../assets/images/preImage.png'
 import {PlusOutlined} from "@ant-design/icons";
+import InfoTechProduct from "./SelectDetailProduct/InfoTechProduct";
 
 
 function AdminCreate(props) {
@@ -31,6 +32,7 @@ function AdminCreate(props) {
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
+
 
   useEffect(() => {
     if(successCreate){
@@ -58,10 +60,10 @@ function AdminCreate(props) {
 
   
 
-  useEffect(() => {
-    dispatch(resetActionAdmin())
-    console.log('reset')
-  },[])
+  // useEffect(() => {
+  //   dispatch(resetActionAdmin())
+  //   console.log('reset')
+  // },[])
   
 // hanlde up image
   const handleImage = (e) => {
@@ -85,6 +87,7 @@ function AdminCreate(props) {
       
     const { name,category,price,promotion,stock, description, subCate } = formData
 
+    const data = formData
 
     const dataS= new FormData()
     dataS.set('name', name)
@@ -96,7 +99,32 @@ function AdminCreate(props) {
     dataS.set('subCate', subCate)
     dataS.set('stock', stock)
 
-    dispatch(createProduct(dataS))
+    // delete
+    delete data.name
+    delete data.category
+    delete data.price
+    delete data.promotion
+    delete data.stock
+    delete data.description
+    delete data.subCate
+    delete data.images
+
+   
+    // set info tech
+    let info_tech =[]
+
+    for (var prop in data) {
+
+      info_tech.push({
+        title: prop,
+        content: data[prop]
+      })
+
+      }
+    dataS.set('info_tech', info_tech)
+
+
+    // dispatch(createProduct(dataS))
 
 
 
@@ -164,7 +192,9 @@ function AdminCreate(props) {
                 </div>  
               }
               
-        
+        <InfoTechProduct id_cate={'637e40260f52ec2c4eb8180b'}
+                          register={register}
+                           />
 
         <div className="input-group">
           <span className="title">Giá</span>
@@ -243,7 +273,7 @@ function AdminCreate(props) {
               {...register('description')} ></textarea>
           </div>
 
-        <button type="submit">Add Product</button>
+        <button type="submit">Thêm sản phẩm</button>
       </form>
     </div>
   );

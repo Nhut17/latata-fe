@@ -9,7 +9,8 @@ const initialState = {
     info_tech: null,
     successAddInfoTech: false,
     errorAddInfoTech: '',
-    errInfoTech: false
+    errInfoTech: false,
+    
  
 }
 
