@@ -19,6 +19,8 @@ const initialState = {
     vouchers: [],
     successAdd: false,
     errorAdd: false,
+    images: [],
+    successAddEventBanner: false
     
 }
 
@@ -278,6 +280,27 @@ export const addVoucher = createAsyncThunk('voucher/add',
 
                 })
 
+
+// add event banner
+export const addEventBanner = createAsyncThunk('event-banner', 
+                async (data,thunkAPI) => {
+
+                    const token = localStorage.getItem('token')
+                            const config = {
+                                headers: {
+                                    Authorization: 'Bearer ' + token,
+                                
+                                }
+                            }
+
+                    console.log('data: ', data)
+                        
+                    const ret = await api.post('/api/v1/event-banner',data,config)
+
+                    return ret.data
+
+                })
+
 const adminSlice = createSlice({
     name: "admin",
     initialState,
@@ -338,6 +361,9 @@ const adminSlice = createSlice({
         }, 
         [addVoucher.rejected] : (state,action) => {
             state.errorAdd = true
+        }, 
+        [addEventBanner.fulfilled] : (state,action) => {
+            state.successAddEventBanner = true
         }, 
         
     }

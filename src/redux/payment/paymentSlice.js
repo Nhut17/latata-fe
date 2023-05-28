@@ -9,7 +9,8 @@ const initialState = {
 export const createPayment = createAsyncThunk("payment/create", 
                 async (data,thunkAPI) => {
 
-                    const ret = await api.post('/api/v1/create-payment',data)
+
+                    const ret = await api.post(`/api/v1/create-payment`,data)
 
                     return ret.data.vnpUrl
 
