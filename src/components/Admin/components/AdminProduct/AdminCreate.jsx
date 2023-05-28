@@ -87,6 +87,7 @@ function AdminCreate(props) {
       
     const { name,category,price,promotion,stock, description, subCate } = formData
 
+    const data = formData
 
     const dataS= new FormData()
     dataS.set('name', name)
@@ -99,29 +100,29 @@ function AdminCreate(props) {
     dataS.set('stock', stock)
 
     // delete
-    delete formData.name
-    delete formData.category
-    delete formData.price
-    delete formData.promotion
-    delete formData.stock
-    delete formData.description
-    delete formData.subCate
-    delete formData.images
+    delete data.name
+    delete data.category
+    delete data.price
+    delete data.promotion
+    delete data.stock
+    delete data.description
+    delete data.subCate
+    delete data.images
 
    
     // set info tech
     let info_tech =[]
 
-    for (var prop in formData) {
+    for (var prop in data) {
 
       info_tech.push({
         title: prop,
-        content: formData[prop]
+        content: data[prop]
       })
 
       }
     dataS.set('info_tech', info_tech)
-   
+
 
     // dispatch(createProduct(dataS))
 
