@@ -10,10 +10,6 @@ const InfoTechProduct = ({id_cate,register}) =>
     const dispatch = useDispatch()
     const { info_tech } = useSelector(state => state.category)
    
-
-
-   
-
     useEffect(() =>{
 
         dispatch(getInfoTech(id_cate))
