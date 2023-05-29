@@ -38,7 +38,7 @@ const ChartPie = () => {
       // dispatch sale cates month
         dispatch(getSalesCategoriesMonth({
           year,
-          month : 5
+          month
         }))
 
       // dispatch sale cates year
