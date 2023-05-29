@@ -5,7 +5,8 @@ import preImage from '../../../../../assets/images/preImage.png'
 import { useDispatch, useSelector } from 'react-redux'
 import { toast , ToastContainer} from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
-import { uploadLogo } from '../../../../../redux/Admin/adminSlice'
+import { getBrand, uploadLogo } from '../../../../../redux/Admin/adminSlice'
+import BrandItem from './BrandItem'
 const Brand = () => {
 
     const navigate = useNavigate()
@@ -19,7 +20,11 @@ const Brand = () => {
         formState: { errors }
     } = useForm()
 
-    const { successUploadBrand } = useSelector(state => state.admin)
+    const { listBrand, successUploadBrand } = useSelector(state => state.admin)
+   
+    console.log( 'listbarnbd' + listBrand)
+
+
     const dispatch = useDispatch()
     // handle review previous image
     const handleImage = (e) => {
@@ -47,6 +52,10 @@ const Brand = () => {
         
     }
 
+    useEffect(()=> {
+        dispatch(getBrand())
+    })
+
     // handle toast success add brand
     useEffect(() => {
         if(successUploadBrand){
@@ -64,6 +73,8 @@ const Brand = () => {
         const time = setTimeout(() => {
           window.location.reload()
         },1500)
+
+        
     
         return () => {
           clearTimeout(time)
@@ -72,22 +83,7 @@ const Brand = () => {
         }
       },[successUploadBrand])
 
-    const BrandItem = () => {
-        return(
-            <tr>
-                <td>hãng</td>
-                <td>ảnh</td>
-                <td
-                    className="delete-brand"
-                >
-                    <DeleteOutlined />
-                </td>
-                {/* <td className="update-brand">
-                    <EditOutlined/>
-                </td> */}
-            </tr>
-        )
-    }
+ 
     return (
             <div className="box-brand">
                 <ToastContainer />
@@ -142,7 +138,11 @@ const Brand = () => {
 
                         </tr>
 
-                        <BrandItem/>
+                        {
+                            listBrand.map((data) => (
+                                <BrandItem data={data}/>
+                            ))
+                        }
                         
                 </table>
                 </div>
