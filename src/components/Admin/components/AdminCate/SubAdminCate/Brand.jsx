@@ -82,9 +82,9 @@ const Brand = () => {
                 >
                     <DeleteOutlined />
                 </td>
-                <td className="update-brand">
+                {/* <td className="update-brand">
                     <EditOutlined/>
-                </td>
+                </td> */}
             </tr>
         )
     }

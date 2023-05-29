@@ -103,10 +103,19 @@ const ChartLine = () => {
           stroke: {
             curve: 'smooth'
           },
+          title: {
+            text: 'Biểu đồ XXX',
+            align: 'center',
+            style: {
+              fontSize:  '18px',
+              fontWeight:  'bold',
+              color:  '#000'
+            },
+          },
           xaxis: {
     
-            categories: listMonth
-    
+            categories: listMonth,
+          
           },
           legend: {
             position: 'bottom'

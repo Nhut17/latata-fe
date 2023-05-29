@@ -152,26 +152,7 @@ const AdminVoucher = () => {
 
                 
 
-                <div className="select-object flex">
-                    <span style={{width : '150px'}}>Đối tượng: </span>
-                    {/* <input type='text' {...register("object",{
-                        required : true,
-                        
-                    })} /> */}
-
-                   <div className="send-voucher flex">
-                        <div className="all-user flex a-center">
-                            <input type="radio" />
-                            <span style={{marginLeft : '5px'}}>Tất cả khách hàng</span>
-                        </div>
-                        <div className="top-10-user flex a-center" style={{marginLeft : '40px'}}>
-                            <input type="radio" />
-                            <span style={{marginLeft : '5px'}}>Top 10</span>
-                        </div>
-                   
-
-                   </div>
-                </div>
+                
 
                 <div className="add-voucher">
                     <button type='submit'>Thêm</button>

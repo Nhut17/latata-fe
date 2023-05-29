@@ -13,6 +13,7 @@ import { getAllOrder } from "../../../../redux/Order/orderSlice";
 import { getCate } from "../../../../redux/Category/categorySlice";
 import { getProduct } from "../../../../redux/Product/productSlice";
 import TopCustomer from "./TopCustomer";
+import { Link } from "react-router-dom";
 
 export default function DashBoard() {
 
@@ -45,13 +46,13 @@ export default function DashBoard() {
                 <div className="dashboard-middle-statistic-icon">
                   <UsergroupDeleteOutlined />
                 </div>
-                <div className="dashboard-middle-statistic-title">
+                <Link to='/admin/customer' className="dashboard-middle-statistic-title">
                   <span className="total">{listUser?.length}</span>
                   <span className="title" style={{fontSize: '20px'}}>Người dùng</span>
-                </div>
+                </Link>
               </li>
             </div>
-            <div className="dashboard-middle-statistic-content">
+            <Link to='/admin/product' className="dashboard-middle-statistic-content">
               <li style={{background : '#2B7A0B'}}>
                 <div className="dashboard-middle-statistic-icon">
                 <DollarCircleOutlined/>
@@ -62,9 +63,9 @@ export default function DashBoard() {
                   <span className="title">Sản phẩm</span>
                 </div>
               </li>
-            </div>
+            </Link>
 
-            <div className="dashboard-middle-statistic-content">
+            <Link to='/admin/category' className="dashboard-middle-statistic-content">
               <li style={{background : '#000957'}}>
                 <div className="dashboard-middle-statistic-icon">
                   <SkinOutlined />
@@ -74,8 +75,8 @@ export default function DashBoard() {
                   <span className="title">Danh mục</span>
                 </div>
               </li>
-            </div>
-            <div className="dashboard-middle-statistic-content">
+            </Link>
+            <Link to='/admin/order' className="dashboard-middle-statistic-content">
               <li style={{background : '#D4AC2B'}}>
                 <div className="dashboard-middle-statistic-icon">
                   <ShoppingCartOutlined />
@@ -85,7 +86,7 @@ export default function DashBoard() {
                   <span className="title">Đơn hàng</span>
                 </div>
               </li>
-            </div>
+            </Link>
             
           </div>
         </div>
