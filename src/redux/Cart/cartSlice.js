@@ -50,14 +50,11 @@ export const getCartUser  = createAsyncThunk('cart/get',
                     }
                 }
 
-        try{
+     
             const res = await api.get('/api/v1/cart/getCartUser', config)
 
             return res.data.cart
-        } 
-        catch(err){
-
-        }
+       
 })
 
 // delete cart

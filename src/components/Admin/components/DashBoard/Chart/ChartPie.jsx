@@ -18,15 +18,10 @@ const ChartPie = () => {
     };
 
 
-    // state date
-    const [dateStart, setDateStart] = useState(new Date())
-    const [dateEnd, setDateEnd] = useState()
-
     // state admin
     const { sale_cates_year, sale_cates_month } = useSelector(state => state.admin)
     const { listCate }  = useSelector(state => state.category)
-    console.log('sale year : ' + sale_cates_year )
-    console.log('sale month : ' + sale_cates_month )
+
 
     // state list cate
     const [listCates,setListCates] = useState([])
@@ -43,7 +38,7 @@ const ChartPie = () => {
       // dispatch sale cates month
         dispatch(getSalesCategoriesMonth({
           year,
-          month :4 
+          month : 5
         }))
 
       // dispatch sale cates year
@@ -56,6 +51,7 @@ const ChartPie = () => {
     const [saleCatesMonth, setSaleCatesMonth] = useState([])
     const [saleCatesYear, setSaleCatesYear] = useState([])
 
+    
     // set up category chart
     useEffect(() => {
         const list_cate =[]
@@ -76,39 +72,41 @@ const ChartPie = () => {
 
     // set up sales for chart category
     useEffect(() => {
-      const list_sales_month = []
-      const list_sales_year = []
+    
+      const cates_month = sale_cates_month?.categories
+
+      const list_sales_month = new Array(listCates.length).fill(0)
+      const list_sales_year = new Array(listCates.length).fill(0)
+
      
       if(listCates.length > 0 )
       {
-        listCates.forEach( el => {
-          sale_cates_month?.categories?.forEach(val => {
-              if(val.cate === el)
-              {     
-                list_sales_month.push(val.sales_cate)
-              }
-              
-          })
-        })
 
-        // sum sales year
-        sale_cates_year?.forEach(month => {
-            listCates.forEach(el => {
-                month?.categories?.forEach( (cates,index) => {
-                    if(cates.cate === el)
-                    {
-                      if(!list_sales_year[index])
-                      {
-                        list_sales_year[index] = cates.sales_cate
-                      } else{
-                        list_sales_year[index] += cates.sales_cate
-                      }
-                    }
-                })
-            })
+        // sum sales month
+        cates_month.forEach(val => {
+          const find_index = listCates.findIndex(el => val.cate.toLowerCase() === el.toLowerCase() )
+
+          if(find_index > -1)
+          {
+            list_sales_month[find_index] = val.sales_cate
+          }
+
         })
+       
+        // sum sales year
+        sale_cates_year.forEach(val => {
+          const find_index = listCates.findIndex(el => val.cate.toLowerCase() === el.toLowerCase() )
+          if(find_index > -1)
+          {
+            list_sales_year[find_index] = val.sales_cate
+          }
+        })
+       
 
       }
+
+      console.log(listCates)
+      console.log(list_sales_year)
 
      if(list_sales_month.length > 0 ) {
       setSaleCatesMonth(list_sales_month)
@@ -121,8 +119,9 @@ const ChartPie = () => {
 
     },[listCates])
 
-    console.log('active: ', active)
+    // console.log('listCate: ', listCates)
 
+    // chart pie month
     const chart_pie_month_options ={
         series: saleCatesMonth,
         
@@ -144,6 +143,8 @@ const ChartPie = () => {
         }
       }
 
+
+    // chart pie year  
     const chart_pie_year_options ={
         series: saleCatesYear,
         
@@ -164,6 +165,9 @@ const ChartPie = () => {
     
         }
       }
+
+    
+
     return (
         <div className="chart-pie" style={{'width': '34%'}}>
             <div className="filter-chart-pie">
@@ -223,7 +227,7 @@ const ChartPie = () => {
             </div>
 
               {
-                sale_cates_month || active === 0 ?
+                active === 0 ?
                 <>
                 <Chart
                 options={chart_pie_month_options.options}
@@ -231,7 +235,6 @@ const ChartPie = () => {
                 type='pie'
                 width={380}
                 />
-                <h1>{active}</h1>
                 </>
                 
                   :
@@ -242,7 +245,6 @@ const ChartPie = () => {
                   type='pie'
                   width={380}
                   />
-                    <h1>{active}</h1>
                   </>
               }
            

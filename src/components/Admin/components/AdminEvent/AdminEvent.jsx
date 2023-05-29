@@ -19,22 +19,35 @@ const AdminEvent = () => {
   };
 
   const [selectedImage, setSelectedImage] = useState([])
+  const [imagePreview,setImagePreview] = useState([])
 
   
  const handleOnChangeImages = (e) =>{
-  const reader = new FileReader()
 
-  reader.onload = () => {
+  const files = Array.from(e.target.files)
+
+  setSelectedImage([])
+  setImagePreview([])
+
+  files.forEach(file => {
+
+    const reader = new FileReader()
+
+    reader.onload = () => {
    
       if(reader.readyState === 2)
       {
-       
+        setImagePreview(prev => [...prev , reader.result])
         setSelectedImage(prev => [...prev , reader.result])
       }
-  }
+    }
 
  
-  reader.readAsDataURL(e.target.files[0])
+  reader.readAsDataURL(file)
+
+  })
+
+  
 
  }
 
@@ -42,7 +55,14 @@ const AdminEvent = () => {
 
     const formData = new FormData()
 
-    selectedImage.forEach((img,index) => formData.set(`image_${index+1}`, img))
+    // selectedImage.forEach((img,index) => formData.set(`image_${index+1}`, img))
+
+    selectedImage.forEach(image => {
+      formData.append('images', image)
+    })
+
+    let name = 'home'
+    formData.append('name',name)
 
     dispatch(addEventBanner(formData))
 
@@ -101,10 +121,11 @@ const AdminEvent = () => {
           <input type="file"
                   accept='images/*'
                   onChange={handleOnChangeImages}
+                  multiple
                   />
             
         </div>
-        <div style={{
+        {/* <div style={{
           margin: 10
         }}>
           <span>image 2</span>
@@ -113,11 +134,24 @@ const AdminEvent = () => {
                   onChange={handleOnChangeImages}
                   />
             
-        </div>
+        </div> */}
       
 
         <button onClick={handleUpload}>upload</button>
 
+      </>
+
+      <>
+      
+      {
+        imagePreview.length > 0 && imagePreview.map(img => (
+          <img src={img}
+                key={img}
+                width='55'
+                height='52' />
+        ))
+      }
+      
       </>
 
       <>

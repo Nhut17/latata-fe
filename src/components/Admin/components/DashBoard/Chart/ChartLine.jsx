@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import Chart from "react-apexcharts";
 import { useDispatch, useSelector } from 'react-redux';
-import { getSummarySaleFigure, selectSaleDate } from '../../../../../redux/Admin/adminSlice';
+import { getListYearSummary, getSummarySaleFigure, selectSaleDate } from '../../../../../redux/Admin/adminSlice';
 const ChartLine = () => {
-    const [dateStart, setDateStart] = useState(new Date())
-    const [dateEnd, setDateEnd] = useState()
+
+    const date = new Date()
+
+    const [currentYear,setCurrentYear] = useState(date.getFullYear())
     const dispatch = useDispatch()
 
     const [listMonth, setListMonth] = useState([])
@@ -12,15 +14,20 @@ const ChartLine = () => {
     const [products,setProducts] = useState([])
     const [sales,setSales] = useState([])
 
-    const { sum_sales } = useSelector(state => state.admin)
+    const { sum_sales, list_year_sale } = useSelector(state => state.admin)
 
     useEffect(() => {
 
-      const year = new Date()
+      dispatch(getListYearSummary())
 
-      dispatch(getSummarySaleFigure(year.getFullYear()))
 
     },[])
+
+    useEffect(() => {
+
+      dispatch(getSummarySaleFigure(currentYear))
+
+    },[currentYear])
 
 
     useEffect(() => {
@@ -43,7 +50,7 @@ const ChartLine = () => {
             }
         })
       }
-      console.log(sum_sales)
+
 
       if(list_month.length > 0)
       {
@@ -55,26 +62,7 @@ const ChartLine = () => {
 
     },[sum_sales])
 
-    
-
-
-    // handle select year sum sales
-    const handleOnClick = () => {
-
-        if(dateStart && dateEnd)
-        {
-          const data = {
-            date_start: dateStart,
-            date_end: dateEnd
-          }
-
-          dispatch(selectSaleDate(data))
-
-        }
-      }
-
-
-
+  
     const chartOptions = {
         series: [
           {
@@ -121,27 +109,44 @@ const ChartLine = () => {
       
       }
 
+
+     const handleSelect = (e) => {
+
+      setCurrentYear(e.target.value)
+
+     } 
+
+
     return (
 
         
         <div className="chart-line" style={{'width': '65%'}}>
             <div className="filter-chart-line">
                 <div className="filter-option">
-                <select name="" id="">
-                    <option value="">Năm</option>
+                <select name="" id="" onChange={handleSelect} >
+                    {
+                      list_year_sale && list_year_sale.map(val => (
+
+                        <option value={val} >{val}</option>
+                      ))
+                    }
                 </select>
-                <div className="filter-result">
-                    <button onClick={handleOnClick}>Lọc kết quả</button>
-                </div>
+                {/* <div className="filter-result">
+                    <button >Lọc kết quả</button>
+                </div> */}
                 </div>
             </div>
 
-            <Chart
-            options={chartOptions.options}
-            series={chartOptions.series}
-            type='line'
-            height='500px'
-            />
+              {
+                currentYear && <Chart
+                options={chartOptions.options}
+                series={chartOptions.series}
+                type='line'
+                height='500px'
+                />
+              }
+
+            
         </div>
         )
 }

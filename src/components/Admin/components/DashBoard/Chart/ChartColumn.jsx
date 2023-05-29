@@ -78,12 +78,11 @@ const ChartColumn = () => {
         const data = {
           // date_start : seven_days.toLocaleDateString('en-US'),
           // date_end: previous_day.toLocaleDateString('en-US')
-          date_start : '3/30/2023',
+          date_start : '4/24/2023',
           date_end: '5/5/2023'
         }
 
-        console.log(data)
-
+        
         dispatch(selectSaleDate(data))
 
       },[])
@@ -222,12 +221,12 @@ const ChartColumn = () => {
             />
             </div>
 
-            <div className="filter-option">
+            {/* <div className="filter-option">
                 <p>Lọc theo : </p>   
                 <select name="" id="">
                 <option value=""></option>
                 </select>
-            </div>
+            </div> */}
 
 
             
