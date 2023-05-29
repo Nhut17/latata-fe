@@ -153,7 +153,7 @@ const Specification = () => {
             <div className="box-specifications">
                     <form onSubmit={handleSubmit(handleOnSubmit)}>
                         <div className="input-group">
-                            <span >Danh mục : </span>
+                            <span style={{marginBottom : '10px'}}>Danh mục : </span>
 
                             <select name="" id="" 
                                     {...register('infoTech', {

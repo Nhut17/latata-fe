@@ -138,7 +138,7 @@ function AdminCreate(props) {
   return (
     <div className="admin-create">
       <ToastContainer />
-      <span>Create Product</span>
+      <span>Thêm sản phẩm</span>
       <form
         className="admin-create-product"
         onSubmit={handleSubmit(handleOnSubmit)}
@@ -244,7 +244,7 @@ function AdminCreate(props) {
           } 
         </div>
 
-        <span>Hình ảnh</span>
+        <span style={{marginTop : '10px'}}>Hình ảnh</span>
 
         <div className="img-group flex ">
           <form>
@@ -273,7 +273,7 @@ function AdminCreate(props) {
               {...register('description')} ></textarea>
           </div>
 
-        <button type="submit">Thêm sản phẩm</button>
+        <button type="submit" style={{textAlign : 'center'}}>Thêm sản phẩm</button>
       </form>
     </div>
   );

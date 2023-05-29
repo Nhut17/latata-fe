@@ -24,8 +24,11 @@ const InfoTechProduct = ({id_cate,register}) =>
         padding: '30px 10px',
         borderRadius: 12,
         display: 'flex',
-        flexWrap: 'wrap'
+        flexWrap: 'wrap',
+        position : 'relative'
     }}>
+                    
+
 
         {
             info_tech && info_tech?.info_tech.map(info => (
@@ -45,10 +48,11 @@ const InfoTechProduct = ({id_cate,register}) =>
                             marginLeft: 5
                            }}  />
                 </div>
+                
             ))
         }
       
-      
+        <span className='title-info'>Thông số kĩ thuật</span>
     </div>
   )
 }

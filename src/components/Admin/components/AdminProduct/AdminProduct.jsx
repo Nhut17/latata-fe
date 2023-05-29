@@ -33,7 +33,7 @@ const AdminProduct = () => {
         </div>
         <Link to="/admin/product/create"> 
           <button >
-            + Add Product
+            + Thêm sản phẩm
           </button>
         </Link>
       </div>
