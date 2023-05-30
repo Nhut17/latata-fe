@@ -1,8 +1,14 @@
 import { ShakeOutlined } from '@ant-design/icons'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import VoucherItem from './VoucherItem'
+import { useDispatch, useSelector } from 'react-redux'
+import { getVouchers } from '../../redux/Admin/adminSlice'
 
 const InfoVoucher = () => {
+
+  const dispatch = useDispatch()
+  const {vouchers} = useSelector(state => state.admin)
+
   const [isActive, setActive] = useState(false)
   const [isOpen, setOpen] = useState(false)
   let lengthVoucher = 1
@@ -13,8 +19,16 @@ const InfoVoucher = () => {
   const handleClickListVoucher = () => {
     setOpen(!isOpen);
   };
-  console.log('is' +isActive)
-  console.log('open' +isOpen)
+ 
+
+  useEffect(() =>{
+
+      dispatch(getVouchers())
+
+  },[])
+
+  console.log(vouchers)
+
 
   return (
     <div className='bg-cart-voucher'>
@@ -47,10 +61,13 @@ const InfoVoucher = () => {
 
                 }}
             >
-              <VoucherItem/>
-              <VoucherItem/>
-              <VoucherItem/>
-              <VoucherItem/>
+              {
+                vouchers.length > 0 && 
+                vouchers.map(val => 
+                <VoucherItem data={val}/>
+                )
+              }
+              
           </div>)
         : ('')
         
