@@ -106,7 +106,8 @@ const ChartPie = () => {
       }
 
       console.log(listCates)
-      console.log(list_sales_year)
+      console.log('list_sales_year'+list_sales_year)
+      console.log(' list_sales_month'+ list_sales_month)
 
      if(list_sales_month.length > 0 ) {
       setSaleCatesMonth(list_sales_month)
@@ -264,6 +265,7 @@ const ChartPie = () => {
                 
                   :
                   <>
+                  
                   <Chart
                   options={chart_pie_year_options.options}
                   series={chart_pie_year_options.series}

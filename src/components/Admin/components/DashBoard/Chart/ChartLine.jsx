@@ -147,12 +147,19 @@ const ChartLine = () => {
             </div>
 
               {
-                currentYear && <Chart
+                currentYear == false ? (<Chart
                 options={chartOptions.options}
                 series={chartOptions.series}
                 type='line'
                 height='500px'
-                />
+                />):(
+                    <div style={{textAlign : 'center', marginTop: '40px'}}>
+                      <img width={100} height={100} src="https://cdn.123job.vn/123job/uploads/2021/08/07/2021_08_07______3ec0692f0159d0eab1cfd066b68f1481.png" alt="" />
+                      <p style={{ marginTop: '10px'}}> <i>Không có dữ liệu thống kê</i></p>
+
+                    </div>
+                 
+                )
               }
 
             

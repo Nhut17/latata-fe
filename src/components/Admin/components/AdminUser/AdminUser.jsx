@@ -18,7 +18,7 @@ function AdminUser() {
 
     return (
         <div className="admin-user">
-            <span>Customers</span>
+            <span>Khách hàng</span>
             {
                 <ListUser listUser={listUser} />
 

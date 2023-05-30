@@ -124,14 +124,20 @@ function Sidebar(props) {
             <p>Chat</p>
           </Link> */}
 
-          <Link to="/admin/event" className={'sidebar-list-item'} >
+          <Link to="/admin/event" className={'sidebar-list-item'} style={getPara == 'event' ? {
+            background : '#007aff',
+            color : 'white'
+          } : {}}>
             <span>
               <CalendarOutlined />
             </span>
             <p>Sự kiện</p>
           </Link>
 
-          <Link to="/admin/voucher" className={'sidebar-list-item'} >
+          <Link to="/admin/voucher" className={'sidebar-list-item'} style={getPara == 'voucher' ? {
+            background : '#007aff',
+            color : 'white'
+          } : {}}>
             <span>
               <ShakeOutlined />
             </span>
