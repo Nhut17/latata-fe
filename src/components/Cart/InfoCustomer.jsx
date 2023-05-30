@@ -41,12 +41,12 @@ const InfoCustomer = ({totalPrice}) => {
 
   // create order
   const handleCreateOrder = (formData) =>{
-    // const data = {
-    //     ...formData,
-    //     address: addressCurrent[0]?.address
-    // }
+    const data = {
+        ...formData,
+        address: addressCurrent[0]?.address
+    }
        
-    //     dispatch(createOrder(data))
+        dispatch(createOrder(data))
 
     
   }

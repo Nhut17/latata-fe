@@ -7,13 +7,13 @@ import '../AdminOrder.scss'
 
 import ListOrder from "../AdminOrderUI/ListOrder";
 
-function AdminOrderAll({status,title}) {
+function AdminOrderAll({listOrder,status}) {
 
 
   return (
     <React.Fragment>
 
-      <ListOrder  status={status}/>
+      <ListOrder listOrder={listOrder}  status={status}/>
       
     </React.Fragment>
   );

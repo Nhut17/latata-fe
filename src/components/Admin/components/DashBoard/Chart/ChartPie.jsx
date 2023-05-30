@@ -139,7 +139,7 @@ const ChartPie = () => {
           },
 
           title: {
-            text: 'Biểu đồ XXX',
+       
             align: 'center',
             style: {
               fontSize:  '18px',
@@ -159,7 +159,7 @@ const ChartPie = () => {
         series: saleCatesYear,
         
         options: {
-          title: 'Biểu đồ YYY',
+         
           chart: {
             width: 380,
             type: 'pie',
@@ -247,7 +247,19 @@ const ChartPie = () => {
                 type='pie'
                 width={380}
                 />
-                <span>Biểu đồ thống kê doanh thu sản phẩm theo danh mục (tháng)</span>
+                <div style={{
+                    margin: '5px auto',
+                    textAlign: 'center',
+                    
+                  }}>
+                  <span style={{
+                    fontSize: '13px',
+                    fontStyle: 'italic',
+                    textAlign: 'center',
+                    margin: 'auto',
+                    fontWeight: 'bold'
+                  }}>Biểu đồ thống kê doanh thu sản phẩm theo danh mục (tháng)</span>
+                </div>
                 </>
                 
                   :
@@ -258,6 +270,19 @@ const ChartPie = () => {
                   type='pie'
                   width={380}
                   />
+                  <div style={{
+                    margin: '5px auto',
+                    textAlign: 'center',
+                    
+                  }}>
+                  <span style={{
+                    fontSize: '13px',
+                    fontStyle: 'italic',
+                    textAlign: 'center',
+                    margin: 'auto',
+                    fontWeight: 'bold'
+                  }}>Biểu đồ thống kê doanh thu sản phẩm theo danh mục (năm)</span>
+                </div>
                   </>
               }
            

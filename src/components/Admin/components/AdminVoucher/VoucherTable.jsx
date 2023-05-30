@@ -11,6 +11,7 @@ const VoucherTable = () => {
                         <th>Nội dung</th>
                         <th>Thời gian bắt đầu</th>
                         <th>Thời gian kết thúc</th>
+                        <th></th>
                 </tr>
                <ListVoucher />
 
