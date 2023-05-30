@@ -137,6 +137,16 @@ const ChartPie = () => {
            
           
           },
+
+          title: {
+            text: 'Biểu đồ XXX',
+            align: 'center',
+            style: {
+              fontSize:  '18px',
+              fontWeight:  'bold',
+              color:  '#000'
+            },
+          },
           colors: ['#c00', '#d06', '#007', '#00f', '#2cc','#394','#cc0','#c70'],
           
     

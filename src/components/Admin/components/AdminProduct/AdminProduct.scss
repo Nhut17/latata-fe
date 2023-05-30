@@ -148,6 +148,7 @@
 /* .admin-create{
 
 } */
+
 .admin-create > span{
     display: flex;
     padding: 1rem;
@@ -182,7 +183,7 @@
         font-size: 13px;
         // position: absolute;
         font-style: italic;
-        transform: translateY(-5px);
+        transform: translateY(-15px);
     }
 }
 
@@ -205,7 +206,7 @@
     padding: .5rem 1rem;
     font-size: 14px;
 
-    width: 80%;
+    width: 100%;
     border: 1px solid #ced4da;
     border-radius: 4px;
 }
@@ -222,7 +223,6 @@
     border-radius: 50px;
     outline: none;
     cursor: pointer;
-    width: 80%;
     transition: all .3s;
  
 }
@@ -281,4 +281,12 @@
             background-color: #3271ac;
         }
     }
+}
+
+.title-info{
+    position: absolute;
+    background: white;
+    top: -10px;
+    transform: translateX(10px);
+    font-size: 14px;
 }

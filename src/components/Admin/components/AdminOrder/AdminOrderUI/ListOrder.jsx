@@ -2,11 +2,22 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllOrder } from '../../../../../redux/Order/orderSlice';
 import Order from './Order';
+import { FolderOpenOutlined } from '@ant-design/icons';
 
 
-function ListOrder(props) {
+function ListOrder({status}) {
 
     const { listOrder } = useSelector(state => state.order)
+    
+    const statusOrder = listOrder.filter(listOrder => listOrder.status == `${status}`)
+
+    console.log('status ')
+
+   
+    
+
+
+   
 
     const dispatch = useDispatch()
     
@@ -30,11 +41,16 @@ function ListOrder(props) {
        </tr>
 
        {
-        listOrder &&
-        listOrder.map((data) => (
+        statusOrder &&
+            
+        
+        statusOrder.map((data) => (
 
             <Order data={data} />
+
         ))
+
+        
     }
 
 

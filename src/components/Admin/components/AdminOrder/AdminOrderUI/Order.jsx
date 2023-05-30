@@ -13,6 +13,8 @@ function Order({data}) {
   const dispatch =  useDispatch()
   const navigate = useNavigate()
 
+  
+
   // confirm order
   const handleConfirm = () => {
 
@@ -118,18 +120,17 @@ function Order({data}) {
         <span className="action done">Xác nhận đơn</span>
       </button>
       
-      {/* <button className={data.status === 'PENDING' ? "cancel btn" : "cancel disable btn"} onClick={handleCancel}
+      <button className={data.status === 'PENDING' ? "cancel btn" : "cancel disable btn"} onClick={handleCancel}
       style={data.status === 'PENDING' ? {} : {
         cursor: 'not-allowed',
         opacity: 0.5
       }} >
  
 
-        {/* <span className="action cancel"> Hủy đơn</span> */}
-      {/* </button> */}
+      
 
-        {/* <span className="action cancel"> Hủy đơn</span> */}
-      {/* </button>  */}
+        <span className="action cancel"> Hủy đơn</span>
+       </button> 
 
 
       <button className="detail btn" onClick={handleClickOrderDetail}

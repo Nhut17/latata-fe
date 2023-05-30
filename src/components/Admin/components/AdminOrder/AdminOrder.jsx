@@ -37,31 +37,20 @@ function AdminOrder(props) {
             </TabList>
 
             <TabPanel>
-              <AdminOrderAll/>
+              <AdminOrderAll status={'PENDING'} />
             </TabPanel>
-            {
-                lengthOrder == 0 ?  
-                (<TabPanel>
-
-                  <div className="empty-order">
-                    <p>
-                      <FolderOpenOutlined />
-                      <p>Chưa có đơn hàng nào</p>
-
-                    </p>
-                  </div>
-                </TabPanel>)
-                :              
-                (<TabPanel>Đang giao</TabPanel>)
-
-            }
-
+            
             <TabPanel>
-              <h2>Đã giao</h2>
+              <AdminOrderAll status={'DELIVERING'} />
+
             </TabPanel>
 
             <TabPanel>
-              <h2>Đã hủy</h2>
+              <AdminOrderAll status={'DONE'}/>
+            </TabPanel>
+
+            <TabPanel>
+            <AdminOrderAll status={'CANCELLED'} />
             </TabPanel>
         </Tabs>
 

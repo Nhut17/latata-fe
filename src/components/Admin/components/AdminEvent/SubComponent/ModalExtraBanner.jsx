@@ -18,8 +18,8 @@ const ModalExtraBanner = ({showExtraBanner,setShowExtraBanner}) => {
                     }}
                 >
                     <p style={{fontWeight : 'bold', marginBottom : '10px'}}>Banner phụ: </p>
-                    <UploadImage width={850} height={100}/>              
-                    <UploadImage width={850} height={100}/>
+                    <UploadImage width={850} height={150}/>              
+                    <UploadImage width={850} height={150}/>
 
                     <div className="save-image">
                         <button>Lưu</button>

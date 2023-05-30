@@ -149,6 +149,16 @@ const ChartColumn = () => {
           xaxis: {
             categories: listDate
           },
+
+          title: {
+            text: 'Biểu đồ XXX',
+            align: 'center',
+            style: {
+              fontSize:  '18px',
+              fontWeight:  'bold',
+              color:  '#000'
+            },
+          },
     
     
           yaxis:{

@@ -97,7 +97,7 @@ const AdminVoucher = () => {
                 </div>
                 <div className="input-group">
 
-                    <span style={{width : '100px'}}>Giảm giá : </span>
+                    <span style={{width : '150px'}}>Giảm giá : </span>
                     <input type='number' {...register("sales",{
                         required : true,
                         
@@ -133,38 +133,26 @@ const AdminVoucher = () => {
                     <div className="input-group to-date">
                         <span style={{width : '150px'}}>Ngày kết thúc: </span>
                      
+                        <div className="input-to-date">
+                            <DatePicker
+                                selected={dateExpired}
+                                onChange={(date) => {
+                                    setDateExpired(date);
+                                }}
+                                dateFormat='dd-MM-yyyy'
+                                placeholderText='Ngày kết thúc'
+                                locale='vi'
+                                maxDate={new Date()}
+                                />  
+                        </div> 
 
-                    <DatePicker
-                        selected={dateExpired}
-                        onChange={(date) => {
-                            setDateExpired(date);
-                        }}
-                        dateFormat='dd-MM-yyyy'
-                        placeholderText='Ngày kết thúc'
-                        locale='vi'
-                 
-                        minDate={dateStart}
-                        />     
 
                     </div>
           
 
                 
 
-                <div className="select-object flex">
-                    <span style={{width : '150px'}}>Đối tượng: </span>
-                    {/* <input type='text' {...register("object",{
-                        required : true,
-                        
-                    })} /> */}
-
-                    <select name="" id="" style={{width : '182px'}}>
-                        <option >
-                            Tất cả
-                        </option>
-                        <option value="">Top 10</option>
-                    </select>
-                </div>
+                
 
                 <div className="add-voucher">
                     <button type='submit'>Thêm</button>

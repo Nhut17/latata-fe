@@ -29,8 +29,8 @@ const ModalBannerCate = ({showBannerCate,setShowBannerCate}) => {
                     <div className="extra-banner">
                         <p style={{fontWeight : 'bold', marginBottom : '10px'}}>Banner phụ: </p>
                       
-                        <UploadImage width={350} height={90}/>
-                        <UploadImage width={350} height={90}/>
+                        <UploadImage width={350} height={150}/>
+                        <UploadImage width={350} height={150}/>
                       
 
                     </div>

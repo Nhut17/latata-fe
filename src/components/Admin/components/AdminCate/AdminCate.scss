@@ -121,6 +121,8 @@
 .admin-create{
     width: 80%;
     margin-left: 200px;
+    background: whitesmoke;
+
     .admin-create-cate{
         display: flex;
         flex-wrap: wrap;
@@ -379,7 +381,7 @@
             .tag-item{
                 background-color: #e4e4e4;
                 display: inline-block;
-                padding: 5px;
+                padding: 7px;
                 border-radius: 20px;
             }
             .tag-item .close{
@@ -428,5 +430,14 @@
                 }
             }
         }
+    }
+}
+
+.brand-item-logo{
+    
+    
+    img{
+        width: 50px;
+        height: 50px;
     }
 }
