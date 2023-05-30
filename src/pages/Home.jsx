@@ -42,11 +42,7 @@ const Home = () => {
   })
   }, [])
 
-//   useEffect(() => {
-   
-//     dispatch(resetActionOrder())
-    
-// },[])
+ 
 
   useEffect(() =>{
     if(successLogin)
@@ -95,7 +91,7 @@ useEffect(() =>{
   }
 },[])
 
-
+  // expired token => log out account
   useEffect(() => {
     try{
 
@@ -112,6 +108,7 @@ useEffect(() =>{
   },[])
   
 
+  // redict to admmin
   useEffect(() => {
     if(!currentUser){
       navigate('/')

@@ -8,6 +8,7 @@ import { logoutUser } from '../redux/User/userSlice'
 import SearchProduct from './Home/SearchProduct'
 import { useEffect, useState } from 'react'
 import { getCate } from '../redux/Category/categorySlice'
+import { getCartUser } from '../redux/Cart/cartSlice'
 
 const Header = () => {
 
@@ -33,8 +34,14 @@ const Header = () => {
     })
   });
 
-  // console.log('listCate: ', listCate)
-  // console.log('list_cate: ', list_cate)
+  useEffect(() => {
+   
+    if(currentUser?.role === 'user')
+    {
+      dispatch(getCartUser())
+    }
+    
+  },[currentUser])
 
   useEffect(() => {
     dispatch(getCate())

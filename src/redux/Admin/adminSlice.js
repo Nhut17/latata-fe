@@ -20,7 +20,8 @@ const initialState = {
     successAdd: false,
     errorAdd: false,
     images: [],
-    successAddEventBanner: false
+    successAddEventBanner: false,
+    list_year_sale: []
     
 }
 
@@ -206,7 +207,7 @@ export const getSalesCategoriesYear = createAsyncThunk('sale-category/year',
                     })
                     
 
-                    return ret.data.sales_cate
+                    return ret.data.sales_cates_year
                 })
 
 // select sales category
@@ -300,7 +301,17 @@ export const addEventBanner = createAsyncThunk('event-banner',
                     return ret.data
 
                 })
+// 
 
+// get list year summary sales
+export const getListYearSummary = createAsyncThunk('sumSales/list-year',
+                    async (data,thunkAI) => {
+
+                        const ret = await api.get('/api/v1/list-year-sales')
+
+                        return ret.data.list_year
+
+                    } )
 const adminSlice = createSlice({
     name: "admin",
     initialState,
@@ -365,6 +376,10 @@ const adminSlice = createSlice({
         [addEventBanner.fulfilled] : (state,action) => {
             state.successAddEventBanner = true
         }, 
+        [getListYearSummary.fulfilled] : (state,action) => {
+            state.list_year_sale = action.payload
+        }, 
+        
         
     }
 })
