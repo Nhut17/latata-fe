@@ -159,6 +159,7 @@ const ChartPie = () => {
         series: saleCatesYear,
         
         options: {
+          title: 'Biểu đồ YYY',
           chart: {
             width: 380,
             type: 'pie',
@@ -240,11 +241,13 @@ const ChartPie = () => {
                 active === 0 ?
                 <>
                 <Chart
+              
                 options={chart_pie_month_options.options}
                 series={chart_pie_month_options.series}
                 type='pie'
                 width={380}
                 />
+                <span>Biểu đồ thống kê doanh thu sản phẩm theo danh mục (tháng)</span>
                 </>
                 
                   :
