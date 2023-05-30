@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./AdminOrder.scss";
 import AdminOrderMenu from "./AdminOrderMenu/AdminOrderMenu";
 import {Router, Route, Routes } from "react-router-dom";
@@ -7,14 +7,27 @@ import AdminOrderAll from "./AdminOrderAll/AdminOrderAll";
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import { FolderOpenOutlined } from "@ant-design/icons";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllOrder } from "../../../../redux/Order/orderSlice";
 
 
 function AdminOrder(props) {
-  let lengthOrder = 0
+
+  const {listOrder} = useSelector(state => state.order)
+  const statusOrderPending = listOrder.filter(listOrder => listOrder.status == `PENDING`)
+  const statusOrderDelivering = listOrder.filter(listOrder => listOrder.status == `DELIVERING`)
+
+  const dispatch = useDispatch()
+    
+    useEffect(() => {
+
+        dispatch(getAllOrder())
+        
+    },[])
+
   return (
     
       <div className="order" style={{marginTop: 50}}>
-
         <span style={{
           fontWeight: 'bold',
           fontSize: 24
@@ -25,7 +38,7 @@ function AdminOrder(props) {
                 <div className="order-pending">
                   <p className="tab-pending">Chờ xác nhận
 
-                    <span className="quantity">1</span>
+                    <span className="quantity">{statusOrderPending.length}</span>
 
                   </p>
 
@@ -40,20 +53,36 @@ function AdminOrder(props) {
             </TabList>
 
             <TabPanel>
-              <AdminOrderAll status={'PENDING'} />
+              <AdminOrderAll listOrder={listOrder} status={'PENDING'} />
             </TabPanel>
             
-            <TabPanel>
-              <AdminOrderAll status={'DELIVERING'} />
+          
+              {
+                statusOrderDelivering.length == 0 ? (
+                  <TabPanel>
+                      <div className="empty-order">
+                      <p>
+                        <FolderOpenOutlined />
+                        <p>Chưa có đơn hàng nào</p>
 
+                      </p>
+                    </div>
+                  </TabPanel>
+                ):(
+                  <TabPanel>
+                      <AdminOrderAll listOrder={listOrder} status={'DELIVERING'} />
+                  </TabPanel>
+                )
+              }
+
+          
+
+            <TabPanel>
+              <AdminOrderAll listOrder={listOrder} status={'DONE'}/>
             </TabPanel>
 
             <TabPanel>
-              <AdminOrderAll status={'DONE'}/>
-            </TabPanel>
-
-            <TabPanel>
-            <AdminOrderAll status={'CANCELLED'} />
+            <AdminOrderAll listOrder={listOrder} status={'CANCELLED'} />
             </TabPanel>
         </Tabs>
 

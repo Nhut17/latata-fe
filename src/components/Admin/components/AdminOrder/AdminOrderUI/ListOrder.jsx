@@ -5,20 +5,13 @@ import Order from './Order';
 import { FolderOpenOutlined } from '@ant-design/icons';
 
 
-function ListOrder({status}) {
+function ListOrder({status, listOrder}) {
 
-    const { listOrder } = useSelector(state => state.order)
+ 
     
     const statusOrder = listOrder.filter(listOrder => listOrder.status == `${status}`)
 
-
-    const dispatch = useDispatch()
-    
-    useEffect(() => {
-
-        dispatch(getAllOrder())
-        
-    },[])
+  
 
     return (
        <div className="all-order">

@@ -39,10 +39,6 @@ const InfoCustomer = ({totalPrice}) => {
 
   const [showOrderDetail, setShowOrderDetail] = useState(false)
 
-  console.log(addressCurrent)
-  console.log(nameI.length)
-  console.log(phoneI.length)
-
   // create order
   const handleCreateOrder = (formData) =>{
     const data = {
@@ -52,8 +48,6 @@ const InfoCustomer = ({totalPrice}) => {
         address: addressCurrent[0]?.address
     }
         dispatch(createOrder(data))
-
-    
   }
  
 

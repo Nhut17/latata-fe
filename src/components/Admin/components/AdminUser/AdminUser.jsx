@@ -17,11 +17,13 @@ function AdminUser() {
 
 
     return (
+
         <div className="admin-user" style={{marginTop:50}}>
             <span style={{
                 fontWeight: 'bold',
                 fontSize: 24
             }} >Khách hàng</span>
+
             {
                 <ListUser listUser={listUser} />
 

@@ -131,17 +131,19 @@ const shoppingTrendsRef = useRef()
 
   return (
     <div className="home">
+       
+       <MessengerCustomerChat
+                        pageId="100068269041741"
+                        appId="905162213878756"
+                        htmlRef="<REF_STRING>"
+                        />
             <ToastContainer />
+
             {
                 visible &&
                 <>
-                    <ScrollToTop />
-                    {/* <MessengerCustomerChat
-                        pageId="100090895334787"
-                        appId="1385632485087591"
-                        htmlRef="<REF_STRING>"
-                        /> */}
-
+                   
+                    <ScrollToTop /> 
                         
                 </>
             }

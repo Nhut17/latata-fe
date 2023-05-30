@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { DeleteOutlined } from '@ant-design/icons'
 const ItemVoucher = ({data}) => {
 
     const dateStart = new Date(data.createAt)
@@ -12,6 +12,13 @@ const ItemVoucher = ({data}) => {
         <td>{data.sales}</td>
         <td>{dateStart.toLocaleDateString()}</td>
         <td>{dateExpire.toLocaleDateString()}</td>
+        <td
+                className="delete-brand"
+                style={{cursor : 'pointer'}}
+                // onClick={handleDelete}
+            >
+                <DeleteOutlined/>
+          </td>
     </tr>
   )
 }
