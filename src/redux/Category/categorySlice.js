@@ -10,7 +10,7 @@ const initialState = {
     successAddInfoTech: false,
     errorAddInfoTech: '',
     errInfoTech: false,
-    
+    successDelete: false
  
 }
 
@@ -48,6 +48,20 @@ export const addInfoTech = createAsyncThunk('info-tech/add',
 
                 })
 
+// delete info tech
+export const deleteInfoTech = createAsyncThunk('info-tech/delete',
+                async (data,thunkAPI) => {
+
+                    const { id, id_cate} = data
+
+                    const ret = await api.delete(`/api/v1/info-tech/${id_cate}/${id}`)
+
+                    thunkAPI.dispatch(getInfoTech(id_cate))
+
+                    return ret.data
+
+                })
+
 const categorySlice = createSlice({
     name: 'category',
     initialState,
@@ -78,6 +92,9 @@ const categorySlice = createSlice({
         },
         [getInfoTech.pending] : (state,action) => {
             state.loading = true
+        },
+        [deleteInfoTech.fulfilled] : (state,action) => {
+            state.successDelete = true
         },
         
     }

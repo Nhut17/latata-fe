@@ -43,6 +43,7 @@ const ChartColumn = () => {
               date_end: dateEnd.toLocaleDateString('en-US')
            }
           
+           console.log(data)
            dispatch(selectSaleDate(data))
 
          }
@@ -56,10 +57,8 @@ const ChartColumn = () => {
 
       // state admin chart column
       const { list_sale_date,errorChartCol } = useSelector(state => state.admin)
-      // console.log('list_sale_date', list_sale_date)
 
-   
-
+    console.log(list_sale_date)      
 
 
      // handle select  7 days  
@@ -231,17 +230,15 @@ const ChartColumn = () => {
             />
             </div>
 
-            {/* <div className="filter-option">
-                <p>Lọc theo : </p>   
-                <select name="" id="">
-                <option value=""></option>
-                </select>
-            </div> */}
+           
 
 
             
             </div>
-            <div className="filter-result">
+            <div className="filter-result" 
+                 style={{
+                  marginTop: 10 
+                 }} >
                 <button onClick={handleOnClick}>Lọc kết quả</button>
             </div>
 
@@ -254,12 +251,18 @@ const ChartColumn = () => {
               }}>{errorChartCol}</span>
             </div>
 
-            <Chart
-            options={chart_column_options.options}
-            series={chart_column_options.series}
-            type='bar'
-            height='500px'
-            />
+              {
+                list_sale_date.length > 0 ?
+                <Chart
+                options={chart_column_options.options}
+                series={chart_column_options.series}
+                type='bar'
+                height='500px'
+                />
+                :
+                <span>Không có dữ liệu thống kê</span>
+              }
+         
         </div>
     )
 }

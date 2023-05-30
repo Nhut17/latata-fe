@@ -9,6 +9,7 @@ const ItemVoucher = ({data}) => {
     <tr style={{textAlign: 'center', padding: '10px 0px'}}>
         <td>{data.voucher}</td>
         <td>{data.content}</td>
+        <td>{data.sales}</td>
         <td>{dateStart.toLocaleDateString()}</td>
         <td>{dateExpire.toLocaleDateString()}</td>
     </tr>

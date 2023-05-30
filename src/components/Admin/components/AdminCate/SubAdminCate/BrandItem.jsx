@@ -10,7 +10,7 @@ const BrandItem = ({data}) => {
       dispatch(deleteBrand(data._id))
   }
     return(
-        <tr>
+        <tr style={{textAlign: 'center'}}>
             <td>{data.name}</td>
             <td className='brand-item-logo'><img src={data.logo} alt="" /></td>
             <td

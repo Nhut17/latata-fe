@@ -16,7 +16,7 @@ const AdminVoucher = () => {
         formState: { errors }
     } = useForm()
 
-    const [dateStart, setDateStart] = useState()
+    const [dateStart, setDateStart] = useState(new Date())
     const [dateExpired, setDateExpired] = useState()
 
     
@@ -121,7 +121,7 @@ const AdminVoucher = () => {
                             dateFormat='dd-MM-yyyy'
                             placeholderText='Ngày bắt đầu'
                             locale='vi'
-                            maxDate={new Date()}
+                            minDate={new Date()}
                             />   
                               
                         </div>             
@@ -142,7 +142,7 @@ const AdminVoucher = () => {
                                 dateFormat='dd-MM-yyyy'
                                 placeholderText='Ngày kết thúc'
                                 locale='vi'
-                                maxDate={new Date()}
+                                minDate={dateStart}
                                 />  
                         </div> 
 

@@ -13,9 +13,12 @@ function AdminOrder(props) {
   let lengthOrder = 0
   return (
     
-      <div className="order">
+      <div className="order" style={{marginTop: 50}}>
 
-        <span>Orders</span>
+        <span style={{
+          fontWeight: 'bold',
+          fontSize: 24
+        }}>Đơn hàng</span>
         <Tabs>
             <TabList>
               <Tab>

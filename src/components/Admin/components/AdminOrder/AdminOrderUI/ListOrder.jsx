@@ -11,13 +11,6 @@ function ListOrder({status}) {
     
     const statusOrder = listOrder.filter(listOrder => listOrder.status == `${status}`)
 
-    console.log('status ')
-
-   
-    
-
-
-   
 
     const dispatch = useDispatch()
     

@@ -3,7 +3,7 @@ import '../AdminCate.scss'
 import React, { useEffect, useRef, useState, CSSProperties  } from 'react';
 import { useForm } from 'react-hook-form';
 import MoonLoader from "react-spinners/ClipLoader";
-import { addInfoTech, getInfoTech } from '../../../../../redux/Category/categorySlice';
+import { addInfoTech, deleteInfoTech, getInfoTech } from '../../../../../redux/Category/categorySlice';
 import { ToastContainer, toast } from 'react-toastify';
 
 
@@ -12,7 +12,7 @@ const Specification = () => {
     const { handleSubmit, register, formState: {errors} } = useForm()
 
     // variables state redux
-    const { listCate,info_tech, successAddInfoTech, loading } = useSelector(state => state.category)
+    const { listCate,info_tech, successAddInfoTech, loading, successDelete } = useSelector(state => state.category)
     const dispatch = useDispatch()
 
     const [currentCate,setCurrentCate] = useState(listCate ? listCate[0]?._id : '')
@@ -22,9 +22,9 @@ const Specification = () => {
         
     ])
 
-    console.log('info_tech: ',info_tech)
-    console.log('tags: ',tags)
-    console.log('current cate: ', currentCate)
+    // console.log('info_tech: ',info_tech)
+    // console.log('tags: ',tags)
+    // console.log('current cate: ', currentCate)
 
     // handle select category
     const handleSelectCate = (e) => {
@@ -58,7 +58,7 @@ const Specification = () => {
 
              if(!list.includes(el.title))
              {
-                 list.push(el.title)
+                 list.push(el)
              }
          })
          
@@ -92,7 +92,16 @@ const Specification = () => {
         dispatch(addInfoTech(data))
     }
 
-    
+    const handleRemoveTag = (id) => {
+        const data = {
+            id,
+            id_cate: currentCate
+        }
+        console.log(data)
+        // removeTag(index)
+
+        dispatch(deleteInfoTech(data))
+    }
 
     // handle toastify when successfull
     useEffect(() => {
@@ -107,6 +116,20 @@ const Specification = () => {
           progress: undefined,
           theme: "light",
           });
+
+        if(successDelete)
+        {
+            toast.success('Xóa thành công', {
+                position: "top-right",
+                autoClose: 500,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                progress: undefined,
+                theme: "light",
+                });
+        }  
     
         const time = setTimeout(() => {
           window.location.reload()
@@ -117,7 +140,7 @@ const Specification = () => {
         }
     
         }
-      },[successAddInfoTech])
+      },[successAddInfoTech,successDelete])
 
     return (
         <>
@@ -196,8 +219,9 @@ const Specification = () => {
                                 </div>
                                 { info_tech && tags.map((tag, index) => (
                                     <div className="tag-item" key={index}>
-                                        <span className="text">{tag}</span>
-                                        <span className="close" onClick={() => removeTag(index)}>&times;</span>
+                                        <span className="text">{tag.title}</span>
+                                        <span className="close" 
+                                        onClick={() => handleRemoveTag(tag._id)}>&times;</span>
                                     </div>
                                 )) }
                                         

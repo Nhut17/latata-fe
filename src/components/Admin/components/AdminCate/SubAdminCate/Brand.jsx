@@ -132,7 +132,7 @@ const Brand = () => {
                 <div className="list-brand">
                 <p>Danh sách hãng</p>
                 <table>
-                        <tr>
+                        <tr style={{textAlign: 'center'}}>
                             <th>Tên hãng</th>
                             <th>Hình ảnh</th>
 

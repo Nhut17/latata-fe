@@ -83,7 +83,7 @@ const ChartPie = () => {
       {
 
         // sum sales month
-        cates_month.forEach(val => {
+        cates_month?.forEach(val => {
           const find_index = listCates.findIndex(el => val.cate.toLowerCase() === el.toLowerCase() )
 
           if(find_index > -1)
@@ -94,7 +94,7 @@ const ChartPie = () => {
         })
        
         // sum sales year
-        sale_cates_year.forEach(val => {
+        sale_cates_year?.forEach(val => {
           const find_index = listCates.findIndex(el => val.cate.toLowerCase() === el.toLowerCase() )
           if(find_index > -1)
           {
@@ -105,8 +105,7 @@ const ChartPie = () => {
 
       }
 
-      console.log(listCates)
-      console.log(list_sales_year)
+ 
 
      if(list_sales_month.length > 0 ) {
       setSaleCatesMonth(list_sales_month)

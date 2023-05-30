@@ -9,6 +9,7 @@ const VoucherTable = () => {
                 }}>
                         <th>Mã giảm giá</th>
                         <th>Nội dung</th>
+                        <th>Giảm giá</th>
                         <th>Thời gian bắt đầu</th>
                         <th>Thời gian kết thúc</th>
                 </tr>

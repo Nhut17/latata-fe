@@ -28,6 +28,8 @@ const Introduce = ({data}) => {
     
     const [isStock,setIsStock] = useState(currentProduct ? data.stock - currentProduct?.quantity : data.stock)
 
+    console.log(isStock)
+
     // const handleClick = (e) =>{
     //     setActive(e.target.id)
     // }
@@ -86,14 +88,6 @@ const Introduce = ({data}) => {
 
             </div>
             
-        
-
-
-
-       
-       
-            
-
 
         <div className="product-detail-content">
             {/* <div className="product-option">
@@ -114,7 +108,7 @@ const Introduce = ({data}) => {
             <div className="product-price-location">
                 <div className="location">
                     <span>Giá tại</span>
-                    <span> Hồ Chí Minh</span>
+                    <span style={{fontWeight: 'bold'}}> Hồ Chí Minh</span>
                 </div>
                 <div className="product-price">
                     <span className='pricenew'>
@@ -211,7 +205,7 @@ const Introduce = ({data}) => {
             {/* <button className='btn-buy-now' onClick={handleBuy}>MUA NGAY</button> */}
 
             {
-                isStock <= 0 ? 
+                isStock <= 1 ? 
                 (
                 <>
                 {
@@ -222,7 +216,7 @@ const Introduce = ({data}) => {
                     }}>Số lương sản phẩm tồn đã hết. Không thể thêm được nữa!</p>
                 }
                 {
-                    data.stock === 0 &&
+                    data.stock <= 1 &&
                     <p style={{
                         paddingTop: '10px',
                     color: 'red'

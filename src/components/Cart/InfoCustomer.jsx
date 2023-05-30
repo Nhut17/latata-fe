@@ -39,14 +39,19 @@ const InfoCustomer = ({totalPrice}) => {
 
   const [showOrderDetail, setShowOrderDetail] = useState(false)
 
+  console.log(addressCurrent)
+  console.log(nameI.length)
+  console.log(phoneI.length)
+
   // create order
   const handleCreateOrder = (formData) =>{
-    // const data = {
-    //     ...formData,
-    //     address: addressCurrent[0]?.address
-    // }
-       
-    //     dispatch(createOrder(data))
+    const data = {
+        ...formData,
+        name: nameI,
+        phoneNo: phoneI,
+        address: addressCurrent[0]?.address
+    }
+        dispatch(createOrder(data))
 
     
   }
@@ -69,14 +74,14 @@ const InfoCustomer = ({totalPrice}) => {
                     value={nameI}
             
                     {...register('name',{
-                        required: true,
-                       
+                        required: nameI.length > 0 ? false : true
+                     
                     })}
                     />
 
                 {
-                    errors.name?.type === 'required' &&
-                    <span className='err-msg'>Mời bạn nhập họ tên</span> 
+                    (nameI.length === 0 &&errors.name?.type === 'required') ?
+                    <span className='err-msg'>Mời bạn nhập họ tên</span> : ''
                 }
 
                 
@@ -91,8 +96,7 @@ const InfoCustomer = ({totalPrice}) => {
                     type="text"  
                     value={phoneI}
                     {...register('phoneNo',{
-                        required: true,
-                       
+                        required: phoneI.length > 0 ? false : true,
                         pattern: {
                             message: 'Số điện thoại không phù hợp',
                             value: /^\d+$/,
@@ -109,8 +113,8 @@ const InfoCustomer = ({totalPrice}) => {
                     }}>Số điện thoại</span>
 
                     {
-                        errors.phoneNo?.type === 'required' &&
-                        <span className='err-msg'>Mời bạn nhập Số điện thoại</span> 
+                        (phoneI.length === 0 && errors.phoneNo?.type === 'required') ?
+                        <span className='err-msg'>Mời bạn nhập Số điện thoại</span> : ''
                     }
                     {
                         errors.phoneNo?.type === 'pattern' &&
@@ -126,7 +130,7 @@ const InfoCustomer = ({totalPrice}) => {
                     <br />
                 
                     <div className="address-detail" >
-                       {addressCurrent ? addressCurrent[0]?.address : 'Mời bạn thêm địa chỉ'}
+                       {addressCurrent ? addressCurrent[0]?.address : 'Mời bạn thêm địa chỉ'} 
                     </div>
                     <br />
                     <u className='change' onClick={handleClickOrderDetail}>Thay đổi</u>
