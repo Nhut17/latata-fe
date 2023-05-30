@@ -36,7 +36,7 @@ const Header = () => {
 
   useEffect(() => {
    
-    if(currentUser.roles === 'user')
+    if(currentUser?.role === 'user')
     {
       dispatch(getCartUser())
     }
