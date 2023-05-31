@@ -33,6 +33,7 @@ const ItemVoucher = ({data}) => {
         <td>{data.sales}%</td>
         <td style={{
           width: '16%',
+          padding: 10
         }} >{dateStart.toLocaleDateString('en-US',options)}</td>
         <td style={{
           width: '16%',

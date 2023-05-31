@@ -55,8 +55,6 @@ const AdminEvent = () => {
 
     const formData = new FormData()
 
-    // selectedImage.forEach((img,index) => formData.set(`image_${index+1}`, img))
-
     selectedImage.forEach(image => {
       formData.append('images', image)
     })
@@ -114,7 +112,7 @@ const AdminEvent = () => {
       </Tabs>
 
       <>
-        <div style={{
+        {/* <div style={{
           margin: 10
         }}>
           <span>image 1</span>
@@ -125,19 +123,10 @@ const AdminEvent = () => {
                   />
             
         </div>
-        {/* <div style={{
-          margin: 10
-        }}>
-          <span>image 2</span>
-          <input type="file"
-                  accept='images/*'
-                  onChange={handleOnChangeImages}
-                  />
-            
-        </div> */}
+      
       
 
-        <button onClick={handleUpload}>upload</button>
+        <button onClick={handleUpload}>upload</button> */}
 
       </>
 

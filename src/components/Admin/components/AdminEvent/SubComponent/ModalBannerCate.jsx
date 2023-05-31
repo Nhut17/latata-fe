@@ -21,9 +21,7 @@ const ModalBannerCate = ({showBannerCate,setShowBannerCate}) => {
                     <div className="banner-slider">
                         <p style={{fontWeight : 'bold', marginBottom : '10px'}}>Banner slider: </p>
                         <UploadImage width={700} height={180}/>
-                        <UploadImage width={700} height={180}/>
-                        <UploadImage width={700} height={180}/>
-                        <UploadImage width={700} height={180}/>
+                      
                     </div>
 
                     <div className="extra-banner">

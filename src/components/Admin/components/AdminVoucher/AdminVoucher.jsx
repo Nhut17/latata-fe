@@ -169,6 +169,7 @@ const AdminVoucher = () => {
 
                             <DatePicker 
 
+
                                 selected={dateExpired}
                                 onChange={(date) => {
                                     setDateExpired(date);
@@ -179,6 +180,7 @@ const AdminVoucher = () => {
                                 timeCaption="time"
                                 placeholderText='Ngày kết thúc'
                                 locale='vi'
+
                                 minDate={dateStart}
 
                                 />  

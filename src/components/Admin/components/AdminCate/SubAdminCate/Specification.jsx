@@ -11,11 +11,7 @@ const Specification = () => {
 
     const { handleSubmit, register, formState: {errors} } = useForm()
 
-    const currentHref = window.location.href
-
-    const getCurrentRef = currentHref.split('/').reverse()
-
-    console.log(getCurrentRef[0])
+    
 
     // variables state redux
     const { listCate,info_tech, successAddInfoTech, loading, successDelete } = useSelector(state => state.category)
