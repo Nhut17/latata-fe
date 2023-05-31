@@ -150,7 +150,7 @@ const AdminVoucher = () => {
                             dateFormat="dd-MM-yyyy hh:mm aa"
                             timeFormat="HH:mm"
                             showTimeSelect
-                            timeCaption="time"
+                            timeCaption="Thời gian"
                             placeholderText='Ngày bắt đầu'
                             locale='vi'
                             minDate={new Date()}
@@ -169,6 +169,7 @@ const AdminVoucher = () => {
 
                             <DatePicker 
 
+
                                 selected={dateExpired}
                                 onChange={(date) => {
                                     setDateExpired(date);
@@ -179,7 +180,7 @@ const AdminVoucher = () => {
                                 timeCaption="Thời gian"
                                 placeholderText='Ngày kết thúc'
                                 locale='vi'
-                                maxDate={new Date()}
+                                minDate={dateStart}
 
 
                                 />  

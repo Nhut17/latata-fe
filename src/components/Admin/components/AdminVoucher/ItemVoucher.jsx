@@ -1,5 +1,5 @@
 import React from 'react'
-import { DeleteOutlined } from '@ant-design/icons'
+import { DeleteOutlined, SendOutlined } from '@ant-design/icons'
 import { useDispatch } from 'react-redux'
 import { deleteVoucher } from '../../../../redux/Admin/adminSlice'
 const ItemVoucher = ({data}) => {
@@ -28,15 +28,28 @@ const ItemVoucher = ({data}) => {
 
   return (
     <tr style={{textAlign: 'center', padding: '10px 0px'}}>
-        <td>{data.voucher}</td>
-        <td>{data.content}</td>
-        <td>{data.sales}%</td>
+        <td >{data.voucher}</td>
+        <td >{data.content}</td>
+        <td >{data.sales}%</td>
         <td style={{
           width: '16%',
+          padding: 10
         }} >{dateStart.toLocaleDateString('en-US',options)}</td>
         <td style={{
           width: '16%',
         }}>{dateExpire.toLocaleDateString('en-US',options)}</td>
+         <td
+                className="send-voucher"
+                style={{cursor : 'pointer'}}
+               
+            >   <button type='submit' style={{
+              background: 'green',
+              color : 'white',
+              padding : '5px 10px',
+              borderRadius: '20px'
+            }}>Gửi</button>
+                
+          </td>
         <td
                 className="delete-brand"
                 style={{cursor : 'pointer'}}
@@ -44,6 +57,7 @@ const ItemVoucher = ({data}) => {
             >
                 <DeleteOutlined onClick={handleDelete} />
           </td>
+         
     </tr>
   )
 }
