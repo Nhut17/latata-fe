@@ -35,6 +35,21 @@ const Home = () => {
   const [visible,setVisible] = useState(false)
   const dispatch = useDispatch()
 
+   // redict to admmin
+   useEffect(() => {
+    if(!currentUser){
+      navigate('/')
+    }
+   
+    if(currentUser?.role === 'admin'){
+        navigate('/admin')
+      }
+    if(currentUser?.role === 'user'){
+      navigate('/')
+    }
+
+  },[])
+
   useEffect(() => {
     window.scrollTo({
       top: 0,
@@ -108,20 +123,7 @@ useEffect(() =>{
   },[])
   
 
-  // redict to admmin
-  useEffect(() => {
-    if(!currentUser){
-      navigate('/')
-    }
-   
-    if(currentUser?.role === 'admin'){
-        navigate('/admin')
-      }
-    if(currentUser?.role === 'user'){
-      navigate('/')
-    }
-
-  },[])
+ 
 
   useEffect(() => {
     dispatch(getProduct())

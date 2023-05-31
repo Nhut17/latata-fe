@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom'
 import { getBrand, uploadLogo } from '../../../../../redux/Admin/adminSlice'
 import BrandItem from './BrandItem'
 const Brand = () => {
+    
 
     const navigate = useNavigate()
 
@@ -132,7 +133,7 @@ const Brand = () => {
                 <div className="list-brand">
                 <p>Danh sách hãng</p>
                 <table>
-                        <tr>
+                        <tr style={{textAlign: 'center'}}>
                             <th>Tên hãng</th>
                             <th>Hình ảnh</th>
 

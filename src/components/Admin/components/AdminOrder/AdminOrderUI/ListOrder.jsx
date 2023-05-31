@@ -11,17 +11,7 @@ function ListOrder({status, listOrder}) {
     
     const statusOrder = listOrder.filter(listOrder => listOrder.status == `${status}`)
 
-   
-
-    console.log('status ')
-
-   
-    
-
-
-   
-
-    
+  
 
     return (
        <div className="all-order">

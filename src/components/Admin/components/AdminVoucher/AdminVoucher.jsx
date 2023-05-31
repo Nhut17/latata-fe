@@ -8,6 +8,11 @@ import { addVoucher } from '../../../../redux/Admin/adminSlice';
 import { toast , ToastContainer} from 'react-toastify'
 import VoucherTable from './VoucherTable';
 
+
+
+
+
+
 const AdminVoucher = () => {
 
     const {
@@ -17,7 +22,7 @@ const AdminVoucher = () => {
         formState: { errors }
     } = useForm()
 
-    const [dateStart, setDateStart] = useState()
+    const [dateStart, setDateStart] = useState(new Date())
     const [dateExpired, setDateExpired] = useState()
 
     
@@ -125,7 +130,7 @@ const AdminVoucher = () => {
                             timeCaption="time"
                             placeholderText='Ngày bắt đầu'
                             locale='vi'
-                            maxDate={new Date()}
+                            minDate={new Date()}
                             />   
                               
                         </div>             
@@ -138,6 +143,7 @@ const AdminVoucher = () => {
                         <span style={{width : '150px'}}>Ngày kết thúc: </span>
                      
                         <div className="input-to-date">
+
                             <DatePicker 
                                 selected={dateExpired}
                                 onChange={(date) => {
@@ -151,7 +157,8 @@ const AdminVoucher = () => {
                                 placeholderText='Ngày kết thúc'
                                 locale='vi'
                                 maxDate={new Date()}
-                                
+                                minDate={dateStart}
+
                                 />  
                         </div> 
 

@@ -69,7 +69,6 @@ function Order({data}) {
   }
 
   const [showOrderDetail, setShowOrderDetail] = useState(false)
-  console.log('show order: ' + showOrderDetail )
 
   return (
     

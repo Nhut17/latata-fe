@@ -21,8 +21,7 @@ const ModalBannerHome = ({showBannerHome,setShowBannerHome}) => {
             >
                 <p style={{fontWeight : 'bold', marginBottom : '10px'}}>Banner chính trang chủ: </p>
                 <div className='flex'>
-                    <UploadImage width={450} height={200} title='Banner trước' icon={''}/>
-                    <UploadImage width={450} height={200} title='Banner sau' icon={<CloudUploadOutlined/>}/>
+                    <UploadImage width={800} height={200}/>
                 </div>
                 
 

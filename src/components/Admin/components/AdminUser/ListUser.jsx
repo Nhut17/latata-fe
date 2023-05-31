@@ -6,7 +6,7 @@ function ListUser({listUser}) {
     // const {users} = props
 
     return (
-        <div className="admin-user-list">
+        <div className="admin-user-list" style={{marginTop: 30}}>
             <table>
                 <tr style={{textAlign: 'center'}}>
                     <th>STT</th>

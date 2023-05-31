@@ -3,6 +3,7 @@ import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 import '../AdminEvent.scss'
 import UploadImage from './UploadImage';
+import { CloudUploadOutlined } from '@ant-design/icons'
 
 const ModalSliderHome = ({showSliderHome,setShowSliderrHome}) => {
 
@@ -20,11 +21,8 @@ const ModalSliderHome = ({showSliderHome,setShowSliderrHome}) => {
                 }}
             >
                 <p style={{fontWeight : 'bold', marginBottom : '10px'}}>Banner slider trang chủ: </p>
-                <UploadImage width={500} height={150}/>
-                <UploadImage width={500} height={150}/>
-                <UploadImage width={500} height={150}/>
-                <UploadImage width={500} height={150}/>
-                <UploadImage width={500} height={150}/>
+                <UploadImage width={500} height={150} />
+                
                 
 
                 

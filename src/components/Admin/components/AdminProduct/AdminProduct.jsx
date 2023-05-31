@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import ListProduct from "./ListProduct";
 import "./AdminProduct.scss";
 import { getProduct } from "../../../../redux/Product/productSlice";
+import ScrollToTop from "../../../Home/ScrollToTop";
+
 
 const AdminProduct = () => {
 
@@ -11,6 +13,8 @@ const AdminProduct = () => {
   const { listProduct } = useSelector(state => state.product)
 
   const [search,setSearch] = useState('')
+  const [visible,setVisible] = useState(false)
+  
 
   useEffect(()=> {
     dispatch(getProduct())
@@ -19,12 +23,35 @@ const AdminProduct = () => {
   const searchProduct =  (list_product) => {
       return list_product.filter(val => val.name?.toLowerCase().includes(search.toLowerCase()))
   }
+
+  useEffect(() => {
+
+    const scrollTo = () => {
+      if(window.scrollY > 1000)
+      {
+        setVisible(true)
+      }
+      else{
+        setVisible(false)
+      }
+    }
+
+    document.addEventListener('scroll', scrollTo)
+
+    return () => {
+      document.removeEventListener('scroll', scrollTo)
+    }
+
+  },[])
   
 
   return (
     <div className="admin-product">
 
-     
+    {
+      visible &&
+     <ScrollToTop />
+    }
 
       <div className="admin-product-link">
         <div className="input-search">

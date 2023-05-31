@@ -3,6 +3,7 @@ import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 import '../AdminEvent.scss'
 import UploadImage from './UploadImage';
+import { CloudUploadOutlined } from '@ant-design/icons'
 const ModalExtraBanner = ({showExtraBanner,setShowExtraBanner}) => {
     const handleClickExtraBanner = () => {
         setShowExtraBanner(false)
@@ -18,7 +19,7 @@ const ModalExtraBanner = ({showExtraBanner,setShowExtraBanner}) => {
                     }}
                 >
                     <p style={{fontWeight : 'bold', marginBottom : '10px'}}>Banner phụ: </p>
-                    <UploadImage width={850} height={150}/>              
+                    <UploadImage width={850} height={150} />              
                     <UploadImage width={850} height={150}/>
 
                     <div className="save-image">

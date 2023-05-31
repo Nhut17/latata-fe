@@ -27,17 +27,22 @@ function AdminOrder(props) {
 
   return (
     
-    
-      <div className="order">
-
-        <span>Orders</span>
+      <div className="order" style={{marginTop: 50}}>
+        <span style={{
+          fontWeight: 'bold',
+          fontSize: 24
+        }}>Đơn hàng</span>
         <Tabs>
             <TabList>
               <Tab>
                 <div className="order-pending">
                   <p className="tab-pending">Chờ xác nhận
 
-                    <span className="quantity">{statusOrderPending.length}</span>
+                    {
+                      statusOrderPending.length == 0 ? (''):(
+                        <span className="quantity">{statusOrderPending.length}</span>
+                      )
+                    }
 
                   </p>
 
@@ -51,9 +56,24 @@ function AdminOrder(props) {
               <Tab>Đã hủy</Tab>
             </TabList>
 
-            <TabPanel>
-              <AdminOrderAll listOrder={listOrder} status={'PENDING'} />
-            </TabPanel>
+            {
+                statusOrderPending.length == 0 ? (
+                  <TabPanel>
+                      <div className="empty-order">
+                      <p>
+                        <FolderOpenOutlined />
+                        <p>Chưa có đơn hàng nào</p>
+
+                      </p>
+                    </div>
+                  </TabPanel>
+                ):(
+                  <TabPanel>
+                      <AdminOrderAll listOrder={listOrder} status={'PENDING'} />
+                  </TabPanel>
+                )
+              }
+
             
           
               {

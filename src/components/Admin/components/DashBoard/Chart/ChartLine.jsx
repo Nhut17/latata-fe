@@ -147,7 +147,7 @@ const ChartLine = () => {
             </div>
 
               {
-                currentYear == false ? (<Chart
+                currentYear  ? (<Chart
                 options={chartOptions.options}
                 series={chartOptions.series}
                 type='line'

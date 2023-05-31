@@ -53,10 +53,11 @@ const OrderList = ({ data }) => {
 
           
             <div className='summary-order flex j-between'>
-                
-                <p className='summary-address'>Địa chỉ:{data.address}</p>
-                <p className='summary-date'>Ngày đặt: {data.createAt}</p>
-                <p className='summary-phone'>Số điện thoại:{data.phoneNo}</p>
+                <div className='group'>
+                    <p className='summary-address'><b>Địa chỉ</b>: {data.address}</p>
+                    <p className='summary-date'><b>Ngày đặt</b>: {data.createAt}</p>
+                    <p className='summary-phone'>Số điện thoại: {data.phoneNo}</p>
+                </div>
                
 
                 <p className='summary-total-price'>Tổng tiền: {data.totalPrice.toString()
