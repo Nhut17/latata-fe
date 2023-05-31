@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getVouchers } from '../../../../redux/Admin/adminSlice'
 import ItemVoucher from './ItemVoucher'
 
+
 const ListVoucher = () => {
 
     const dispatch = useDispatch()
@@ -12,7 +13,7 @@ const ListVoucher = () => {
         dispatch(getVouchers())
     },[])
 
-    console.log(vouchers)
+    
 
   return (
     <>
