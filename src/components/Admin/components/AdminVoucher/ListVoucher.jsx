@@ -13,7 +13,7 @@ const ListVoucher = () => {
         dispatch(getVouchers())
     },[])
 
-    console.log(vouchers)
+    
 
   return (
     <>

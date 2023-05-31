@@ -282,7 +282,16 @@ export const addVoucher = createAsyncThunk('voucher/add',
                 })
 
 
+// delete voucher
+export const deleteVoucher = createAsyncThunk('voucher/delete', 
+                async (id,thunkAPI) => {
 
+                    const ret = await api.delete(`/api/v1/voucher/${id}`)
+
+
+                    thunkAPI.dispatch(getVouchers())
+                    return ret.data
+                })
 
 // add event banner
 export const addEventBanner = createAsyncThunk('event-banner', 

@@ -5,7 +5,7 @@
   - Nguyễn Ngọc Bích Trâm   MSSV: 19110299.
   - Phạm Quỳnh Nhựt         MSSV: 19110258. 
 
-
+- Link deploy: <b><u>https://latata-fe-vert.vercel.app/</u></br>
 ## Project Structure
 
 <pre>

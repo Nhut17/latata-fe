@@ -178,7 +178,7 @@ const ChartPie = () => {
     
 
     return (
-        <div className="chart-pie" style={{'width': '34%'}}>
+        <div className="chart-pie" style={{'width': '34%' }}>
             <div className="filter-chart-pie">
 
                 <div className="group-btn " 
@@ -229,9 +229,6 @@ const ChartPie = () => {
                 </div>
                 <div className="filter-option">
         
-                {/* <div className="filter-result">
-                    <button >Lọc kết quả</button>
-                </div> */}
                 </div>
             </div>
 
