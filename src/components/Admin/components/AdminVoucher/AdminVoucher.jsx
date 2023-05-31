@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addVoucher } from '../../../../redux/Admin/adminSlice';
 import { toast , ToastContainer} from 'react-toastify'
 import VoucherTable from './VoucherTable';
+
 const AdminVoucher = () => {
 
     const {
@@ -113,12 +114,15 @@ const AdminVoucher = () => {
 
 
                         <div className="input-from-date">
-                        <DatePicker
+                        <DatePicker 
                             selected={dateStart}
                             onChange={(date) => {
                                 setDateStart(date);
                             }}
-                            dateFormat='dd-MM-yyyy'
+                            dateFormat="dd-MM-yyyy hh:mm aa"
+                            timeFormat="HH:mm"
+                            showTimeSelect
+                            timeCaption="time"
                             placeholderText='Ngày bắt đầu'
                             locale='vi'
                             maxDate={new Date()}
@@ -134,15 +138,20 @@ const AdminVoucher = () => {
                         <span style={{width : '150px'}}>Ngày kết thúc: </span>
                      
                         <div className="input-to-date">
-                            <DatePicker
+                            <DatePicker 
                                 selected={dateExpired}
                                 onChange={(date) => {
                                     setDateExpired(date);
                                 }}
-                                dateFormat='dd-MM-yyyy'
+                                showTimeSelect
+                                dateFormat="dd-MM-yyyy hh:mm aa"
+                                timeFormat="HH:mm"
+                                
+                                timeCaption="time"
                                 placeholderText='Ngày kết thúc'
                                 locale='vi'
                                 maxDate={new Date()}
+                                
                                 />  
                         </div> 
 
