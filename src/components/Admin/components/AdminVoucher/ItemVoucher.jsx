@@ -2,11 +2,9 @@ import React, { useEffect } from 'react'
 import { DeleteOutlined, SendOutlined } from '@ant-design/icons'
 import { useDispatch, useSelector } from 'react-redux'
 import { deleteVoucher, sendVoucher } from '../../../../redux/Admin/adminSlice'
-import { ToastContainer, toast } from 'react-toastify'
 const ItemVoucher = ({data}) => {
 
     const dispatch = useDispatch()
-    const { successSendVoucher} = useSelector(state => state.admin)
 
     const dateStart = new Date(data.createAt)
     const dateExpire = new Date(data.expiredIn)
@@ -21,33 +19,8 @@ const ItemVoucher = ({data}) => {
       second: '2-digit',
     };
 
-    console.log('success: ' + successSendVoucher)
 
-    useEffect(() => {
-
-      if(successSendVoucher)
-      {
-          toast.success('Gửi voucher thành công!', {
-              position: "top-right",
-              autoClose: 1000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: false,
-              draggable: false,
-              progress: undefined,
-              theme: "light",
-              });
-        
-            const time = setTimeout(() => {
-              window.location.reload()
-            },1500)
-        
-            return () => {
-              clearTimeout(time)
-            }
-      }
-
-  },[successSendVoucher])
+   
 
     const handleSendVoucher = () => {
       
@@ -67,7 +40,7 @@ const ItemVoucher = ({data}) => {
 
   return (
     <>
-    <ToastContainer />
+    
     <tr style={{textAlign: 'center', padding: '10px 0px'}}>
         <td >{data.voucher}</td>
         <td >{data.content}</td>
