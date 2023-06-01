@@ -1,10 +1,11 @@
 import React from 'react'
 import { DeleteOutlined, SendOutlined } from '@ant-design/icons'
 import { useDispatch } from 'react-redux'
-import { deleteVoucher } from '../../../../redux/Admin/adminSlice'
+import { deleteVoucher, sendVoucher } from '../../../../redux/Admin/adminSlice'
 const ItemVoucher = ({data}) => {
 
     const dispatch = useDispatch()
+   
 
     const dateStart = new Date(data.createAt)
     const dateExpire = new Date(data.expiredIn)
@@ -42,7 +43,7 @@ const ItemVoucher = ({data}) => {
                 className="send-voucher"
                 style={{cursor : 'pointer'}}
                
-            >   <button type='submit' style={{
+            >   <button  type='submit' style={{
               background: 'green',
               color : 'white',
               padding : '5px 10px',
