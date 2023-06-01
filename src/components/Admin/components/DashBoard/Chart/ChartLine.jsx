@@ -92,7 +92,7 @@ const ChartLine = () => {
             curve: 'smooth'
           },
           title: {
-            text: 'Biểu đồ XXX',
+            text: 'Biểu đồ thống kê doanh số - sản phẩm - người dùng theo năm',
             align: 'center',
             style: {
               fontSize:  '18px',

@@ -17,7 +17,7 @@ const VoucherItem = ({data}) => {
                 <p>MÃ GIẢM GIÁ: <b>{data.voucher}</b></p>
             </div>
             <div className="time-voucher">
-                <p>Có giá trị</p>
+                {/* <p>Hiệu lực đến {data.expiredIn}</p> */}
             </div>
         </div>
     </div>

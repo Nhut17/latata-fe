@@ -56,16 +56,18 @@ const InfoVoucher = () => {
         
           (<div className="modal-list-voucher" 
                 style={{
-                  height : lengthVoucher <= 3 ? '300px' : 'auto',
-                  overflowY : lengthVoucher <= 3 ? 'scroll' : '',
+                  height : lengthVoucher <= 3 ? 'auto' : '300px',
+                  overflowY : lengthVoucher <= 3 ? '' : 'scroll',
 
                 }}
             >
               {
-                vouchers.length > 0 && 
+                vouchers.length == 0 ?
+               (<p style={{textAlign : 'center',padding : '5px'}}>Không có voucher</p>):(
                 vouchers.map(val => 
-                <VoucherItem data={val}/>
-                )
+                  <VoucherItem data={val}/>
+                  )
+               )
               }
               
           </div>)

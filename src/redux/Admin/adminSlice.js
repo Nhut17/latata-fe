@@ -21,7 +21,8 @@ const initialState = {
     errorAdd: false,
     images: [],
     successAddEventBanner: false,
-    list_year_sale: []
+    list_year_sale: [],
+    successSendVoucher: false
     
 }
 
@@ -399,6 +400,9 @@ const adminSlice = createSlice({
         }, 
         [getListYearSummary.fulfilled] : (state,action) => {
             state.list_year_sale = action.payload
+        }, 
+        [sendVoucher.fulfilled] : (state,action) => {
+            state.successSendVoucher = true
         }, 
         
         

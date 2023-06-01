@@ -150,7 +150,7 @@ const ChartColumn = () => {
           },
 
           title: {
-            text: 'Biểu đồ XXX',
+            text: 'Biểu đồ thống kêu doanh số sản phẩm theo ngày',
             align: 'center',
             style: {
               fontSize:  '18px',

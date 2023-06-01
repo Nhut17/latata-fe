@@ -129,9 +129,9 @@ const MainProfile = ({currentUser}) => {
                     <span>Ngày sinh</span>
                     <input  {...register("birthday")} type='date' defaultValue={currentUser?.birthday} disabled/>
 
-                    <Link to='/reset-password'>
+                    {/* <Link to='/reset-password'>
                     <p className='change-pass'><u>Đổi mật khẩu</u></p>
-                    </Link>
+                    </Link> */}
 
                     <button type='submit'>Lưu</button>
                 </form>
