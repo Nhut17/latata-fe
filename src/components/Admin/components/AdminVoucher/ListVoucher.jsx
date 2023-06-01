@@ -7,7 +7,9 @@ import ItemVoucher from './ItemVoucher'
 const ListVoucher = () => {
 
     const dispatch = useDispatch()
-    const { vouchers } = useSelector(state => state.admin)
+    const { vouchers,successSendVoucher } = useSelector(state => state.admin)
+
+    console.log('suces list: ', successSendVoucher)
 
     useEffect(() => {
         dispatch(getVouchers())
