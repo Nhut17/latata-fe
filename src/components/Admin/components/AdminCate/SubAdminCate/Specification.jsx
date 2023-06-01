@@ -11,6 +11,8 @@ const Specification = () => {
 
     const { handleSubmit, register, formState: {errors} } = useForm()
 
+    
+
     // variables state redux
     const { listCate,info_tech, successAddInfoTech, loading, successDelete } = useSelector(state => state.category)
     const dispatch = useDispatch()

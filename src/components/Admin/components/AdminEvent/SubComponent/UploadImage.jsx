@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import '../AdminEvent.scss'
 import { CloudUploadOutlined } from '@ant-design/icons'
-const UploadImage = ({width, height,title,icon}) => {
+const UploadImage = ({width, height,icon}) => {
   const [previewImg,setPreviewImg] = useState('')
   const [selectImage,setSelectImage] = useState('')
 
@@ -33,7 +33,7 @@ const UploadImage = ({width, height,title,icon}) => {
                   zIndex: 100,
                   cursor: 'pointer'
                   }}>
-                    {icon}
+                    <CloudUploadOutlined/>
                     
                   </span>
                   <img style={{height: '110px', background: 'white'}}  src={previewImg} alt="Tải hình ảnh"  
@@ -51,7 +51,7 @@ const UploadImage = ({width, height,title,icon}) => {
               onChange={handleImage}
               accept="images/*"
               />
-              <p style={{textAlign : 'center', marginTop: '10px'}}> <b>{title}</b> </p>
+              {/* <p style={{textAlign : 'center', marginTop: '10px'}}> <b>{title}</b> </p> */}
             </div>
           </form>
 
