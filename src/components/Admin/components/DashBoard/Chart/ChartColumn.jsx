@@ -58,7 +58,7 @@ const ChartColumn = () => {
       // state admin chart column
       const { list_sale_date,errorChartCol } = useSelector(state => state.admin)
 
-    console.log(list_sale_date)      
+       
 
 
      // handle select  7 days  
@@ -75,10 +75,10 @@ const ChartColumn = () => {
         setDateEnd(previous_day)
 
         const data = {
-          // date_start : seven_days.toLocaleDateString('en-US'),
-          // date_end: previous_day.toLocaleDateString('en-US')
-          date_start : '4/24/2023',
-          date_end: '5/5/2023'
+          date_start : seven_days.toLocaleDateString('en-US'),
+          date_end: previous_day.toLocaleDateString('en-US')
+          // date_start : '4/24/2023',
+          // date_end: '5/5/2023'
         }
 
         

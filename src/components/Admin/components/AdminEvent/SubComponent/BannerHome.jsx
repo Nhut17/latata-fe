@@ -79,8 +79,10 @@ const BannerHome = () => {
 
                 <div className="extra-banner">
                     <p>Banner phụ: </p>
-                    <img src="https://img.tgdd.vn/imgt/f_webp,fit_outside,quality_100/https://cdn.tgdd.vn/2023/05/banner/Cuoi-tuan-1200x120.png" alt="" />
-                    <img src="https://img.tgdd.vn/imgt/f_webp,fit_outside,quality_100/https://cdn.tgdd.vn/2023/05/banner/Cuoi-tuan-1200x120.png" alt="" />
+                    <div style={{textAlign: 'center'}}>
+                        <img src="https://img.tgdd.vn/imgt/f_webp,fit_outside,quality_100/https://cdn.tgdd.vn/2023/05/banner/Cuoi-tuan-1200x120.png" alt="" />
+                        <img src="https://img.tgdd.vn/imgt/f_webp,fit_outside,quality_100/https://cdn.tgdd.vn/2023/05/banner/Cuoi-tuan-1200x120.png" alt="" />
+                    </div>
 
                     <div className="edit" onClick={handleClickExtraBanner}>
                         <button>Chỉnh sửa</button>

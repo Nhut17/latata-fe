@@ -4,36 +4,45 @@ import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { getSalesCategoriesMonth, getSalesCategoriesYear, selectSaleDate } from '../../../../../redux/Admin/adminSlice';
 import { motion } from 'framer-motion'
-
+import DatePicker from "react-datepicker";  
+import "react-datepicker/dist/react-datepicker.css";  
 
 const ChartPie = () => {
     const dispatch = useDispatch()
     const [active, setActive] = useState(0);
 
-    const handleClick = e => {
-    const index = parseInt(e.target.id, 0);
-      if (index !== active) {
-        setActive(index);
-      }
-    };
-
-
+   
     // state admin
     const { sale_cates_year, sale_cates_month } = useSelector(state => state.admin)
     const { listCate }  = useSelector(state => state.category)
 
 
+    console.log(sale_cates_year)
+
     // state list cate
     const [listCates,setListCates] = useState([])
+
+     //date
+     const date = new Date()
+     const [month,setMonth] = useState(date.getMonth() + 1)
+     const [year,setYear] = useState(date.getFullYear())
+
+
+    // handle select sale month or year
+    const handleClick = e => {
+      const index = parseInt(e.target.id, 0);
+        if (index !== active) {
+          setActive(index);
+        }
+      };
+  
+  
 
 
     // dispatch
     useEffect(() => {
 
-      //date
-      const date = new Date()
-      const month = date.getMonth() + 1
-      const year = date.getFullYear()
+  
 
       // dispatch sale cates month
         dispatch(getSalesCategoriesMonth({
@@ -176,10 +185,14 @@ const ChartPie = () => {
       }
 
     
+      
 
     return (
-        <div className="chart-pie" style={{'width': '34%'}}>
-            <div className="filter-chart-pie">
+        <div className="chart-pie" style={{'width': '34%' }}>
+            <div className="filter-chart-pie" 
+              style={{
+                  display: 'flex'
+              }}>
 
                 <div className="group-btn " 
                      style={{
@@ -228,11 +241,21 @@ const ChartPie = () => {
                 </div>
                 </div>
                 <div className="filter-option">
-        
-                {/* <div className="filter-result">
-                    <button >Lọc kết quả</button>
-                </div> */}
+               
+                      {
+                        active === 0 ? 
+                            <select name="" id="">
+                              <option value="">Tháng {month}</option>
+                            </select>
+                        :
+                            <select name="" id="">
+                              <option value="">Năm {year}</option>
+                            </select>
+                      }
+                        
+
                 </div>
+
             </div>
 
               {

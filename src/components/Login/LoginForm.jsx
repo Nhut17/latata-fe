@@ -11,7 +11,7 @@ const LoginForm = () => {
     const {  errorLogin } = useSelector(state => state.user)
 
     // console.log('error login: ' + errorLogin)
-
+    
 
     const { 
         register,
@@ -22,6 +22,10 @@ const LoginForm = () => {
     const onHandleSubmit = (formData) => {
             dispatch(loginUser(formData))
             // navigate('/')
+    }
+
+    const googleAuth = () => {
+        window.open(`http://localhost:4000/api/v1/auth/google/callback`, "_self")
     }
 
   return (
@@ -85,7 +89,12 @@ const LoginForm = () => {
                     </div>
                 
             </div>
+        {/* <button type='button' 
+                onClick={googleAuth} >Sign up Google</button> */}
+
         </div> 
+
+
     </form>
   )
 }
