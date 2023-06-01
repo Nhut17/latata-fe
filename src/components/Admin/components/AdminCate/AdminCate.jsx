@@ -10,7 +10,7 @@ import ListCate from "./ListCate";
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import Cate from "./SubAdminCate/Cate";
 import Specification from "./SubAdminCate/Specification";
-import Brand from "./SubAdminCate/Brand"
+// import Brand from "./SubAdminCate/Brand"
 import CateNavBar from "./SubAdminCate/CateNavBar";
 function AdminCate() {
  
