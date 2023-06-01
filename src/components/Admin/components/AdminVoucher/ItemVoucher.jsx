@@ -50,7 +50,15 @@ const ItemVoucher = ({data}) => {
   },[successSendVoucher])
 
     const handleSendVoucher = () => {
-      dispatch(sendVoucher(data.voucher))
+      
+      const sendData = {
+          voucher: data.voucher,
+          sales: data.sales,
+          createAt: dateStart.toLocaleDateString('en-US',options),
+          expiredIn: dateExpire.toLocaleDateString('en-US',options)
+
+      }
+      dispatch(sendVoucher(sendData))
     }
 
     const handleDelete = () =>{
