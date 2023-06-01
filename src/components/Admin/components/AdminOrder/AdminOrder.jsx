@@ -16,7 +16,8 @@ function AdminOrder(props) {
   const {listOrder} = useSelector(state => state.order)
   const statusOrderPending = listOrder.filter(listOrder => listOrder.status == `PENDING`)
   const statusOrderDelivering = listOrder.filter(listOrder => listOrder.status == `DELIVERING`)
-
+  const statusOrderDone = listOrder.filter(listOrder => listOrder.status == `DONE`)
+  const statusOrderCancelled = listOrder.filter(listOrder => listOrder.status == `CANCELLED`)
   const dispatch = useDispatch()
     
     useEffect(() => {
@@ -93,16 +94,45 @@ function AdminOrder(props) {
                   </TabPanel>
                 )
               }
+              {
+                statusOrderDone.length == 0 ? (
+                  <TabPanel>
+                      <div className="empty-order">
+                      <p>
+                        <FolderOpenOutlined />
+                        <p>Chưa có đơn hàng nào</p>
+
+                      </p>
+                    </div>
+                  </TabPanel>
+                ):(
+                  <TabPanel>
+                      <AdminOrderAll listOrder={listOrder} status={'DONE'} />
+                  </TabPanel>
+                )
+              }
 
           
 
-            <TabPanel>
-              <AdminOrderAll listOrder={listOrder} status={'DONE'}/>
-            </TabPanel>
+              {
+                statusOrderCancelled.length == 0 ? (
+                  <TabPanel>
+                      <div className="empty-order">
+                      <p>
+                        <FolderOpenOutlined />
+                        <p>Chưa có đơn hàng nào</p>
 
-            <TabPanel>
-            <AdminOrderAll listOrder={listOrder} status={'CANCELLED'} />
-            </TabPanel>
+                      </p>
+                    </div>
+                  </TabPanel>
+                ):(
+                  <TabPanel>
+                      <AdminOrderAll listOrder={listOrder} status={'CANCELLED'} />
+                  </TabPanel>
+                )
+              }
+
+            
         </Tabs>
 
         

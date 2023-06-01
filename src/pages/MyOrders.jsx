@@ -85,12 +85,13 @@ useEffect(() => {
               <span className='title'>Đơn hàng của tôi</span>
               <div className='my-order-list'>
                   {
-                      myOrders &&
-                      
-                        myOrders.map(data => (
+                      myOrders.length == 0 ?(<p style={{textAlign : 'center', margin: '50px auto'}}>Không có đơn hàng nào</p>)
+                      :
+                       ( myOrders.map(data => (
                           
                           <OrderList data={data} />
                         ))
+                        )
                       
                       
                   }

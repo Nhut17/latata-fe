@@ -40,13 +40,14 @@ const OrderList = ({ data }) => {
 
 
          {
+           
+                data.orderItems.map(orders => (
 
-            data.orderItems.map(orders => (
-
-                <EachTransaction evaluated={evaluated}
-                                orders={orders}
-                                 />
-            ))
+                    <EachTransaction evaluated={evaluated}
+                                    orders={orders}
+                                     />
+                ))
+            
 
             }
            

@@ -12,25 +12,16 @@ const CateNavBar = ({children}) => {
         <>
             <div className="list-box"   >
                 <Link to='/admin/category' >
-                    <button className="cate" style={getCurrentRef[0] == 'category' ? {
-                    background : '#4D46FA',
-                    color : 'white'
-                } : {}}>Danh mục</button>
+                    <button className="cate" >Danh mục</button>
                         
                 </Link>
                 <Link to='/admin/category/brand' >
-                    <button className="brand" style={getCurrentRef[0] == 'brand' ? {
-                    background : '#4D46FA',
-                    color : 'white'
-                } : {}}>Hãng</button>
+                    <button className="brand" >Hãng</button>
                 
                 </Link >
 
                 <Link to='/admin/category/specification'>
-                    <button className="specification" style={getCurrentRef[0] == 'specification' ? {
-                    background : '#4D46FA',
-                    color : 'white'
-                } : {}}>Thông số kĩ thuật</button>
+                    <button className="specification" >Thông số kĩ thuật</button>
                 
                 </Link>
             </div>
