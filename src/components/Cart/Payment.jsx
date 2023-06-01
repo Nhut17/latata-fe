@@ -5,6 +5,7 @@ import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import api from '../../api/api'
 
+
 const Payment = ({amount}) => {
 
   const { url_create } = useSelector(state => state.payment)
