@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getVouchers } from '../../redux/Admin/adminSlice'
 
 const InfoVoucher = () => {
+  const currenDate = new Date()
 
   const dispatch = useDispatch()
   const {vouchers} = useSelector(state => state.admin)

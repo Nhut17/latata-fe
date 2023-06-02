@@ -316,14 +316,23 @@ export const addEventBanner = createAsyncThunk('event-banner',
                                 }
                             }
                         
-                    const ret = await api.post('/api/v1/event-banner',data,config)
+                    const ret = await api.post('/api/v1/event-banner/create',data,config)
 
                     // thunkAPI.dispatch(getBann())
 
                     return ret.data
 
                 })
-// 
+// get one event banner
+export const getOneEventBanner = createAsyncThunk('event-banner/getOne',
+                async (data,thunkAPI) => {
+
+                    const ret = await api.get('/api/v1/event-banner/get-one')
+
+                    return ret.data
+
+
+                })
 
 // get list year summary sales
 export const getListYearSummary = createAsyncThunk('sumSales/list-year',
