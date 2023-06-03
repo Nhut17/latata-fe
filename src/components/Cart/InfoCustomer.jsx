@@ -57,7 +57,11 @@ const InfoCustomer = ({totalPrice}) => {
   })
  
 
+  const [getSaleVoucher, setGetSaleVoucher]= useState()
 
+  console.log('get' + getSaleVoucher)
+  let privisional = getSaleVoucher/100*totalPrice
+  let total = totalPrice- privisional 
 
   return (
     <>
@@ -137,7 +141,7 @@ const InfoCustomer = ({totalPrice}) => {
 
             </div>
 
-           <InfoVoucher />
+           <InfoVoucher setGetSaleVoucher={setGetSaleVoucher}/>
 
 
             <div className="note">
@@ -153,12 +157,22 @@ const InfoCustomer = ({totalPrice}) => {
             </div>
 
             </div> */}
+            <div className="privisional flex j-between" style={{marginBottom: '10px'}}>
+                <span>Tạm tính: </span>
+                <span className="price">{totalPrice.toString()
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}<span className='currency'>&#8363;</span></span>
+            </div>
 
-            
+            <div className="sales flex j-between">
+                <span>Giảm giá: </span>
+                <span className="price">-{privisional.toString()
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}<span className='currency'>&#8363;</span></span>
+            </div>
+           
             <div className='final-total'>
             <div className="total">
             <span className="tt-price">Tổng tiền:</span>
-            <span className="price">{totalPrice.toString()
+            <span className="price">{total.toString()
                 .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}<span className='currency'>&#8363;</span></span>
             </div>
 

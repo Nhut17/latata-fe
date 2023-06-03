@@ -4,7 +4,7 @@ import VoucherItem from './VoucherItem'
 import { useDispatch, useSelector } from 'react-redux'
 import { getVouchers, useVoucher } from '../../redux/Admin/adminSlice'
 
-const InfoVoucher = ({}) => {
+const InfoVoucher = ({setGetSaleVoucher}) => {
   
 
   const dispatch = useDispatch()
@@ -25,6 +25,8 @@ const InfoVoucher = ({}) => {
           return true
       }
   } )
+
+  
 // console.log('ftvc'+filterVoucher)
   const [selectedVoucher, setSelectedVoucher] = useState()
   console.log('selectVC' + selectedVoucher)
@@ -35,18 +37,23 @@ const InfoVoucher = ({}) => {
 
   const handleClickListVoucher = () => {
     setOpen(!isOpen);
+
   };
  
 
-  // useEffect(() =>{
+  useEffect(() =>{
 
-  //     // dispatch(getVouchers(selectedVoucher))
+      // dispatch(getVouchers(selectedVoucher))
+      if(selectedVoucher?.length > 0){
+        const useVoucher = vouchers?.filter(voucher => voucher.voucher == selectedVoucher)
+        setGetSaleVoucher(useVoucher[0]?.sales)
+      } 
+      // console.log('useVC'+ useVoucher)
+
+  },[selectedVoucher])
 
 
-
-  // },[])
-
-  console.log(vouchers)
+ 
 
 
   console.log(currentDate)

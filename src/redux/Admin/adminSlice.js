@@ -318,7 +318,7 @@ export const addEventBanner = createAsyncThunk('event-banner',
                                 }
                             }
                         
-                    const ret = await api.post('/api/v1/event-banner/create',data,config)
+                    const ret = await api.post('/api/v1/event-banner',data,config)
 
                     thunkAPI.dispatch(getAllEventBanner())
 
@@ -361,7 +361,7 @@ export const useVoucher = createAsyncThunk('voucher/use',
 
                         const ret = await api.post('/api/v1/use-voucher',data)
 
-                        return ret.data
+                        return ret.data.voucher
                     })
 
 
@@ -440,8 +440,7 @@ const adminSlice = createSlice({
         }, 
         [useVoucher.fulfilled] : (state,action) => {
             state.useVoucherSuccessfull = true
-            state.useVoucherSuccessfull=action.payload
-
+            state.useVoucher = action.payload
         }, 
         
         

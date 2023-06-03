@@ -4,46 +4,49 @@ import { Modal } from 'react-responsive-modal';
 import '../AdminEvent.scss'
 import { CloudUploadOutlined } from '@ant-design/icons'
 import UploadImage from './UploadImage';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addEventBanner } from '../../../../../redux/Admin/adminSlice';
 
 
 const ModalBannerHome = ({showBannerHome,setShowBannerHome}) => {
 
     const dispatch = useDispatch()
+    const {successAddEventBanner} = useSelector(state => state.admin)
+
+    console.log('success add event: ', successAddEventBanner)
 
     const handleClickBannerHome = () => {
         setShowBannerHome(false)
     }
 
     const [selectedImage, setSelectedImage] = useState([])
-    const [imagePreview,setImagePreview] = useState([])
+   
     
-   const handleOnChangeImages = (e) =>{
+  //  const handleOnChangeImages = (e) => {
   
-    const files = Array.from(e.target.files)
+  //   const files = Array.from(e.target.files)
   
-    setSelectedImage([])
-    setImagePreview([])
+  //   setSelectedImage([])
+  //   setImagePreview([])
   
-    files.forEach(file => {
+  //   files.forEach(file => {
   
-      const reader = new FileReader()
+  //     const reader = new FileReader()
   
-      reader.onload = () => {
+  //     reader.onload = () => {
      
-        if(reader.readyState === 2)
-        {
-          setImagePreview(prev => [...prev , reader.result])
-          setSelectedImage(prev => [...prev , reader.result])
-        }
-      }
+  //       if(reader.readyState === 2)
+  //       {
+  //         setImagePreview(prev => [...prev , reader.result])
+  //         setSelectedImage(prev => [...prev , reader.result])
+  //       }
+  //     }
 
-    reader.readAsDataURL(file)
+  //   reader.readAsDataURL(file)
   
-    })
+  //   })
 
-   }
+  //  }
   
    const handleUpload = () => {
 
@@ -71,11 +74,10 @@ const ModalBannerHome = ({showBannerHome,setShowBannerHome}) => {
                 }}
             >
                 <p style={{fontWeight : 'bold', marginBottom : '10px'}}>Banner chính trang chủ: </p>
-
-                <div className='flex' style={{textAlign: 'center'}}>
-                    <UploadImage width={800} height={150}/>
-
-                
+                <div className='flex'>
+                    <UploadImage width={800} height={200} 
+                    setSelectedImage={setSelectedImage}
+                    isMultiple={false} />
                  
 
                 </div>

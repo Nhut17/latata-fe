@@ -13,6 +13,10 @@ import ModalSliderHome from './ModalSliderHome';
 import ModalExtraBanner from './ModalExtraBanner';
 const BannerHome = ({eventBanner}) => {
 
+    const filterEvent = eventBanner?.filter(img => img.name.toLowerCase() === 'home')
+
+    console.log('filterEvent', filterEvent.length)
+
     const handleClickBannerHome = () => {
         setShowBannerHome(true)
     }
@@ -47,7 +51,11 @@ const BannerHome = ({eventBanner}) => {
                 <h3>Trang chủ</h3>
                 <div className="main-banner">
                     <p>Banner chính trang chủ: </p>
-                    <img src="https://img.tgdd.vn/imgt/f_webp,fit_outside,quality_100/https://cdn.tgdd.vn/2023/05/banner/Banner-Big-TGDD-1920x450.jpg" alt="" />
+                       
+                            <img    src={filterEvent[0]?.images[0]?.url} 
+                                    key={filterEvent[0]?.images[0]?.url_id} 
+                                    alt={filterEvent[0]?.images[0]?.url_id} />
+                               
                     <div className="edit" onClick={handleClickBannerHome}>
                         <button>Chỉnh sửa</button>
                         <FormOutlined />

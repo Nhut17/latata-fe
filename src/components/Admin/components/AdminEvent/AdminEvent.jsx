@@ -16,6 +16,8 @@ const AdminEvent = () => {
 
   },[])
 
+  console.log('event: ',eventBanner)
+
 
   const [active, setActive] = useState(0);
   const handleClick = e => {
@@ -152,7 +154,7 @@ const AdminEvent = () => {
 
       <>
         <Content active={active === 0}>
-          <BannerHome />
+          <BannerHome eventBanner={eventBanner}  />
         </Content>
         <Content active={active === 1}>
           <BannerCate cate={`Điện thoại`}/>

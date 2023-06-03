@@ -12,33 +12,33 @@ const ModalSliderHome = ({showSliderHome,setShowSliderrHome}) => {
     }
 
     const [selectedImage, setSelectedImage] = useState([])
-    const [imagePreview,setImagePreview] = useState([])
+   
     
-   const handleOnChangeImages = (e) =>{
+  //  const handleOnChangeImages = (e) =>{
   
-    const files = Array.from(e.target.files)
+  //   const files = Array.from(e.target.files)
   
-    setSelectedImage([])
-    setImagePreview([])
+  //   setSelectedImage([])
+  //   setImagePreview([])
   
-    files.forEach(file => {
+  //   files.forEach(file => {
   
-      const reader = new FileReader()
+  //     const reader = new FileReader()
   
-      reader.onload = () => {
+  //     reader.onload = () => {
      
-        if(reader.readyState === 2)
-        {
-          setImagePreview(prev => [...prev , reader.result])
-          setSelectedImage(prev => [...prev , reader.result])
-        }
-      }
+  //       if(reader.readyState === 2)
+  //       {
+  //         setImagePreview(prev => [...prev , reader.result])
+  //         setSelectedImage(prev => [...prev , reader.result])
+  //       }
+  //     }
 
-    reader.readAsDataURL(file)
+  //   reader.readAsDataURL(file)
   
-    })
+  //   })
 
-   }
+  //  }
   
    const handleUpload = () => {
   
@@ -66,10 +66,12 @@ const ModalSliderHome = ({showSliderHome,setShowSliderrHome}) => {
                 }}
             >
                 <p style={{fontWeight : 'bold', marginBottom : '10px'}}>Banner slider trang chủ: </p>
-                <UploadImage width={500} height={150} />
+                <UploadImage width={500} height={150} 
+                            setSelectedImage={setSelectedImage}
+                            isMultiple={true} />
                 
                 <div className="save-image">
-                    <button>Lưu</button>
+                    <button onClick={handleUpload} >Lưu</button>
                 </div>
             </Modal>
         </div>
