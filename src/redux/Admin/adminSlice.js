@@ -369,10 +369,6 @@ const adminSlice = createSlice({
     name: "admin",
     initialState,
     reducers:{
-        resetActionAdmin: (state,action) => {
-            state.successCreate = false
-            state.successUpdate = false
-        },
         messageErrorPickDateChartCol: (state,action) => {
             
             state.errorChartCol = action.payload
@@ -449,5 +445,5 @@ const adminSlice = createSlice({
 
 
 
-export const { resetActionAdmin, messageErrorPickDateChartCol } = adminSlice.actions
+export const {  messageErrorPickDateChartCol } = adminSlice.actions
 export default adminSlice.reducer

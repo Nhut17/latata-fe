@@ -176,7 +176,7 @@ const InfoCustomer = ({totalPrice}) => {
                 .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}<span className='currency'>&#8363;</span></span>
             </div>
 
-            <Payment amount={totalPrice} />
+            {/* <Payment amount={totalPrice} /> */}
 
             <button className='order' type='submit'>ĐẶT HÀNG</button>
 

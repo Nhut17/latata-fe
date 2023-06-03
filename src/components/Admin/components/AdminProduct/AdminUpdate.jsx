@@ -44,9 +44,7 @@ function AdminUpdate(props) {
 
   },[successUpdate])
 
-  useEffect(() => {
-    dispatch(resetActionAdmin())
-  },[])
+
 
   const updateProducts =  (dataForm) => {
 
