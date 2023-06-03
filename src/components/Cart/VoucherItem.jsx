@@ -1,6 +1,7 @@
 import React from 'react'
 
 
+
 const VoucherItem = ({data,selectedVoucher,setSelectedVoucher}) => {
     const dateExpire = new Date(data.expiredIn)
     const options = {
@@ -18,6 +19,13 @@ const VoucherItem = ({data,selectedVoucher,setSelectedVoucher}) => {
     // const selectedValue = event.target.value;
     // setSelectedOption(selectedValue);
     // }
+
+
+
+
+    
+
+
   return (
     <div className='bg-voucher-item flex a-center'>
         <div className="select-voucher" style={{marginRight : '10px'}} key={data._id}>

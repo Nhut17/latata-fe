@@ -11,7 +11,7 @@ import { sliders_home } from '../../../../data';
 import { Link } from 'react-router-dom'
 import ModalSliderHome from './ModalSliderHome';
 import ModalExtraBanner from './ModalExtraBanner';
-const BannerHome = () => {
+const BannerHome = ({eventBanner}) => {
 
     const handleClickBannerHome = () => {
         setShowBannerHome(true)

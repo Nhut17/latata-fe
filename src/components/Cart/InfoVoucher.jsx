@@ -2,12 +2,17 @@ import { ShakeOutlined } from '@ant-design/icons'
 import React, { useEffect, useState } from 'react'
 import VoucherItem from './VoucherItem'
 import { useDispatch, useSelector } from 'react-redux'
-import { getVouchers } from '../../redux/Admin/adminSlice'
+import { getVouchers, useVoucher } from '../../redux/Admin/adminSlice'
 
-const InfoVoucher = () => {
+const InfoVoucher = ({}) => {
+  
 
   const dispatch = useDispatch()
-  const {vouchers} = useSelector(state => state.admin)
+  const {vouchers, useVoucherSuccessfull , useVoucher} = useSelector(state => state.admin)
+
+  // state 
+  // handle select voucher
+  console.log('useVC'+ useVoucher)
 
   const [isActive, setActive] = useState(false)
   const [isOpen, setOpen] = useState(false)
@@ -35,7 +40,9 @@ const InfoVoucher = () => {
 
   // useEffect(() =>{
 
-  //     dispatch(getVouchers(selectedVoucher))
+  //     // dispatch(getVouchers(selectedVoucher))
+
+
 
   // },[])
 

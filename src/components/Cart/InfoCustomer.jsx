@@ -137,7 +137,7 @@ const InfoCustomer = ({totalPrice}) => {
 
             </div>
 
-           <InfoVoucher/>
+           <InfoVoucher />
 
 
             <div className="note">

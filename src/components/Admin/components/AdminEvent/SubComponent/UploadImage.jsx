@@ -52,6 +52,7 @@ const UploadImage = ({width, height,icon}) => {
             //   {...register("images")}
               onChange={handleImage}
               accept="images/*"
+              multiple
               />
               {/* <p style={{textAlign : 'center', marginTop: '10px'}}> <b>{title}</b> </p> */}
             </div>

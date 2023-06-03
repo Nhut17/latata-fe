@@ -4,7 +4,13 @@ import { Modal } from 'react-responsive-modal';
 import '../AdminEvent.scss'
 import { CloudUploadOutlined } from '@ant-design/icons'
 import UploadImage from './UploadImage';
+import { useDispatch } from 'react-redux';
+import { addEventBanner } from '../../../../../redux/Admin/adminSlice';
+
+
 const ModalBannerHome = ({showBannerHome,setShowBannerHome}) => {
+
+    const dispatch = useDispatch()
 
     const handleClickBannerHome = () => {
         setShowBannerHome(false)
@@ -40,7 +46,7 @@ const ModalBannerHome = ({showBannerHome,setShowBannerHome}) => {
    }
   
    const handleUpload = () => {
-  
+
       const formData = new FormData()
   
       selectedImage.forEach(image => {
@@ -50,12 +56,9 @@ const ModalBannerHome = ({showBannerHome,setShowBannerHome}) => {
       let name = 'Home'
       formData.append('name',name)
   
-    //   dispatch(addEventBanner(formData))
+      dispatch(addEventBanner(formData))
 
    }
-
-
-
 
     return (
         <div className="modal-banner-home">
@@ -68,13 +71,18 @@ const ModalBannerHome = ({showBannerHome,setShowBannerHome}) => {
                 }}
             >
                 <p style={{fontWeight : 'bold', marginBottom : '10px'}}>Banner chính trang chủ: </p>
+
                 <div className='flex' style={{textAlign: 'center'}}>
                     <UploadImage width={800} height={150}/>
+
+                
+                 
+
                 </div>
                 
 
                 <div className="save-image">
-                    <button>Lưu</button>
+                    <button onClick={handleUpload}>Lưu</button>
                 </div>
             </Modal>
         </div>
