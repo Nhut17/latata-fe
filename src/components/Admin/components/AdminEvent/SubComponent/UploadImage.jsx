@@ -2,20 +2,33 @@
 import React, { useState } from 'react'
 import '../AdminEvent.scss'
 import { CloudUploadOutlined } from '@ant-design/icons'
-const UploadImage = ({width, height,icon}) => {
+const UploadImage = ({width, height,icon, setSelectedImage,isMultiple}) => {
+
   const [previewImg,setPreviewImg] = useState('')
   const [selectImage,setSelectImage] = useState('')
 
   const handleImage = (e) => {
-    const reader = new FileReader();
-
-    reader.onload = () => {
-      if(reader.readyState === 2){
-        setPreviewImg(reader.result)
-        setSelectImage(reader.result)
+    const files = Array.from(e.target.files)
+  
+    setSelectedImage([])
+    setPreviewImg([])
+  
+    files.forEach(file => {
+  
+      const reader = new FileReader()
+  
+      reader.onload = () => {
+     
+        if(reader.readyState === 2)
+        {
+          setPreviewImg(prev => [...prev , reader.result])
+          setSelectedImage(prev => [...prev , reader.result])
+        }
       }
-    }
-    reader.readAsDataURL(e.target.files[0])
+
+    reader.readAsDataURL(file)
+    })
+  
   }
   return (
     <div className="upload-image-event">
@@ -36,9 +49,13 @@ const UploadImage = ({width, height,icon}) => {
                     <CloudUploadOutlined/>
                     
                   </span>
-                  <img style={{height: '110px', background: 'white'}}  src={previewImg} alt="Tải hình ảnh"  
-
-                  />
+                  {
+                    previewImg.length > 0 &&
+                    previewImg.map(img => (
+                      <img style={{height: '110px', background: 'white'}}  
+                            src={img} alt="Tải hình ảnh"  />
+                    ))
+                  }
 
                   
                   </div>
@@ -50,7 +67,7 @@ const UploadImage = ({width, height,icon}) => {
             //   {...register("images")}
               onChange={handleImage}
               accept="images/*"
-              multiple
+              multiple={isMultiple}
               />
               {/* <p style={{textAlign : 'center', marginTop: '10px'}}> <b>{title}</b> </p> */}
             </div>
