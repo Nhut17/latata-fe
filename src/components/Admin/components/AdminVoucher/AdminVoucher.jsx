@@ -20,7 +20,7 @@ const AdminVoucher = () => {
 
     const [dateStart, setDateStart] = useState(new Date())
     const [dateExpired, setDateExpired] = useState()
-    const [textError,setTextError] = useState('')
+    const [textError, setTextError] = useState('')
 
     
 

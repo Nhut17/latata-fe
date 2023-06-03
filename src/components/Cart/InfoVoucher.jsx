@@ -11,6 +11,18 @@ const InfoVoucher = () => {
 
   const [isActive, setActive] = useState(false)
   const [isOpen, setOpen] = useState(false)
+  const currentDate = new Date()
+
+  const filterVoucher = vouchers?.filter(voucher => {
+
+      const date_start = new Date(voucher.createAt)
+      if (date_start.getTime() <= currentDate.getTime()){
+          return true
+      }
+  } )
+// console.log('ftvc'+filterVoucher)
+  const [selectedVoucher, setSelectedVoucher] = useState()
+  console.log('selectVC' + selectedVoucher)
   let lengthVoucher = 1
   const handleToggle = () => {
     setActive(!isActive);
@@ -21,13 +33,16 @@ const InfoVoucher = () => {
   };
  
 
-  useEffect(() =>{
+  // useEffect(() =>{
 
-      dispatch(getVouchers())
+  //     dispatch(getVouchers(selectedVoucher))
 
-  },[])
+  // },[])
 
   console.log(vouchers)
+
+
+  console.log(currentDate)
 
 
   return (
@@ -46,8 +61,8 @@ const InfoVoucher = () => {
             }}
       > 
         <div className="input-group-voucher" >
-            <input type="text" placeholder='Nhập mã giảm giá' onClick={handleClickListVoucher}/>
-            <button>Áp dụng</button>
+            <input type="text" placeholder='Nhập mã giảm giá' onClick={handleClickListVoucher} value={selectedVoucher}/>
+            {/* <button type='button'>Áp dụng</button> */}
 
         </div>
 
@@ -62,10 +77,14 @@ const InfoVoucher = () => {
                 }}
             >
               {
-                vouchers.length == 0 ?
+                filterVoucher.length == 0  ?
                (<p style={{textAlign : 'center',padding : '5px'}}>Không có voucher</p>):(
-                vouchers.map(val => 
-                  <VoucherItem data={val}/>
+                filterVoucher.map(val =>                      
+                      <VoucherItem  data={val}
+                                    selectedVoucher={selectedVoucher}
+                                    setSelectedVoucher={setSelectedVoucher}
+                    />
+                    
                   )
                )
               }

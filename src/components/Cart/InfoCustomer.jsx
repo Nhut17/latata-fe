@@ -6,6 +6,7 @@ import ModalListAddress from './ModalListAddress'
 import { ShakeOutlined } from "@ant-design/icons";
 import InfoVoucher from './InfoVoucher'
 import Payment from './Payment'
+import { getVouchers } from '../../redux/Admin/adminSlice'
 
 
 const InfoCustomer = ({totalPrice}) => {
@@ -18,6 +19,7 @@ const InfoCustomer = ({totalPrice}) => {
 
     const dispatch = useDispatch()
 
+    const {vouchers} = useSelector(state => state.admin)
     const { listAddress , addressCurrent} = useSelector(state => state.address)
     const { url_create } = useSelector(state => state.payment)
 
@@ -49,6 +51,10 @@ const InfoCustomer = ({totalPrice}) => {
     }
         dispatch(createOrder(data))
   }
+
+  useEffect (()=> {
+    dispatch(getVouchers)
+  })
  
 
 
@@ -62,7 +68,7 @@ const InfoCustomer = ({totalPrice}) => {
             <form onSubmit={handleSubmit(handleCreateOrder)}>
 
             <div className="name-and-number">
-            <div className="name input"  >
+            <div className="name input">
                 <input 
                     type="text" 
                     value={nameI}
@@ -80,7 +86,7 @@ const InfoCustomer = ({totalPrice}) => {
 
                 
                 <span className='style-change' htmlFor='name' style={ {
-                                                            transform: 'translate(15px,-15px)',
+                                                        transform: 'translate(15px,-15px)',
                                                         fontSize: 14,
                                                         backgroundColor:'white',
                                                         padding: '0 3px' }}>Họ và Tên</span>
@@ -148,7 +154,7 @@ const InfoCustomer = ({totalPrice}) => {
 
             </div> */}
 
-
+            
             <div className='final-total'>
             <div className="total">
             <span className="tt-price">Tổng tiền:</span>
@@ -156,7 +162,7 @@ const InfoCustomer = ({totalPrice}) => {
                 .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}<span className='currency'>&#8363;</span></span>
             </div>
 
-            {/* <Payment amount={totalPrice} /> */}
+            <Payment amount={totalPrice} />
 
             <button className='order' type='submit'>ĐẶT HÀNG</button>
 

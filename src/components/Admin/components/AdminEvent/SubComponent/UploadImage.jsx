@@ -5,6 +5,8 @@ import { CloudUploadOutlined } from '@ant-design/icons'
 const UploadImage = ({width, height,icon}) => {
   const [previewImg,setPreviewImg] = useState('')
   const [selectImage,setSelectImage] = useState('')
+ 
+
 
   const handleImage = (e) => {
     const reader = new FileReader();
@@ -23,14 +25,14 @@ const UploadImage = ({width, height,icon}) => {
           <form>
             <div class="image-upload" style={{position: 'relative'}}>
               <label for="file-input">
-                <div class="upload-icon" style={{width :`${width}px`, height: `${height}px`}}>
+                <div class="upload-icon" style={{width :`${width}px`, height: `${height}px`,textAlign:'center'}}>
                 <span style={{
                   fontSize : '40px',
                   position: 'absolute',
                   top: '50%',
                   transform: 'translate(50%,-50%)',
                   right: '50%',
-                  zIndex: 100,
+                  zIndex: -1,
                   cursor: 'pointer'
                   }}>
                     <CloudUploadOutlined/>

@@ -68,8 +68,8 @@ const ModalBannerHome = ({showBannerHome,setShowBannerHome}) => {
                 }}
             >
                 <p style={{fontWeight : 'bold', marginBottom : '10px'}}>Banner chính trang chủ: </p>
-                <div className='flex'>
-                    <UploadImage width={800} height={200}/>
+                <div className='flex' style={{textAlign: 'center'}}>
+                    <UploadImage width={800} height={150}/>
                 </div>
                 
 
