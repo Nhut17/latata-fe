@@ -1,6 +1,10 @@
 import React from 'react'
 
 const VoucherItem = ({data}) => {
+
+
+    
+
   return (
     <div className='bg-voucher-item flex a-center'>
         <div className="select-voucher" style={{marginRight : '10px'}}>

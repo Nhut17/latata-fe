@@ -22,8 +22,10 @@ const initialState = {
     images: [],
     successAddEventBanner: false,
     list_year_sale: [],
-    successSendVoucher: false
-    
+    successSendVoucher: false,
+    eventBanner : [],
+    useVoucher: null,
+    useVoucherSuccessfull: false
 }
 
 
@@ -318,7 +320,7 @@ export const addEventBanner = createAsyncThunk('event-banner',
                         
                     const ret = await api.post('/api/v1/event-banner/create',data,config)
 
-                    // thunkAPI.dispatch(getBann())
+                    thunkAPI.dispatch(getAllEventBanner())
 
                     return ret.data
 
@@ -334,6 +336,15 @@ export const getOneEventBanner = createAsyncThunk('event-banner/getOne',
 
                 })
 
+// get all banner
+export const getAllEventBanner = createAsyncThunk('event-banner',
+                async (data,thunkAPI) => {
+
+                    const ret = await api.get('/api/v1/event-banner')
+
+                    return ret.data.event_banner
+                })
+
 // get list year summary sales
 export const getListYearSummary = createAsyncThunk('sumSales/list-year',
                     async (data,thunkAI) => {
@@ -343,6 +354,17 @@ export const getListYearSummary = createAsyncThunk('sumSales/list-year',
                         return ret.data.list_year
 
                     } )
+
+// use voucher
+export const useVoucher = createAsyncThunk('voucher/use',
+                    async (data,thunkAPI) => {
+
+                        const ret = await api.post('/api/v1/use-voucher',data)
+
+                        return ret.data
+                    })
+
+
 const adminSlice = createSlice({
     name: "admin",
     initialState,
@@ -412,6 +434,12 @@ const adminSlice = createSlice({
         }, 
         [sendVoucher.fulfilled] : (state,action) => {
             state.successSendVoucher = true
+        }, 
+        [getAllEventBanner.fulfilled] : (state,action) => {
+            state.eventBanner = action.payload
+        }, 
+        [useVoucher.fulfilled] : (state,action) => {
+            state.useVoucherSuccessfull = true
         }, 
         
         

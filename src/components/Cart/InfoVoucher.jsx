@@ -10,6 +10,9 @@ const InfoVoucher = () => {
   const dispatch = useDispatch()
   const {vouchers} = useSelector(state => state.admin)
 
+  // state 
+  // handle select voucher
+
   const [isActive, setActive] = useState(false)
   const [isOpen, setOpen] = useState(false)
   let lengthVoucher = 1
@@ -66,7 +69,7 @@ const InfoVoucher = () => {
                 vouchers.length == 0 ?
                (<p style={{textAlign : 'center',padding : '5px'}}>Không có voucher</p>):(
                 vouchers.map(val => 
-                  <VoucherItem data={val}/>
+                  <VoucherItem data={val} />
                   )
                )
               }

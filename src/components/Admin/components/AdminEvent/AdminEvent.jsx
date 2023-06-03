@@ -1,14 +1,21 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Tabs, Tab, Content } from '../TabButton/Tab.jsx'
 import './AdminEvent.scss'
 import BannerCate from './SubComponent/BannerCate.jsx';
 import BannerHome from './SubComponent/BannerHome.jsx';
 import { useDispatch, useSelector } from 'react-redux';
-import { addEventBanner } from '../../../../redux/Admin/adminSlice.js';
+import { addEventBanner, getAllEventBanner } from '../../../../redux/Admin/adminSlice.js';
 const AdminEvent = () => {
 
   const dispatch = useDispatch()
-  const { successAddEventBanner } = useSelector(state => state.admin)
+  const { successAddEventBanner, eventBanner } = useSelector(state => state.admin)
+
+  useEffect(() => {
+
+      dispatch(getAllEventBanner())
+
+  },[])
+
 
   const [active, setActive] = useState(0);
   const handleClick = e => {
@@ -69,7 +76,7 @@ const AdminEvent = () => {
  }
 
 
- console.log('success : ', successAddEventBanner)
+ 
   
   return (
     
@@ -145,7 +152,7 @@ const AdminEvent = () => {
 
       <>
         <Content active={active === 0}>
-          <BannerHome/>
+          <BannerHome />
         </Content>
         <Content active={active === 1}>
           <BannerCate cate={`Điện thoại`}/>
