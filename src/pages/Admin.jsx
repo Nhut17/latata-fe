@@ -10,10 +10,6 @@ const Admin = () => {
   const {currentUser} = useSelector(state => state.user)
   const dispatch = useDispatch()
 
-  useEffect(() => {
-      dispatch(resetActionAdmin())
-  },[])
-
   useEffect(() =>{
  
     if(!currentUser || currentUser?.role === 'user'){

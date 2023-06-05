@@ -75,7 +75,7 @@ const AdminVoucher = () => {
 
         if(successAdd)
         {
-            toast.success('Thêm sản thương hiệu!', {
+            toast.success('Thêm voucher thành công!', {
                 position: "top-right",
                 autoClose: 1000,
                 hideProgressBar: false,
