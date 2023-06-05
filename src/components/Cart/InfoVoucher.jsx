@@ -2,7 +2,8 @@ import { ShakeOutlined } from '@ant-design/icons'
 import React, { useEffect, useState } from 'react'
 import VoucherItem from './VoucherItem'
 import { useDispatch, useSelector } from 'react-redux'
-import { getVouchers, useVoucher } from '../../redux/Admin/adminSlice'
+import {CloseOutlined} from '@ant-design/icons'
+import { getVouchers } from '../../redux/Admin/adminSlice'
 
 const InfoVoucher = ({setGetSaleVoucher}) => {
   
@@ -12,10 +13,12 @@ const InfoVoucher = ({setGetSaleVoucher}) => {
 
   // state 
   // handle select voucher
-  console.log('useVC'+ useVoucher)
+  console.log('useVC'+ vouchers)
 
   const [isActive, setActive] = useState(false)
   const [isOpen, setOpen] = useState(false)
+
+  console.log('opent' + isOpen)
   const currentDate = new Date()
 
   const filterVoucher = vouchers?.filter(voucher => {
@@ -43,7 +46,7 @@ const InfoVoucher = ({setGetSaleVoucher}) => {
 
   useEffect(() =>{
 
-      // dispatch(getVouchers(selectedVoucher))
+      dispatch(getVouchers(selectedVoucher))
       if(selectedVoucher?.length > 0){
         const useVoucher = vouchers?.filter(voucher => voucher.voucher == selectedVoucher)
         setGetSaleVoucher(useVoucher[0]?.sales)
@@ -57,6 +60,14 @@ const InfoVoucher = ({setGetSaleVoucher}) => {
 
 
   console.log(currentDate)
+
+  const clearInput = () =>{
+    let getValue= document.getElementById("clear-input");
+      if (getValue.value !="") {
+          getValue.value = "";
+          setSelectedVoucher(' ')
+      }
+}
 
 
   return (
@@ -75,8 +86,12 @@ const InfoVoucher = ({setGetSaleVoucher}) => {
             }}
       > 
         <div className="input-group-voucher" >
-            <input type="text" placeholder='Nhập mã giảm giá' onClick={handleClickListVoucher} value={selectedVoucher}/>
-            {/* <button type='button'>Áp dụng</button> */}
+            <input type="text" id='clear-input' placeholder='Nhập mã giảm giá' onClick={handleClickListVoucher} value={selectedVoucher}/>
+            {/* <button type='button'>X</button> */}
+            <span  onClick={clearInput}>
+              <CloseOutlined/>
+            </span>
+            
 
         </div>
 

@@ -59,9 +59,23 @@ const InfoCustomer = ({totalPrice}) => {
 
   const [getSaleVoucher, setGetSaleVoucher]= useState()
 
+   
+//   let privisional = getSaleVoucher/100*totalPrice
+  
+
   console.log('get' + getSaleVoucher)
-  let privisional = getSaleVoucher/100*totalPrice
-  let total = totalPrice- privisional 
+  let privisional = 0
+  
+  let total = 0
+
+  if(getSaleVoucher){
+        privisional = getSaleVoucher/100*totalPrice
+        total = totalPrice - privisional 
+
+  }else{
+         total = totalPrice
+
+  }
 
   return (
     <>
@@ -163,11 +177,17 @@ const InfoCustomer = ({totalPrice}) => {
                 .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}<span className='currency'>&#8363;</span></span>
             </div>
 
-            <div className="sales flex j-between">
+           
+           
+                <div className="sales flex j-between">
                 <span>Giảm giá: </span>
                 <span className="price">-{privisional.toString()
                 .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}<span className='currency'>&#8363;</span></span>
             </div>
+            
+
+               
+            
            
             <div className='final-total'>
             <div className="total">

@@ -135,7 +135,7 @@ const shoppingTrendsRef = useRef()
     <div className="home">
        
        <MessengerCustomerChat
-                        pageId="100068269041741"
+                        pageId="118727327825501"
                         appId="905162213878756"
                         htmlRef="<REF_STRING>"
                         />
