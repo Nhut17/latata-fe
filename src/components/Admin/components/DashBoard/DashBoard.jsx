@@ -12,7 +12,6 @@ import { getAllUser, resetActionAdmin } from "../../../../redux/Admin/adminSlice
 import { getAllOrder } from "../../../../redux/Order/orderSlice";
 import { getCate } from "../../../../redux/Category/categorySlice";
 import { getProduct } from "../../../../redux/Product/productSlice";
-import TopCustomer from "./TopCustomer";
 import { Link } from "react-router-dom";
 
 export default function DashBoard() {
@@ -92,7 +91,7 @@ export default function DashBoard() {
         </div>
 
         <ChartDashBoard></ChartDashBoard>
-        <TopCustomer/>
+       
       </div>
     </section>
   );
