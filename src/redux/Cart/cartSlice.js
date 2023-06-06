@@ -9,7 +9,7 @@ const initialState = {
   isFetching: false,
   listCartUser:null,
   success: false,
-  userVoucher: []
+  userVoucher: {}
 }
 
 export const addCart = createAsyncThunk('cart/add',
@@ -166,7 +166,7 @@ export const getUserVoucher = createAsyncThunk('cart/get-user-voucher',
                 }
 
                 const ret = await api.get('/api/v1/user-voucher',config)
-                 return ret.data.userVoucher
+                return ret.data.userVoucher
 
             })
 const cartSlice = createSlice({
