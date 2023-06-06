@@ -170,7 +170,7 @@ const AdminEvent = () => {
         </Content>
 
         <Content active={active === 4}>
-          <h1>Content 1</h1>
+        <BannerCate cate={`Phụ kiện`}/>
         </Content>
         <Content active={active === 5}>
           <h1>Content 2</h1>
