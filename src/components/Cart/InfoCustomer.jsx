@@ -163,16 +163,16 @@ const InfoCustomer = ({totalPrice}) => {
                 .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}<span className='currency'>&#8363;</span></span>
             </div>
 
-            <div className="sales flex j-between">
+            {/* <div className="sales flex j-between">
                 <span>Giảm giá: </span>
                 <span className="price">-{privisional.toString()
                 .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}<span className='currency'>&#8363;</span></span>
-            </div>
+            </div> */}
            
             <div className='final-total'>
             <div className="total">
             <span className="tt-price">Tổng tiền:</span>
-            <span className="price">{total.toString()
+            <span className="price">{totalPrice.toString()
                 .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}<span className='currency'>&#8363;</span></span>
             </div>
 
