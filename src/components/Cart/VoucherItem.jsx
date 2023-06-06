@@ -2,7 +2,7 @@ import React from 'react'
 
 
 
-const VoucherItem = ({data,selectedVoucher,setSelectedVoucher}) => {
+const VoucherItem = ({data,selectedVoucher,setSelectedVoucher,setSelectedNameVoucher}) => {
     const dateExpire = new Date(data.expiredIn)
     const options = {
         timeZone: 'Asia/Bangkok',
@@ -31,7 +31,8 @@ const VoucherItem = ({data,selectedVoucher,setSelectedVoucher}) => {
         <div className="select-voucher" style={{marginRight : '10px'}} key={data._id}>
             <input  type="radio" name="" id="voucher-item-input"
                     checked={selectedVoucher == data.voucher}
-                    onChange={()=> setSelectedVoucher(data.voucher)}
+                    onChange={()=> {setSelectedVoucher(data.voucher)
+                                    setSelectedNameVoucher(data.voucher)    }}
                     style={{cursor : 'pointer'}}
                   
                     />
@@ -42,10 +43,10 @@ const VoucherItem = ({data,selectedVoucher,setSelectedVoucher}) => {
                 <p>{data.content}</p>
             </div>
             <div className="percent">
-                <span>{data.sales}% Giảm giá</span>
+                <span><b>Giảm giá</b>: {data.sales}%</span>
             </div>
             <div className="code-voucher">
-                <p>MÃ GIẢM GIÁ: <b>{data.voucher}</b></p>
+                <p><b>MÃ GIẢM GIÁ</b>: <b>{data.voucher}</b></p>
             </div>
             <div className="time-voucher">
                 <p>Hiệu lực đến {dateExpire.toLocaleDateString('en-US',options)}</p>

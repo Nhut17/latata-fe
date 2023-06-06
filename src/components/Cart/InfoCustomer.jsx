@@ -7,6 +7,7 @@ import { ShakeOutlined } from "@ant-design/icons";
 import InfoVoucher from './InfoVoucher'
 import Payment from './Payment'
 import { getVouchers } from '../../redux/Admin/adminSlice'
+import { userVoucher } from '../../redux/Cart/cartSlice'
 
 
 const InfoCustomer = ({totalPrice}) => {
@@ -24,8 +25,12 @@ const InfoCustomer = ({totalPrice}) => {
     const { url_create } = useSelector(state => state.payment)
 
    
-        const [nameI,setName] = useState(addressCurrent ? addressCurrent[0]?.name : '')
-        const [phoneI,setPhone] = useState(addressCurrent ? addressCurrent[0]?.phone : '')
+    const [nameI,setName] = useState(addressCurrent ? addressCurrent[0]?.name : '')
+    const [phoneI,setPhone] = useState(addressCurrent ? addressCurrent[0]?.phone : '')
+    const [selectedNameVoucher,setSelectedNameVoucher] = useState('')
+
+
+     console.log('selected name: ' + selectedNameVoucher)
 
         useEffect(() => {
 
@@ -41,15 +46,24 @@ const InfoCustomer = ({totalPrice}) => {
 
   const [showOrderDetail, setShowOrderDetail] = useState(false)
 
+
+
   // create order
   const handleCreateOrder = (formData) =>{
     const data = {
         ...formData,
         name: nameI,
         phoneNo: phoneI,
-        address: addressCurrent[0]?.address
+        address: addressCurrent[0]?.address,
+        totalPrice: total
     }
         dispatch(createOrder(data))
+    if(selectedNameVoucher)
+    {
+        dispatch(userVoucher({
+            voucher: selectedNameVoucher
+        }))
+    }
   }
 
   useEffect (()=> {
@@ -63,7 +77,6 @@ const InfoCustomer = ({totalPrice}) => {
 //   let privisional = getSaleVoucher/100*totalPrice
   
 
-  console.log('get' + getSaleVoucher)
   let privisional = 0
   
   let total = 0
@@ -155,7 +168,8 @@ const InfoCustomer = ({totalPrice}) => {
 
             </div>
 
-           <InfoVoucher setGetSaleVoucher={setGetSaleVoucher}/>
+           <InfoVoucher setGetSaleVoucher={setGetSaleVoucher}
+                        selectedNameVoucher={setSelectedNameVoucher} />
 
 
             <div className="note">
@@ -177,16 +191,22 @@ const InfoCustomer = ({totalPrice}) => {
                 .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}<span className='currency'>&#8363;</span></span>
             </div>
 
-            {/* <div className="sales flex j-between">
+           
+           
+                <div className="sales flex j-between">
                 <span>Giảm giá: </span>
-                <span className="price">-{privisional.toString()
+                <span className="price">- {privisional.toString()
                 .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}<span className='currency'>&#8363;</span></span>
-            </div> */}
+            </div>
+            
+
+               
+            
            
             <div className='final-total'>
             <div className="total">
             <span className="tt-price">Tổng tiền:</span>
-            <span className="price">{totalPrice.toString()
+            <span className="price">{total.toString()
                 .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}<span className='currency'>&#8363;</span></span>
             </div>
 

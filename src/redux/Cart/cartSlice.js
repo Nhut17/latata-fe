@@ -8,7 +8,8 @@ const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
 const initialState = {
   isFetching: false,
   listCartUser:null,
-  success: false
+  success: false,
+  userVoucher: []
 }
 
 export const addCart = createAsyncThunk('cart/add',
@@ -136,7 +137,7 @@ export const decreaseQuantity = createAsyncThunk('cart/delete',
                 }
             })
 
-export const useVoucher = createAsyncThunk('cart/use-voucher',
+export const userVoucher = createAsyncThunk('cart/use-voucher',
             async(data, thunkAPI) => {
                   
                 const token = localStorage.getItem('token')
@@ -147,13 +148,27 @@ export const useVoucher = createAsyncThunk('cart/use-voucher',
                 }
                 try {
                     const res = await api.post('/api/v1/use-voucher',data,config)
-                    console.log('vos' + res.data)
+                    
                     return res.data
                 } catch (e) {
                     
                 }
             })
             
+
+export const getUserVoucher = createAsyncThunk('cart/get-user-voucher',
+            async (data,thunkAI) => {
+                const token = localStorage.getItem('token')
+                const config = {
+                    headers: {
+                        Authorization: 'Bearer ' + token
+                    }
+                }
+
+                const ret = await api.get('/api/v1/user-voucher',config)
+                 return ret.data.userVoucher
+
+            })
 const cartSlice = createSlice({
     name: "cart",
     initialState,
@@ -165,7 +180,10 @@ const cartSlice = createSlice({
     extraReducers:{
         [getCartUser.fulfilled] : (state,action) =>{
             state.listCartUser = action.payload
-        }
+        },
+        [getUserVoucher.fulfilled] : (state,action) =>{
+            state.userVoucher = action.payload
+        },
     }
 })
 

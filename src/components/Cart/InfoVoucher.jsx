@@ -5,15 +5,16 @@ import { useDispatch, useSelector } from 'react-redux'
 import {CloseOutlined} from '@ant-design/icons'
 import { getVouchers } from '../../redux/Admin/adminSlice'
 
-const InfoVoucher = ({setGetSaleVoucher}) => {
+const InfoVoucher = ({setGetSaleVoucher,selectedNameVoucher}) => {
   
 
   const dispatch = useDispatch()
-  const {vouchers, useVoucherSuccessfull , useVoucher} = useSelector(state => state.admin)
+  const {vouchers, useVoucherSuccessfull , useVoucher,userVoucher} = useSelector(state => state.admin)
 
   // state 
   // handle select voucher
-  console.log('useVC'+ vouchers)
+
+  console.log('use-voucher: ',userVoucher)
 
   const [isActive, setActive] = useState(false)
   const [isOpen, setOpen] = useState(false)
@@ -32,7 +33,7 @@ const InfoVoucher = ({setGetSaleVoucher}) => {
   
 // console.log('ftvc'+filterVoucher)
   const [selectedVoucher, setSelectedVoucher] = useState()
-  console.log('selectVC' + selectedVoucher)
+
   let lengthVoucher = 1
   const handleToggle = () => {
     setActive(!isActive);
@@ -58,8 +59,6 @@ const InfoVoucher = ({setGetSaleVoucher}) => {
 
  
 
-
-  console.log(currentDate)
 
   const clearInput = () =>{
     let getValue= document.getElementById("clear-input");
@@ -114,6 +113,7 @@ const InfoVoucher = ({setGetSaleVoucher}) => {
                       <VoucherItem  data={val}
                                     selectedVoucher={selectedVoucher}
                                     setSelectedVoucher={setSelectedVoucher}
+                                    setSelectedNameVoucher={selectedNameVoucher}
                     />
                     
                   )
