@@ -54,11 +54,13 @@ const UploadImage = ({width, height,icon, setSelectedImage,isMultiple}) => {
                   {
                     previewImg.length > 0 &&
                     previewImg.map(img => (
-                      <img style={{height: '110px', background: 'white'}}  
+                      <img style={{height: '220px', background: 'white'}}  
                             src={img} alt="Tải hình ảnh"  />
                     ))
-                  }
 
+                      
+                  }
+              
                   
                   </div>
                  
