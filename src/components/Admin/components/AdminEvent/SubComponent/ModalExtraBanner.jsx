@@ -46,7 +46,7 @@ const ModalExtraBanner = ({showExtraBanner,setShowExtraBanner}) => {
                    
                     <p style={{fontWeight : 'bold', marginBottom : '10px'}}>Banner phụ: </p>
                     
-                    <UploadImage width={850} height={150} 
+                    <UploadImage width={850} height={'150px'} 
                                 setSelectedImage={setSelectedImage}
                                 isMultiple={true} />              
                          

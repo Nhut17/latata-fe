@@ -66,7 +66,7 @@ const ModalSliderHome = ({showSliderHome,setShowSliderrHome}) => {
                 }}
             >
                 <p style={{fontWeight : 'bold', marginBottom : '10px'}}>Banner slider trang chủ: </p>
-                <UploadImage width={500} height={150} 
+                <UploadImage width={500} height={'auto'}
                             setSelectedImage={setSelectedImage}
                             isMultiple={true} />
                 
