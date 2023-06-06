@@ -124,7 +124,7 @@ function AdminCreate(props) {
     dataS.set('info_tech', info_tech)
 
 
-    // dispatch(createProduct(dataS))
+    dispatch(createProduct(dataS))
 
 
 
