@@ -4,16 +4,20 @@ import { createPayment } from '../../redux/payment/paymentSlice'
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import api from '../../api/api'
+import { resetCart } from '../../redux/Cart/cartSlice'
+import axios from 'axios'
 
 
-const Payment = ({amount}) => {
+const Payment = () => {
 
   const { url_create } = useSelector(state => state.payment)
+  const {order} = useSelector(state => state.order)
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
 
   console.log('url_create: ' +url_create)
+  console.log('order:' +order)
 
   // useEffect(() => {
 
@@ -27,7 +31,7 @@ const Payment = ({amount}) => {
 
   const handleCreatePayment = async  () => {
 
-    const money = parseInt(amount)
+    const money = 10000
    
     
     await window.open(`
@@ -36,6 +40,10 @@ const Payment = ({amount}) => {
     
     window.location.reload(0);
   }
+
+  
+
+
 
   return (
     <div>

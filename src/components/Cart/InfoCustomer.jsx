@@ -59,9 +59,23 @@ const InfoCustomer = ({totalPrice}) => {
 
   const [getSaleVoucher, setGetSaleVoucher]= useState()
 
+   
+//   let privisional = getSaleVoucher/100*totalPrice
+  
+
   console.log('get' + getSaleVoucher)
-  let privisional = getSaleVoucher/100*totalPrice
-  let total = totalPrice- privisional 
+  let privisional = 0
+  
+  let total = 0
+
+  if(getSaleVoucher){
+        privisional = getSaleVoucher/100*totalPrice
+        total = totalPrice - privisional 
+
+  }else{
+         total = totalPrice
+
+  }
 
   return (
     <>
@@ -176,7 +190,9 @@ const InfoCustomer = ({totalPrice}) => {
                 .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}<span className='currency'>&#8363;</span></span>
             </div>
 
-            {/* <Payment amount={totalPrice} /> */}
+
+            {/* <Payment /> */}
+
 
             <button className='order' type='submit'>ĐẶT HÀNG</button>
 
