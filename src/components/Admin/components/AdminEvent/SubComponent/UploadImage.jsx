@@ -4,7 +4,7 @@ import '../AdminEvent.scss'
 import { CloudUploadOutlined } from '@ant-design/icons'
 const UploadImage = ({width, height,icon, setSelectedImage,isMultiple}) => {
 
-  const [previewImg,setPreviewImg] = useState('')
+  const [previewImg,setPreviewImg] = useState()
   const [selectImage,setSelectImage] = useState('')
  
 
@@ -38,7 +38,7 @@ const UploadImage = ({width, height,icon, setSelectedImage,isMultiple}) => {
           <form>
             <div class="image-upload" style={{position: 'relative'}}>
               <label for="file-input">
-                <div class="upload-icon" style={{width :`${width}px`, height: `${height}px`,textAlign:'center'}}>
+                <div class="upload-icon" style={{width :`${width}px`,  height : previewImg?.length>0 ? 'auto' : '150px',textAlign:'center'}}>
                 <span style={{
                   fontSize : '40px',
                   position: 'absolute',
@@ -51,14 +51,14 @@ const UploadImage = ({width, height,icon, setSelectedImage,isMultiple}) => {
                     <CloudUploadOutlined/>
                     
                   </span>
-                  {
-                    previewImg.length > 0 &&
+                  { 
+                    previewImg?.length > 0 &&
                     previewImg.map(img => (
-                      <img style={{height: '110px', background: 'white'}}  
+                      <img style={{ width: '92%',height: '110px', background: 'white', zIndex : '10'}}  
                             src={img} alt="Tải hình ảnh"  />
                     ))
                   }
-
+              
                   
                   </div>
                  

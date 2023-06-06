@@ -57,7 +57,7 @@ const InfoCustomer = ({totalPrice}) => {
         address: addressCurrent[0]?.address,
         totalPrice: total
     }
-        dispatch(createOrder(data))
+    dispatch(createOrder(data))
     if(selectedNameVoucher)
     {
         dispatch(userVoucher({

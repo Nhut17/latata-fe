@@ -13,9 +13,13 @@ import ModalSliderHome from './ModalSliderHome';
 import ModalExtraBanner from './ModalExtraBanner';
 const BannerHome = ({eventBanner}) => {
 
-    const filterEvent = eventBanner?.filter(img => img.name.toLowerCase() === 'home')
+    let filterEvent = eventBanner ? eventBanner?.filter(img => img.name.toLowerCase() === 'home') : []
 
-    console.log('filterEvent', filterEvent.length)
+    const listEventHome =eventBanner?.filter(img => img.name.toLowerCase() === 'home')
+    const listEventSubSlider =eventBanner?.filter(img => img.name.toLowerCase() === 'sliderhome')
+    const listEventSubBanner =eventBanner?.filter(img => img.name.toLowerCase() === 'subbanner')
+
+    
 
     const handleClickBannerHome = () => {
         setShowBannerHome(true)
@@ -52,9 +56,9 @@ const BannerHome = ({eventBanner}) => {
                 <div className="main-banner">
                     <p>Banner chính trang chủ: </p>
                        
-                            <img    src={filterEvent[0]?.images[0]?.url} 
-                                    key={filterEvent[0]?.images[0]?.url_id} 
-                                    alt={filterEvent[0]?.images[0]?.url_id} />
+                            <img    src={listEventHome[0]?.images[0]?.url} 
+                                    key={listEventHome[0]?.images[0]?.url_id} 
+                                    alt={listEventHome[0]?.images[0]?.url_id} />
                                
                     <div className="edit" onClick={handleClickBannerHome}>
                         <button>Chỉnh sửa</button>
@@ -67,11 +71,13 @@ const BannerHome = ({eventBanner}) => {
                     
                     <Slider {...settings}>
                     {
-                        sliders_home.map((slide,index) =>(
-                            <div className="slide" key={index}>
-                            <Link to=''>
-                                <img src={slide.url} alt="" />
-                            </Link>
+                        listEventSubSlider[0]?.images?.map((slide,index) =>(
+                            <div className="slide" key={index} style={{marginLeft: 70}}>
+                        
+                                <img src={slide.url} 
+                                    key={slide.url_id} 
+                                    alt={slide.url_id} />
+                          
                             </div>
                         ))
                     }
@@ -88,8 +94,13 @@ const BannerHome = ({eventBanner}) => {
                 <div className="extra-banner">
                     <p>Banner phụ: </p>
                     <div style={{textAlign: 'center'}}>
-                        <img src="https://img.tgdd.vn/imgt/f_webp,fit_outside,quality_100/https://cdn.tgdd.vn/2023/05/banner/Cuoi-tuan-1200x120.png" alt="" />
-                        <img src="https://img.tgdd.vn/imgt/f_webp,fit_outside,quality_100/https://cdn.tgdd.vn/2023/05/banner/Cuoi-tuan-1200x120.png" alt="" />
+                       {
+                        listEventSubBanner && listEventSubBanner[0]?.images?.map(val => (
+                            <img src={val.url} 
+                                key={val.url_id} 
+                                alt={val.url_id} />
+                        ))
+                       }
                     </div>
 
                     <div className="edit" onClick={handleClickExtraBanner}>

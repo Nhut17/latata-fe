@@ -115,7 +115,7 @@ function AdminOrder(props) {
           
 
               {
-                statusOrderCancelled.length == 0 ? (
+                statusOrderCancelled?.length == 0 ? (
                   <TabPanel>
                       <div className="empty-order">
                       <p>

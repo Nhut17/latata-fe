@@ -9,7 +9,7 @@ function ListOrder({status, listOrder}) {
 
  
     
-    const statusOrder = listOrder.filter(listOrder => listOrder.status == `${status}`)
+    const statusOrder = listOrder?.filter(listOrder => listOrder.status == `${status}`)
 
   
 

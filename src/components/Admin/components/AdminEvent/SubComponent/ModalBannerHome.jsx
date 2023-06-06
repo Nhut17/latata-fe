@@ -72,10 +72,11 @@ const ModalBannerHome = ({showBannerHome,setShowBannerHome}) => {
                     overlay: 'customOverlay',
                     modal: 'custom-modal-detail-order',
                 }}
+               
             >
                 <p style={{fontWeight : 'bold', marginBottom : '10px'}}>Banner chính trang chủ: </p>
                 <div className='flex'>
-                    <UploadImage width={800} height={200} 
+                    <UploadImage width={800} height={'150px'} 
                     setSelectedImage={setSelectedImage}
                     isMultiple={false} />
                  

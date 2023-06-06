@@ -23,7 +23,7 @@ const initialState = {
     successAddEventBanner: false,
     list_year_sale: [],
     successSendVoucher: false,
-    eventBanner : [],
+    event_banner : [],
     useVoucher: null,
     useVoucherSuccessfull: false
 }
@@ -307,7 +307,7 @@ export const deleteVoucher = createAsyncThunk('voucher/delete',
                 })
 
 // add event banner
-export const addEventBanner = createAsyncThunk('event-banner', 
+export const addEventBanner = createAsyncThunk('event-banner/add', 
                 async (data,thunkAPI) => {
 
                     const token = localStorage.getItem('token')
@@ -432,7 +432,7 @@ const adminSlice = createSlice({
             state.successSendVoucher = true
         }, 
         [getAllEventBanner.fulfilled] : (state,action) => {
-            state.eventBanner = action.payload
+            state.event_banner = action.payload
         }, 
         [useVoucher.fulfilled] : (state,action) => {
             state.useVoucherSuccessfull = true

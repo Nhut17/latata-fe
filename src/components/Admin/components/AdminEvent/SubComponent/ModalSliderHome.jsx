@@ -4,9 +4,13 @@ import { Modal } from 'react-responsive-modal';
 import '../AdminEvent.scss'
 import UploadImage from './UploadImage';
 import { CloudUploadOutlined } from '@ant-design/icons'
+import { useDispatch } from 'react-redux';
+import { addEventBanner } from '../../../../../redux/Admin/adminSlice';
 
 const ModalSliderHome = ({showSliderHome,setShowSliderrHome}) => {
 
+    const dispatch = useDispatch()
+     
     const handleClickSliderHome = () => {
         setShowSliderrHome(false)
     }
@@ -48,10 +52,10 @@ const ModalSliderHome = ({showSliderHome,setShowSliderrHome}) => {
         formData.append('images', image)
       })
   
-      let name = 'Slider banner'
+      let name = 'SliderHome'
       formData.append('name',name)
   
-    //   dispatch(addEventBanner(formData))
+      dispatch(addEventBanner(formData))
 
    }
 
@@ -66,7 +70,7 @@ const ModalSliderHome = ({showSliderHome,setShowSliderrHome}) => {
                 }}
             >
                 <p style={{fontWeight : 'bold', marginBottom : '10px'}}>Banner slider trang chủ: </p>
-                <UploadImage width={500} height={150} 
+                <UploadImage width={500} height={'auto'}
                             setSelectedImage={setSelectedImage}
                             isMultiple={true} />
                 

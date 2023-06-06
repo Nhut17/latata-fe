@@ -27,14 +27,17 @@ import ScrollToTop from '../components/Home/ScrollToTop'
 import ListPhone from '../components/Home/ListPhone'
 
 import MessengerCustomerChat from 'react-messenger-customer-chat';
+import { getAllEventBanner } from '../redux/Admin/adminSlice'
 
 const Home = () => {
   const navigate = useNavigate()
   const success = useSelector(state => state.user.successLogin)
   const { currentUser,successLogin} = useSelector(state => state.user)
+   const { event_banner } = useSelector(state => state.admin)
   const [visible,setVisible] = useState(false)
   const dispatch = useDispatch()
 
+   const listEventSubBanner =event_banner?.filter(img => img.name.toLowerCase() === 'subbanner')
    // redict to admmin
    useEffect(() => {
     if(!currentUser){
@@ -84,6 +87,10 @@ const Home = () => {
   },[])
 
 
+  // get event banner
+  useEffect(() => {
+      dispatch(getAllEventBanner())
+  },[])
 
 
 // scroll
@@ -122,14 +129,11 @@ useEffect(() =>{
     }
   },[])
   
-
- 
-
   useEffect(() => {
     dispatch(getProduct())
 },[])
 
-const shoppingTrendsRef = useRef()
+
 
   return (
     <div className="home">
@@ -158,7 +162,7 @@ const shoppingTrendsRef = useRef()
       <div className="container">
         <div className="banner-home">
 
-          <Banner banner={banner_opt} />
+          <Banner banner={listEventSubBanner[0]?.images[0]} />
         </div>
         <OptionPromote  />
 
@@ -174,7 +178,7 @@ const shoppingTrendsRef = useRef()
         <MenuOptions />
         <ListWatchesSeries />
         <div className="banner-galaxy">
-          <Banner banner={bannerGalaxy} />
+          <Banner banner={listEventSubBanner[0]?.images[1]} />
         </div>
 
         <ListPhone />

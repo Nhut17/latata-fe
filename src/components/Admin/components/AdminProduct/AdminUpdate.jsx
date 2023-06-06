@@ -51,6 +51,7 @@ function AdminUpdate(props) {
     const {name,price,promotion,stock,description } = dataForm
   
     const data = {
+      ...dataForm,
       name: name,
       price: price,
       promotion: promotion,

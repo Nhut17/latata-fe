@@ -8,7 +8,7 @@ import { addEventBanner, getAllEventBanner } from '../../../../redux/Admin/admin
 const AdminEvent = () => {
 
   const dispatch = useDispatch()
-  const { successAddEventBanner, eventBanner } = useSelector(state => state.admin)
+  const { successAddEventBanner, event_banner } = useSelector(state => state.admin)
 
   useEffect(() => {
 
@@ -16,7 +16,16 @@ const AdminEvent = () => {
 
   },[])
 
-  console.log('event: ',eventBanner)
+
+  useEffect(() => {
+
+    if(successAddEventBanner)
+    {
+      window.location.reload()
+    }
+
+  },[successAddEventBanner])
+  console.log('event: ',event_banner)
 
 
   const [active, setActive] = useState(0);
@@ -27,58 +36,6 @@ const AdminEvent = () => {
     }
   };
 
-  const [selectedImage, setSelectedImage] = useState([])
-  const [imagePreview,setImagePreview] = useState([])
-
-  
- const handleOnChangeImages = (e) =>{
-
-  const files = Array.from(e.target.files)
-
-  setSelectedImage([])
-  setImagePreview([])
-
-  files.forEach(file => {
-
-    const reader = new FileReader()
-
-    reader.onload = () => {
-   
-      if(reader.readyState === 2)
-      {
-        setImagePreview(prev => [...prev , reader.result])
-        setSelectedImage(prev => [...prev , reader.result])
-      }
-    }
-
- 
-  reader.readAsDataURL(file)
-
-  })
-
-  
-
- }
-
- const handleUpload = () => {
-
-    const formData = new FormData()
-
-    selectedImage.forEach(image => {
-      formData.append('images', image)
-    })
-
-    let name = 'home'
-    formData.append('name',name)
-
-    dispatch(addEventBanner(formData))
-
-    
-
- }
-
-
- 
   
   return (
     
@@ -121,40 +78,8 @@ const AdminEvent = () => {
       </Tabs>
 
       <>
-        {/* <div style={{
-          margin: 10
-        }}>
-          <span>image 1</span>
-          <input type="file"
-                  accept='images/*'
-                  onChange={handleOnChangeImages}
-                  multiple
-                  />
-            
-        </div>
-      
-      
-
-        <button onClick={handleUpload}>upload</button> */}
-
-      </>
-
-      <>
-      
-      {
-        imagePreview.length > 0 && imagePreview.map(img => (
-          <img src={img}
-                key={img}
-                width='55'
-                height='52' />
-        ))
-      }
-      
-      </>
-
-      <>
         <Content active={active === 0}>
-          <BannerHome eventBanner={eventBanner}  />
+          <BannerHome eventBanner={event_banner}  />
         </Content>
         <Content active={active === 1}>
           <BannerCate cate={`Điện thoại`}/>
