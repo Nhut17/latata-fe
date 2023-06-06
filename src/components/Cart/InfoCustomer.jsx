@@ -30,7 +30,7 @@ const InfoCustomer = ({totalPrice}) => {
     const [selectedNameVoucher,setSelectedNameVoucher] = useState('')
 
 
-     console.log('selected name: ' + selectedNameVoucher)
+  
 
         useEffect(() => {
 
@@ -102,10 +102,11 @@ const InfoCustomer = ({totalPrice}) => {
             <div className="name input">
                 <input 
                     type="text" 
-                    value={nameI}
-            
+                    defaultValue={nameI}
+
                     {...register('name',{
-                        required: nameI.length > 0 ? false : true
+                        required: nameI.length > 0 ? false : true,
+                        onChange: e => setName(e.target.value)
                      
                     })}
                     />
@@ -125,14 +126,15 @@ const InfoCustomer = ({totalPrice}) => {
             <div className="number input">
                 <input 
                     type="text"  
-                    value={phoneI}
+                    defaultValue={phoneI}
                     {...register('phoneNo',{
                         required: phoneI.length > 0 ? false : true,
                         pattern: {
                             message: 'Số điện thoại không phù hợp',
                             value: /^\d+$/,
                             
-                        }
+                        },
+                        onChange: e => setPhone(e.target.value)
                     })}
                     />
                     <span className='style-change' htmlFor='number' 
