@@ -173,18 +173,18 @@ const AdminEvent = () => {
         <BannerCate cate={`Phụ kiện`}/>
         </Content>
         <Content active={active === 5}>
-          <h1>Content 2</h1>
+        <BannerCate cate={`Smartwatch`}/>
         </Content>
 
         <Content active={active === 6}>
-          <h1>Content 1</h1>
+        <BannerCate cate={`Đồng hồ`}/>
         </Content>
         <Content active={active === 7}>
-          <h1>Content 2</h1>
+        <BannerCate cate={`Tivi`}/>
         </Content>
 
         <Content active={active === 8}>
-          <h1>Content 1</h1>
+        <BannerCate cate={`Nhà thông minh`}/>
         </Content>
       
       </>

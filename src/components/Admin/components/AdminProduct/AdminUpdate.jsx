@@ -6,6 +6,7 @@ import { getProductDetail } from "../../../../redux/Product/productSlice";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { resetActionAdmin, updateProduct } from "../../../../redux/Admin/adminSlice";
+import InfoTechProduct from "./SelectDetailProduct/InfoTechProduct";
 function AdminUpdate(props) {
   const { register, handleSubmit } = useForm();
  
@@ -91,6 +92,10 @@ function AdminUpdate(props) {
           type="text"
         />
 
+      <InfoTechProduct id_cate={'637e40260f52ec2c4eb8180b'}
+                                register={register}
+                                />
+
         <span>Giá</span>
         <input
           defaultValue={productDetail.price}
@@ -108,6 +113,30 @@ function AdminUpdate(props) {
         <input
               defaultValue={productDetail.stock} 
               {...register("stock")} placeholder="" type="number" />
+
+
+        <span style={{marginTop : '10px'}}>Hình ảnh</span>
+
+        <div className="img-group flex ">
+          <form>
+            <div class="image-upload">
+              <label for="file-input">
+                <div class="upload-icon">
+                  <img  alt="" 
+                
+                  />
+                  </div>
+              </label>
+              <input id="file-input" type="file"
+              {...register("images")}
+              // onChange={handleImage}
+              accept="images/*"
+              />
+            </div>
+          </form>
+
+
+        </div>
     
         {/* <span>Hình ảnh</span>
         <img 
@@ -126,7 +155,7 @@ function AdminUpdate(props) {
         /> */}
        
 
-          <span>Chi tiết sản phẩm</span>
+          <span style={{marginTop: '10px'}}>Chi tiết sản phẩm</span>
           <textarea 
           defaultValue={productDetail.description}
           name="" id="" cols="30" rows="10" 
