@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { addCart } from '../../redux/Cart/cartSlice';
 import { getInfoTech } from '../../redux/Category/categorySlice';
-
+import { information_technical } from './data'
 
 const Introduce = ({data}) => {
 
@@ -18,18 +18,18 @@ const Introduce = ({data}) => {
     const {listCate, info_tech} = useSelector(state => state.category)
 
 
-    const idCate = listCate?.filter(cate => cate.name === data.category) 
-    console.log(info_tech)
+    // const idCate = listCate?.filter(cate => cate.name === data.category) 
+    // console.log(info_tech)
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        if(idCate)
-        {
-            const id_cate = idCate[0]._id
-            dispatch(getInfoTech(id_cate))
-        }
+    //     if(idCate)
+    //     {
+    //         const id_cate = idCate[0]._id
+    //         dispatch(getInfoTech(id_cate))
+    //     }
 
-    },[])
+    // },[])
 
     const { id } = useParams()
     const dispatch = useDispatch()
@@ -104,20 +104,18 @@ const Introduce = ({data}) => {
             
 
         <div className="product-detail-content">
-            {/* <div className="product-option">
-                  {option.map(val => (
-                    <button
-                    id={val.id}
-                    onClick={handleClick}
-                    style={
-                        active === val.id ? {
-                            backgroundColor:"#000B49",
-                            color: 'white'
-                        }:{}
-                    }
-                    >{val.ram}GB</button>
-                  ))}
-            </div> */}
+            <div className="information-technical">
+            <h3>Thông số kĩ thuật</h3>
+            <table className='technical-detail'>
+                {information_technical.map(val => (
+                    <tr>
+                        <th>{val.title}</th>
+                        <td>{val.content}</td>
+                    </tr>
+                ))}
+            </table>
+        </div>
+
 
             <div className="product-price-location">
                 <div className="location">
@@ -153,7 +151,7 @@ const Introduce = ({data}) => {
                 </p> */}
             </div>
             <div class="product-introduce-promotion-list ">
-                {
+                {/* {
                     info_tech && info_tech.map((val,index) => (
                        <div class="product-introduce-promotion-item">
                             <div class="promotion-circle">
@@ -164,7 +162,7 @@ const Introduce = ({data}) => {
                             </span>
                                 </div> 
                     ))
-                }
+                } */}
             </div>
             </div>
             {

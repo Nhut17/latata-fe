@@ -192,9 +192,9 @@ function AdminCreate(props) {
                 </div>  
               }
               
-        <InfoTechProduct id_cate={'637e40260f52ec2c4eb8180b'}
+        {/* <InfoTechProduct id_cate={'637e40260f52ec2c4eb8180b'}
                           register={register}
-                           />
+                           /> */}
 
         <div className="input-group">
           <span className="title">Giá</span>
