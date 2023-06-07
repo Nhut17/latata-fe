@@ -6,9 +6,9 @@ const Banner = ({banner}) => {
 
   return (
     <div className='banner'>
-        <img src={banner.url} 
-              key={banner.url_id} 
-              alt={banner.url_id} />
+        <img src={banner?.url} 
+              key={banner?.url_id} 
+              alt={banner?.url_id} />
     </div>
   )
 }
