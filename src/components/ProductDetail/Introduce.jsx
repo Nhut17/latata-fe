@@ -167,9 +167,6 @@ const Introduce = ({data}) => {
                 }
             </div>
             </div>
-
-         
-
             {
                 isStock <= 0 ? 
                 (

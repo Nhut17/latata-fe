@@ -27,7 +27,7 @@ function Product({data,stt}) {
     
       <td>{data?.promotion}%</td>
       <td>{data?.stock}</td>
-
+      
       <td
         className="delete-product"
         onClick={handleDelete}
